@@ -44,6 +44,12 @@
         android:contentDescription="fab_content_desc"
         app:srcCompat="@drawable/baseline_supervised_user_circle_24" />
 
+    <Button
+        android:id="@+id/btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
