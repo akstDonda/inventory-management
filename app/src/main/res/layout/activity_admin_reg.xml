@@ -86,7 +86,7 @@
             android:id="@+id/edt_companyname_admin_reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Passwoed"
+            android:text="Company Name"
             android:layout_marginTop="50dp"
             android:layout_marginStart="20dp"
             android:textColor="@color/elephant_light"
