@@ -50,6 +50,69 @@
             android:textColor="@color/elephant_light"
             android:textSize="15sp"/>
 
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/elephant_light"
+            android:hint="Enter Email"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/edt_Password_admin_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passwoed"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/elephant_light"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/elephant_light"
+            android:hint="*******"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <TextView
+            android:id="@+id/edt_companyname_admin_reg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Passwoed"
+            android:layout_marginTop="50dp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/elephant_light"
+            android:textSize="15sp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="25dp"
+            android:background="@color/elephant_light"
+            android:hint="Enter your company name"
+            android:minHeight="48dp"
+            android:textColor="@color/black"
+            android:textSize="25dp" />
+
+        <Button
+            android:id="@+id/btn_admin_reg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"
+            android:text="Login"
+            android:textColor="@color/white"
+
+            />
+
 
     </LinearLayout>
 
