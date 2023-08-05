@@ -10,7 +10,7 @@
         android:id="@+id/img"
         android:layout_width="500dp"
         android:layout_height="500dp"
-        android:src="@drawable/typeuserimg"
+        android:src="@drawable/signup_image"
         />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -50,13 +50,14 @@
         android:layout_below="@+id/floating_action_button_admin"
         android:layout_marginStart="75dp"
         android:textStyle="bold"
-        android:text="Admin"/>
+        android:text="@string/admin"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/floating_action_button_user"
         android:layout_marginStart="280dp"
         android:textStyle="bold"
-        android:text="User"/>
+        android:text="User"
+        tools:ignore="HardcodedText" />
 
 </RelativeLayout>
