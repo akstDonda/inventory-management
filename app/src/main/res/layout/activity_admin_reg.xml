@@ -11,7 +11,7 @@
         android:id="@+id/txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crate New Account"
+        android:text="Create New Account"
         android:textSize="40sp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
@@ -65,7 +65,7 @@
             android:id="@+id/edt_Password_admin_reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Passwoed"
+            android:text="Password"
             android:layout_marginTop="50dp"
             android:layout_marginStart="20dp"
             android:textColor="@color/elephant_light"
@@ -108,7 +108,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
-            android:text="Login"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="50dp"
+            android:text="Create Account"
             android:textColor="@color/white"
 
             />
