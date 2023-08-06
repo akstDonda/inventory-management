@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/pink_light"
-    tools:context=".AdminRegistration">
+    tools:context=".AdminLogin">
 
     <TextView
         android:id="@+id/txt1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Create New Account"
+        android:text="Welcome Back"
         android:textSize="40sp"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
@@ -22,9 +22,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt1"
-        android:text="Already Registration?Log in here. "
+        android:text="You new??go for Registration "
+        android:onClick="CreateNewAccount"
         android:textSize="10sp"
-        android:onClick="GoForOldAccounnt"
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
@@ -43,7 +43,7 @@
         android:layout_marginBottom="25dp">
 
         <TextView
-            android:id="@+id/txt_email_admin_reg"
+            android:id="@+id/txt_email_admin_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
@@ -54,7 +54,7 @@
             tools:ignore="HardcodedText"/>
 
         <EditText
-            android:id="@+id/edt_email_admin_reg"
+            android:id="@+id/edt_email_admin_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -70,7 +70,7 @@
             android:importantForAutofill="no" />
 
         <TextView
-            android:id="@+id/txt_Password_admin_reg"
+            android:id="@+id/txt_Password_admin_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
@@ -81,7 +81,7 @@
             tools:ignore="HardcodedText"/>
 
         <EditText
-            android:id="@+id/edt_Password_admin_reg"
+            android:id="@+id/edt_Password_admin_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -96,46 +96,20 @@
             tools:ignore="HardcodedText,SmallSp"
             android:importantForAutofill="no" />
 
-        <TextView
-            android:id="@+id/txt_companyname_admin_reg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company Name"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/elephant_light"
-            android:textSize="15sp"
-            tools:ignore="HardcodedText"/>
-
-        <EditText
-            android:id="@+id/edt_companyname_admin_reg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@color/elephant_light"
-            android:hint="Enter your company name"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="#212121"
-            android:inputType="text"
-            android:textSize="25dp"
-            tools:ignore="HardcodedText,SmallSp,TextContrastCheck"
-            android:importantForAutofill="no" />
 
         <Button
-            android:id="@+id/btn_admin_reg"
+            android:id="@+id/btn_admin_login"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
             android:layout_marginStart="50dp"
             android:layout_marginEnd="50dp"
-            android:text="Create Account"
+            android:text="Login..."
             android:textColor="@color/white"
             tools:ignore="HardcodedText,SmallSp"
             />
         <ProgressBar
-            android:id="@+id/rProgressBar"
+            android:id="@+id/lProgressBar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="150dp"

@@ -22,7 +22,7 @@ public class AdminHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(AdminHome.this, UserTypeActivity.class));
+                startActivity(new Intent(AdminHome.this,AdminLogin.class));
                 finish();
             }
         });

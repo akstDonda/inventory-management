@@ -82,4 +82,8 @@ public class AdminRegistration extends AppCompatActivity {
 
 
     }
+
+    public void GoForOldAccounnt(View view) {
+        startActivity(new Intent(getApplicationContext(), AdminLogin.class));
+    }
 }
