@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -19,7 +18,7 @@ public class UserTypeActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserTypeActivity.this, admin_reg.class);
+                Intent intent = new Intent(UserTypeActivity.this, AdminRegistration.class);
                 startActivity(intent);
             }
         });

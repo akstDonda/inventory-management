@@ -4,11 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-public class admin_reg extends AppCompatActivity {
+public class AdminRegistration extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_reg);
+        setContentView(R.layout.activity_admin_registration);
     }
 }
