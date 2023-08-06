@@ -16,7 +16,7 @@
         android:layout_centerHorizontal="true"
         android:textColor="@color/black"
         android:layout_marginTop="55dp"
-        />
+        tools:ignore="HardcodedText" />
     <TextView
         android:id="@+id/txt2"
         android:layout_width="wrap_content"
@@ -28,7 +28,8 @@
         android:textColor="@color/black"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="60dp"
-        tools:ignore="SmallSp" />
+        tools:ignore="HardcodedText,SmallSp"
+        />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -41,16 +42,18 @@
         android:layout_marginBottom="25dp">
 
         <TextView
-            android:id="@+id/edt_email_admin_reg"
+            android:id="@+id/txt_email_admin_reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Email"
             android:layout_marginTop="50dp"
             android:layout_marginStart="20dp"
             android:textColor="@color/elephant_light"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            tools:ignore="HardcodedText"/>
 
         <EditText
+            android:id="@+id/edt_email_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -58,41 +61,53 @@
             android:background="@color/elephant_light"
             android:hint="Enter Email"
             android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:inputType="textEmailAddress"
+            android:textColor="#212121"
+            android:textColorHint="#212121"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText,SmallSp"
+            android:importantForAutofill="no" />
 
         <TextView
-            android:id="@+id/edt_Password_admin_reg"
+            android:id="@+id/txt_Password_admin_reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Password"
             android:layout_marginTop="50dp"
             android:layout_marginStart="20dp"
             android:textColor="@color/elephant_light"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            tools:ignore="HardcodedText"/>
 
         <EditText
+            android:id="@+id/edt_Password_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
             android:layout_marginEnd="25dp"
             android:background="@color/elephant_light"
             android:hint="*******"
+            android:inputType="textVisiblePassword"
             android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:textColor="#212121"
+            android:textColorHint="#212121"
+            android:textSize="25sp"
+            tools:ignore="HardcodedText,SmallSp"
+            android:importantForAutofill="no" />
 
         <TextView
-            android:id="@+id/edt_companyname_admin_reg"
+            android:id="@+id/txt_companyname_admin_reg"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Company Name"
             android:layout_marginTop="50dp"
             android:layout_marginStart="20dp"
             android:textColor="@color/elephant_light"
-            android:textSize="15sp"/>
+            android:textSize="15sp"
+            tools:ignore="HardcodedText"/>
 
         <EditText
+            android:id="@+id/edt_companyname_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -101,7 +116,11 @@
             android:hint="Enter your company name"
             android:minHeight="48dp"
             android:textColor="@color/black"
-            android:textSize="25dp" />
+            android:textColorHint="#212121"
+            android:inputType="text"
+            android:textSize="25dp"
+            tools:ignore="HardcodedText,SmallSp,TextContrastCheck"
+            android:importantForAutofill="no" />
 
         <Button
             android:id="@+id/btn_admin_reg"
@@ -112,7 +131,14 @@
             android:layout_marginEnd="50dp"
             android:text="Create Account"
             android:textColor="@color/white"
-
+            tools:ignore="HardcodedText,SmallSp"
+            />
+        <ProgressBar
+            android:id="@+id/rProgressBar"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="150dp"
+            android:visibility="invisible"
             />
 
 
