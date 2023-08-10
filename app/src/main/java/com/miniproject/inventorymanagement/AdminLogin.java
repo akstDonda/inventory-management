@@ -1,11 +1,15 @@
 package com.miniproject.inventorymanagement;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +21,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
+import java.util.Map;
 import java.util.Objects;
 
 public class AdminLogin extends AppCompatActivity {
@@ -26,6 +38,8 @@ public class AdminLogin extends AppCompatActivity {
     EditText lemail,lpassword;
     FirebaseAuth mAuth;
     ProgressBar lprogresbar;
+    FirebaseFirestore db;
+    static int some = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +50,8 @@ public class AdminLogin extends AppCompatActivity {
         lpassword=findViewById(R.id.edt_Password_admin_login);
         mAuth=FirebaseAuth.getInstance();
         lprogresbar=findViewById(R.id.lProgressBar);
+        db = FirebaseFirestore.getInstance();
+        CollectionReference users = db.collection("users");
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
@@ -67,7 +83,40 @@ public class AdminLogin extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(AdminLogin.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
+                            FirebaseUser currentUser = mAuth.getCurrentUser();
+                            System.out.println(currentUser);
+//                            Toast.makeText(AdminLogin.this, currentUser.getUid(), Toast.LENGTH_LONG).show();
+                            String userID = "Some";
+
+                            DocumentReference docRef = db.collection("users").document(currentUser.getUid());
+
+                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.isSuccessful()) {
+                                        // Document found in the offline cache
+                                        DocumentSnapshot document = task.getResult();
+                                        Log.d(TAG, "Cached document data: " + document.getData());
+                                        Map<String, Object> data = document.getData();
+                                        Log.d(TAG, "Size: " + document.getData().size());
+                                        Log.d(TAG, "Company: " + data.get("company").toString());
+                                        Log.d(TAG, "UID: " + currentUser.getUid().toString());
+
+                                        Toast.makeText(AdminLogin.this, data.get("company").toString(), Toast.LENGTH_LONG).show();
+                                        if (data.get("company").toString().compareTo(currentUser.getUid().toString()) == 0) {
+                                            Toast.makeText(AdminLogin.this, "done dona done", Toast.LENGTH_LONG).show();
+                                        }
+                                        else {
+                                            Toast.makeText(AdminLogin.this, "hehe user!!!", Toast.LENGTH_SHORT).show();
+                                        }
+//                                        Toast.makeText(AdminLogin.this, currentUser.getUid(), Toast.LENGTH_SHORT).show();
+
+                                    } else {
+                                        Log.d(TAG, "Cached get failed: ", task.getException());
+                                    }
+                                }
+                            });
+//                            Toast.makeText(AdminLogin.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(),AdminHome.class));
                         }else{
                             Toast.makeText(AdminLogin.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
@@ -75,12 +124,8 @@ public class AdminLogin extends AppCompatActivity {
                         }
                     }
                 });
-
-
             }
         });
-
-
     }
 
     public void CreateNewAccount(View view) {
