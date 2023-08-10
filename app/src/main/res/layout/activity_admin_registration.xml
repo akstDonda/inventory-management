@@ -40,99 +40,55 @@
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:orientation="vertical"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="50dp"
         android:layout_marginBottom="25dp">
-
-        <TextView
-            android:id="@+id/txt_email_admin_reg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/elephant_light"
-            android:textSize="15sp"
-            tools:ignore="HardcodedText"/>
-
-        <EditText
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_email_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@color/elephant_light"
-            android:hint="Enter Email"
-            android:minHeight="48dp"
-            android:inputType="textEmailAddress"
-            android:textColor="#212121"
-            android:textColorHint="#212121"
-            android:textSize="25sp"
-            tools:ignore="HardcodedText,SmallSp"
-            android:importantForAutofill="no" />
+            android:hint="email">
 
-        <TextView
-            android:id="@+id/txt_Password_admin_reg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Password"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/elephant_light"
-            android:textSize="15sp"
-            tools:ignore="HardcodedText"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_Password_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@color/elephant_light"
-            android:hint="*******"
-            android:inputType="textVisiblePassword"
-            android:minHeight="48dp"
-            android:textColor="#212121"
-            android:textColorHint="#212121"
-            android:textSize="25sp"
-            tools:ignore="HardcodedText,SmallSp"
-            android:importantForAutofill="no" />
+            android:hint="password">
 
-        <TextView
-            android:id="@+id/txt_companyname_admin_reg"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Company Name"
-            android:layout_marginTop="50dp"
-            android:layout_marginStart="20dp"
-            android:textColor="@color/elephant_light"
-            android:textSize="15sp"
-            tools:ignore="HardcodedText"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
 
-        <EditText
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_companyname_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:background="@color/elephant_light"
-            android:hint="Enter your company name"
-            android:minHeight="48dp"
-            android:textColor="@color/black"
-            android:textColorHint="#212121"
-            android:inputType="text"
-            android:textSize="25dp"
-            tools:ignore="HardcodedText,SmallSp,TextContrastCheck"
-            android:importantForAutofill="no" />
+            android:hint="company">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
 
         <Button
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:id="@+id/btn_admin_reg"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginEnd="50dp"
-            android:text="Create Account"
-            android:textColor="@color/white"
-            tools:ignore="HardcodedText,SmallSp"
+            android:text="signup"
             />
         <ProgressBar
             android:id="@+id/rProgressBar"

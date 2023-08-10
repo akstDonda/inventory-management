@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -34,6 +35,7 @@ import java.util.Objects;
 
 public class AdminLogin extends AppCompatActivity {
     Button login_btn;
+    TextInputLayout email, password;
     TextView txt_create_account;
     EditText lemail,lpassword;
     FirebaseAuth mAuth;
@@ -46,10 +48,15 @@ public class AdminLogin extends AppCompatActivity {
         setContentView(R.layout.activity_admin_login);
 
         login_btn=findViewById(R.id.btn_admin_login);
-        lemail=findViewById(R.id.edt_email_admin_login);
-        lpassword=findViewById(R.id.edt_Password_admin_login);
         mAuth=FirebaseAuth.getInstance();
         lprogresbar=findViewById(R.id.lProgressBar);
+
+        email=findViewById(R.id.outlinedTextField11);
+        password = findViewById(R.id.outlinedTextField12);
+
+        lemail = email.getEditText();
+        lpassword = password.getEditText();
+
         db = FirebaseFirestore.getInstance();
         CollectionReference users = db.collection("users");
 
