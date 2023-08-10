@@ -8,4 +8,12 @@
     <color name="primary_color_light">#E2E8D2</color>
     <color name="pink_light">#E6AFDC</color>
     <color name="elephant_light">#746F6F</color>
+    <color name="primary_light">#3498db</color>
+    <color name="primary_dark">#2c3e50</color>
+    <color name="secondary_light">#e74c3c</color>
+    <color name="secondary_dark">#c0392b</color>
+    <color name="accent_light">#27ae60</color>
+    <color name="accent_dark">#219653</color>
+    <color name="background_light">#f2f2f2</color>
+    <color name="background_dark">#121212</color>
 </resources>

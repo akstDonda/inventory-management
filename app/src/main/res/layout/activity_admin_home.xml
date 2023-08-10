@@ -10,12 +10,15 @@
         android:id="@+id/btn_admin_logOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="LogOut"/>
+        android:backgroundTint="@color/primary_light"
+        android:text="logout"/>
 
     <Button
         android:id="@+id/btn_admin_addUsers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
+        android:backgroundTint="@color/accent_light"
+        android:textColor="@color/secondary_dark"
         android:text="Add User"/>
 </RelativeLayout>
