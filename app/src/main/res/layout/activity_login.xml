@@ -22,8 +22,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt1"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="60dp"
+        android:minHeight="48dp"
         android:onClick="CreateNewAccount"
         android:text="You new??go for Registration "
         android:textColor="@color/black"
@@ -73,6 +75,7 @@
             android:id="@+id/btn_admin_login"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink_light"
             android:text="login" />
 
         <ProgressBar
