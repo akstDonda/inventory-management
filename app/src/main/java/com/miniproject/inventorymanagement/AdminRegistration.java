@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,6 +23,7 @@ import java.util.Objects;
 
 public class AdminRegistration extends AppCompatActivity {
     EditText mCompanyName, mEmail, mPassword;
+    TextInputLayout email, passwdd, commpy;
     Button rbtn;
     TextView login_btn;
     ProgressBar reg_progressbar;
@@ -32,9 +34,13 @@ public class AdminRegistration extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_registration);
 
-        mCompanyName = findViewById(R.id.edt_companyname_admin_reg);
-        mEmail = findViewById(R.id.edt_email_admin_reg);
-        mPassword = findViewById(R.id.edt_Password_admin_reg);
+        commpy = findViewById(R.id.edt_companyname_admin_reg);
+        email = findViewById(R.id.edt_email_admin_reg);
+        passwdd = findViewById(R.id.edt_Password_admin_reg);
+
+        mCompanyName = commpy.getEditText();
+        mEmail = email.getEditText();
+        mPassword = email.getEditText();
 
         rbtn = findViewById(R.id.btn_admin_reg);
         reg_progressbar = findViewById(R.id.rProgressBar);
