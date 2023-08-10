@@ -16,7 +16,7 @@
             android:name=".AdminAddUser"
             android:exported="false" />
         <activity
-            android:name=".AdminLogin"
+            android:name=".LoginActivity"
             android:exported="false" />
         <activity
             android:name=".AdminHome"
