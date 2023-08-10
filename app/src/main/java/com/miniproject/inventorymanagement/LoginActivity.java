@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -27,13 +26,12 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
+import com.miniproject.inventorymanagement.admin.Home;
 
 import java.util.Map;
 import java.util.Objects;
 
-public class AdminLogin extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
     Button login_btn;
     TextInputLayout email, password;
     TextView txt_create_account;
@@ -45,7 +43,7 @@ public class AdminLogin extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_login);
+        setContentView(R.layout.activity_login);
 
         login_btn=findViewById(R.id.btn_admin_login);
         mAuth=FirebaseAuth.getInstance();
@@ -62,7 +60,7 @@ public class AdminLogin extends AppCompatActivity {
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),AdminHome.class));
+            startActivity(new Intent(getApplicationContext(), Home.class));
             finish();
         }
 
@@ -109,12 +107,12 @@ public class AdminLogin extends AppCompatActivity {
                                         Log.d(TAG, "Company: " + data.get("company").toString());
                                         Log.d(TAG, "UID: " + currentUser.getUid().toString());
 
-                                        Toast.makeText(AdminLogin.this, data.get("company").toString(), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(LoginActivity.this, data.get("company").toString(), Toast.LENGTH_LONG).show();
                                         if (data.get("company").toString().compareTo(currentUser.getUid().toString()) == 0) {
-                                            Toast.makeText(AdminLogin.this, "done dona done", Toast.LENGTH_LONG).show();
+                                            Toast.makeText(LoginActivity.this, "done dona done", Toast.LENGTH_LONG).show();
                                         }
                                         else {
-                                            Toast.makeText(AdminLogin.this, "hehe user!!!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(LoginActivity.this, "hehe user!!!", Toast.LENGTH_SHORT).show();
                                         }
 //                                        Toast.makeText(AdminLogin.this, currentUser.getUid(), Toast.LENGTH_SHORT).show();
 
@@ -124,9 +122,9 @@ public class AdminLogin extends AppCompatActivity {
                                 }
                             });
 //                            Toast.makeText(AdminLogin.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),AdminHome.class));
+                            startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
-                            Toast.makeText(AdminLogin.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                             lprogresbar.setVisibility(View.GONE);
                         }
                     }
@@ -136,6 +134,6 @@ public class AdminLogin extends AppCompatActivity {
     }
 
     public void CreateNewAccount(View view) {
-        startActivity(new Intent(getApplicationContext(),AdminRegistration.class));
+        startActivity(new Intent(getApplicationContext(), AdminRegistrationActivity.class));
     }
 }

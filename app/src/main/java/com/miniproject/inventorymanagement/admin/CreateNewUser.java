@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement;
+package com.miniproject.inventorymanagement.admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,10 +15,11 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.miniproject.inventorymanagement.R;
 
 import java.util.Objects;
 
-public class AdminAddUser extends AppCompatActivity {
+public class CreateNewUser extends AppCompatActivity {
     Button addUser;
     EditText username;
     EditText password;
@@ -56,10 +57,10 @@ public class AdminAddUser extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(AdminAddUser.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                            Toast.makeText(CreateNewUser.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
-                            Toast.makeText(AdminAddUser.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateNewUser.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

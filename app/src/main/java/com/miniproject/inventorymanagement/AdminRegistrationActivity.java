@@ -18,10 +18,11 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.miniproject.inventorymanagement.admin.Home;
 
 import java.util.Objects;
 
-public class AdminRegistration extends AppCompatActivity {
+public class AdminRegistrationActivity extends AppCompatActivity {
     EditText mCompanyName, mEmail, mPassword;
     TextInputLayout email, passwdd, commpy;
     Button rbtn;
@@ -48,7 +49,7 @@ public class AdminRegistration extends AppCompatActivity {
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),AdminHome.class));
+            startActivity(new Intent(getApplicationContext(), Home.class));
             finish();
         }
         rbtn.setOnClickListener(new View.OnClickListener() {
@@ -75,10 +76,10 @@ public class AdminRegistration extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            Toast.makeText(AdminRegistration.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), AdminHome.class));
+                            Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
-                            Toast.makeText(AdminRegistration.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(AdminRegistrationActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                             reg_progressbar.setVisibility(View.GONE);
                         }
                     }
@@ -90,6 +91,6 @@ public class AdminRegistration extends AppCompatActivity {
     }
 
     public void GoForOldAccounnt(View view) {
-        startActivity(new Intent(getApplicationContext(), AdminLogin.class));
+        startActivity(new Intent(getApplicationContext(), LoginActivity.class));
     }
 }

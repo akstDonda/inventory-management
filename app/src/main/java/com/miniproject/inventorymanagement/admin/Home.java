@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement;
+package com.miniproject.inventorymanagement.admin;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.inventorymanagement.LoginActivity;
+import com.miniproject.inventorymanagement.R;
 
-public class AdminHome extends AppCompatActivity {
+public class Home extends AppCompatActivity {
     Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +24,7 @@ public class AdminHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(AdminHome.this,AdminLogin.class));
+                startActivity(new Intent(Home.this, LoginActivity.class));
                 finish();
             }
         });
