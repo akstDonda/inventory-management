@@ -26,6 +26,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.inventorymanagement.admin.Home;
 
 import java.util.Map;
 import java.util.Objects;
@@ -59,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(),AdminHome.class));
+            startActivity(new Intent(getApplicationContext(), Home.class));
             finish();
         }
 
@@ -121,7 +122,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             });
 //                            Toast.makeText(AdminLogin.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(),AdminHome.class));
+                            startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
                             Toast.makeText(LoginActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                             lprogresbar.setVisibility(View.GONE);
@@ -133,6 +134,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void CreateNewAccount(View view) {
-        startActivity(new Intent(getApplicationContext(),AdminRegistration.class));
+        startActivity(new Intent(getApplicationContext(), AdminRegistrationActivity.class));
     }
 }

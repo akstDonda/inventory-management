@@ -18,7 +18,7 @@ public class UserTypeActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserTypeActivity.this, AdminRegistration.class);
+                Intent intent = new Intent(UserTypeActivity.this, AdminRegistrationActivity.class);
                 startActivity(intent);
             }
         });
