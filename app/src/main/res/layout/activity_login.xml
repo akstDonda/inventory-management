@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@color/pri1"
     tools:context=".LoginActivity">
 
     <TextView
@@ -37,23 +37,30 @@
         android:layout_height="match_parent"
         android:layout_below="@id/txt2"
         android:background="@drawable/round_corner"
+        android:backgroundTint="@color/pri1"
         android:layout_marginStart="25dp"
         android:layout_marginEnd="25dp"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
         android:paddingTop="50dp"
-        android:layout_marginBottom="25dp">
+        android:layout_marginBottom="25dp"
+        android:fadingEdgeLength="40dp"
+        android:elevation="24dp">
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField11"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="80dp"
             android:hint="email">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:background="@drawable/round_corner"
+                android:backgroundTint="@color/pri2"
+                android:inputType="textEmailAddress"
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -65,18 +72,26 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_corner"
+                android:backgroundTint="@color/pri2"
                 android:inputType="textPassword"
-                android:layout_height="wrap_content" />
+                android:textSize="15dp"
+                tools:ignore="TextSizeCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             style="@style/Widget.Material3.Button.ElevatedButton"
             android:id="@+id/btn_admin_login"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/secondary_light"
-            android:text="login" />
+            android:backgroundTint="@color/sec"
+            android:layout_marginTop="20dp"
+            android:text="LOGIN"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:elegantTextHeight="true"/>
 
         <ProgressBar
             android:id="@+id/lProgressBar"

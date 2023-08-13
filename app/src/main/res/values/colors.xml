@@ -17,8 +17,9 @@
     <color name="background_light">#f2f2f2</color>
     <color name="background_dark">#121212</color>
     <!-- colors use -->
-    <color name="pri1">#ffffff</color>
-    <color name="pri2">#8F8F8F</color>
-    <color name="sec">#5E1717</color>
+    <color name="dia">#E3E3E3</color>
+    <color name="pri1">#FFFFFF</color>
+    <color name="pri2">#919191</color>
+    <color name="sec">#273377</color>
     <color name="third">#000000</color>
 </resources>
