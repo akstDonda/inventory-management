@@ -3,39 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pri1"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/loginback"
     tools:context=".LoginActivity">
-
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome Back"
-        android:textSize="40sp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/black"
-        android:layout_marginTop="55dp"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/txt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="60dp"
-        android:minHeight="48dp"
-        android:onClick="CreateNewAccount"
-        android:text="You new??go for Registration "
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        tools:ignore="HardcodedText,SmallSp" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/txt2"
+        android:layout_height="wrap_content"
         android:background="@drawable/round_corner"
         android:backgroundTint="@color/pri1"
         android:layout_marginStart="25dp"
@@ -43,40 +17,55 @@
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
         android:paddingTop="50dp"
+        android:layout_marginTop="280dp"
         android:layout_marginBottom="25dp"
         android:fadingEdgeLength="40dp"
         android:elevation="24dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/h1"
+            android:text="Login"
+            android:textSize="40dp"
+            android:textAlignment="center"
+            android:textColor="@color/sec"
+            android:textStyle="bold"
+            />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField11"
             android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:hint="email">
+            android:layout_marginTop="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_corner"
-                android:backgroundTint="@color/pri2"
+                android:background="@drawable/border1"
                 android:inputType="textEmailAddress"
                 android:textSize="15dp"
-                tools:ignore="TextSizeCheck" />
+                android:hint="  Email"
+                android:textColorHint="@color/black"
+                tools:ignore="TextSizeCheck"
+                android:drawableLeft="@drawable/baseline_email_24"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/outlinedTextField12"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="password">
+            android:layout_height="wrap_content">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/round_corner"
-                android:backgroundTint="@color/pri2"
+                android:background="@drawable/border1"
                 android:inputType="textPassword"
+                android:hint="  Password"
+                android:textColorHint="@color/black"
                 android:textSize="15dp"
+                android:drawableLeft="@drawable/baseline_lock_24"
                 tools:ignore="TextSizeCheck" />
 
         </com.google.android.material.textfield.TextInputLayout>
