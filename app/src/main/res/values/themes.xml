@@ -5,5 +5,10 @@
         <item name="colorPrimary">@color/black</item>
     </style>
 
+    <style name="Base.Theme.InventoryManagement_Tital" parent="Theme.AppCompat">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
     <style name="Theme.InventoryManagement" parent="Base.Theme.InventoryManagement" />
 </resources>
