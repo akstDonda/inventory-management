@@ -5,6 +5,7 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,13 +35,15 @@ import java.util.Objects;
 
 public class LoginActivity extends AppCompatActivity {
     Button login_btn;
+    ImageButton lg_back_btn;
     TextInputLayout email, password;
-    TextView txt_create_account;
+    TextView txt_create_account,reggt;
     EditText lemail,lpassword;
     FirebaseAuth mAuth;
     ProgressBar lprogresbar;
     FirebaseFirestore db;
     static int some = 1;
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,15 +52,37 @@ public class LoginActivity extends AppCompatActivity {
         login_btn=findViewById(R.id.btn_admin_login);
         mAuth=FirebaseAuth.getInstance();
         lprogresbar=findViewById(R.id.lProgressBar);
+        lg_back_btn=findViewById(R.id.login_back_btn);
 
         email=findViewById(R.id.outlinedTextField11);
         password = findViewById(R.id.outlinedTextField12);
+
+        reggt=findViewById(R.id.openreg);
 
         lemail = email.getEditText();
         lpassword = password.getEditText();
 
         db = FirebaseFirestore.getInstance();
         CollectionReference users = db.collection("users");
+
+        //back button so uder go to select usertype activity
+        lg_back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,UserTypeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        reggt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(LoginActivity.this,AdminRegistrationActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
