@@ -1,6 +1,5 @@
-package com.miniproject.inventorymanagement.database;
+package com.miniproject.inventorymanagement.firebase;
 
-import java.util.Date;
 import java.util.List;
 
 public class Product {
@@ -37,10 +36,6 @@ public class Product {
         }
     }
 
-    public void addTransaction(int id, Date date, int price, int quantity) {
-        Transaction transaction = new Transaction(id, date, price, quantity);
-        addTransaction(transaction);
-    }
 
     public int getCurrentStock() {
         return (stockIn - stockOut);
@@ -52,5 +47,20 @@ public class Product {
 
     public int getStockOut() {
         return stockOut;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public int addStock(int quantity) {
+        if  (quantity > 0) {
+            stockIn += quantity;
+        }
+        else {
+            stockOut -= quantity;
+        }
+
+        return 0;
     }
 }
