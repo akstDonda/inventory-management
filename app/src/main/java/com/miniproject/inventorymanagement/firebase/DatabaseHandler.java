@@ -32,6 +32,10 @@ public class DatabaseHandler {
         return firestore;
     }
 
+    public FirebaseAuth getFirebaseAuth() {
+        return firebaseAuth;
+    }
+
     public List<Transaction> getTransactions() {
         return transactions;
     }
@@ -68,4 +72,20 @@ public class DatabaseHandler {
         // TODO:  refresh products from firestore
         return 0;
     }
+
+    public boolean isAdmin() {
+        if (user.getId() == company.getAdminId()){
+            return true;
+        }
+        return false;
+    }
+
+    public int refreshCompanyData() {
+        return company.refreshCompanyData(firebaseAuth, firestore);
+    }
+
+    public int refreshUserData() {
+        return user.refreshUserData(firebaseAuth);
+    }
+
 }

@@ -16,4 +16,16 @@ public class Company {
         // TODO: get company data using user data
         return 0;
     }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getAdminId() {
+        return adminId;
+    }
 }
