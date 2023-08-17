@@ -74,10 +74,7 @@ public class DatabaseHandler {
     }
 
     public boolean isAdmin() {
-        if (user.getId() == company.getAdminId()){
-            return true;
-        }
-        return false;
+        return user.getId() == company.getAdminId();
     }
 
     public int refreshCompanyData() {
