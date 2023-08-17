@@ -14,16 +14,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Set up JDK 8
-        uses: actions/setup-java@v2
-        with:
-          java-version: 8
-          distribution: 'adopt'
+      - name: Set up JBR 17
+        run: |
+          wget https://download.jetbrains.com/java/JBR-17.0.2_8_17.0.2-linux-x64.tar.gz
+          tar -xzf JBR-17.0.2_8_17.0.2-linux-x64.tar.gz
+          export PATH=$PATH:$PWD/jbr-17.0.2_8/bin/
 
       - name: Build APK
         run: |
+          java -version
           chmod +x gradlew
-          ./gradlew assembleDebug
+          ./gradlew assembleDebug --info
 
       - name: Upload APK Artifact
         uses: actions/upload-artifact@v2
