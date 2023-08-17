@@ -1,11 +1,11 @@
-name: Build APK on Commit
+name: Build and Release APK
 
 on:
   workflow_dispatch:
 
 jobs:
   build:
-    name: Build APK
+    name: Build and Release APK
     runs-on: ubuntu-latest
 
     steps:
@@ -22,11 +22,19 @@ jobs:
         run: |
           java -version
           chmod +x gradlew
-          ./gradlew assembleDebug --info
+          ./gradlew assembleDebug
+          
+      - name: Create Directory
+        run: mkdir -p releases
+        
+      - name: Copy APK to Releases Directory
+        run: cp app/build/outputs/apk/debug/app-debug.apk releases/app-v${{ github.run_number }}.apk
 
-      - name: Upload APK Artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-debug
-          path: app/build/outputs/apk/debug/app-debug.apk
-
+      - name: Commit and Tag
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add releases
+          git commit -m "Add release APK for v${{ github.run_number }}"
+          git tag "v${{ github.run_number }}"
+          git push --follow-tags
