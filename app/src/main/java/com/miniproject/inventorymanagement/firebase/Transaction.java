@@ -16,4 +16,14 @@ public class Transaction {
         this.quantity = quantity;
         this.product_id = product_id;
     }
+
+
+
+    // Getters
+    public int getId() {
+        return id;
+    }
+    public int getQuantity() {
+        return quantity;
+    }
 }

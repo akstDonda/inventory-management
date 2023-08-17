@@ -5,6 +5,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 public class DatabaseHandler {
     private static DatabaseHandler instance;
@@ -12,10 +13,11 @@ public class DatabaseHandler {
     private FirebaseFirestore firestore;
     private FirebaseAuth  firebaseAuth;
 
-    private List<Transaction> transactions;
-    private List<Product> products;
+    private Map<Integer, Transaction> transactions;
+    private Map<String, Product> products;
     private Company company;
     private User user;
+
     private DatabaseHandler() {
         firestore = FirebaseFirestore.getInstance();
         // Initialize other shared data
@@ -28,28 +30,13 @@ public class DatabaseHandler {
         return instance;
     }
 
-    public FirebaseFirestore getFirestore() {
-        return firestore;
-    }
-
-    public FirebaseAuth getFirebaseAuth() {
-        return firebaseAuth;
-    }
-
-    public List<Transaction> getTransactions() {
-        return transactions;
-    }
-
-    public List<Product> getProducts() {
-        return products;
-    }
 
     public void addTransaction(int id, Date date, int price, int quantity, Product product) {
         Transaction transaction = new Transaction(id, date, price, quantity, product.getId());
-        transactions.add(transaction);
+        transactions.put(id, transaction);
         addTransactionToFirestore(transaction);
 
-        product.addStock(quantity);
+        product.addTransaction(transaction);
         updateProductToFirestore(product);
     }
 
@@ -85,4 +72,19 @@ public class DatabaseHandler {
         return user.refreshUserData(firebaseAuth);
     }
 
+
+
+    // Getters and Setters
+    public FirebaseFirestore getFirestore() {
+        return firestore;
+    }
+    public FirebaseAuth getFirebaseAuth() {
+        return firebaseAuth;
+    }
+    public Map<Integer, Transaction> getTransactions() {
+        return transactions;
+    }
+    public Map<String, Product> getProducts() {
+        return products;
+    }
 }
