@@ -35,10 +35,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/h1"
-            android:text="Login"
+            android:text="LOGIN"
             android:textSize="40dp"
             android:textAlignment="center"
-            android:textColor="@color/sec"
+            android:textColor="@color/pri2"
             android:textStyle="bold"
             />
 
@@ -110,7 +110,7 @@
             android:clickable="true"
             android:text="Don't Have Account"
             android:textAlignment="center"
-            android:textColor="@color/sec"
+            android:textColor="@color/pri2"
             android:textSize="13dp"
             android:textStyle="bold"
             tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
