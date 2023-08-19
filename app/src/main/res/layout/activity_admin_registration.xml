@@ -4,103 +4,109 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
+    android:background="@drawable/loginback"
     tools:context=".AdminRegistrationActivity">
 
-    <TextView
-        android:id="@+id/txt1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create New Account"
-        android:textSize="40sp"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/black"
-        android:layout_marginTop="55dp"
-        tools:ignore="HardcodedText" />
-
-    <TextView
-        android:id="@+id/txt2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="60dp"
-        android:minHeight="48dp"
-        android:onClick="GoForOldAccounnt"
-        android:text="Already Registration?Log in here. "
-        android:textColor="@color/black"
-        android:textSize="10sp"
-        tools:ignore="HardcodedText,SmallSp" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/txt2"
-        android:background="@drawable/round_corner"
         android:layout_marginStart="25dp"
+        android:layout_marginTop="280dp"
         android:layout_marginEnd="25dp"
+        android:layout_marginBottom="25dp"
+        android:background="@drawable/round_corner"
         android:orientation="vertical"
         android:paddingHorizontal="20dp"
-        android:paddingTop="50dp"
-        android:layout_marginBottom="25dp">
+        android:paddingTop="50dp">
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_email_admin_reg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="email">
+            android:layout_height="70dp"
+            android:layout_marginTop="10dp"
+            android:hint="Email"
+            app:boxStrokeColor="@color/sec"
+            app:boxStrokeWidth="4dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusBottomEnd="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="textEmailAddress"
+                android:textSize="15dp"
+                android:textColorHint="@color/black"
+                tools:ignore="TextSizeCheck"
+                android:drawableLeft="@drawable/baseline_email_24"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edt_Password_admin_reg"
+            android:id="@+id/edt_password_admin_reg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="password">
+            android:hint="Password"
+            app:boxStrokeColor="@color/sec"
+            app:boxStrokeWidth="4dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusBottomEnd="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:inputType="textPassword"
-                android:layout_height="wrap_content"
-                />
+                android:textSize="15dp"
+                android:drawableLeft="@drawable/baseline_lock_24"
+                tools:ignore="TextSizeCheck"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
-
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edt_companyname_admin_reg"
+            android:id="@+id/edt_company_admin_reg"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="company">
+            android:layout_height="80dp"
+            android:layout_marginTop="5dp"
+            android:hint="company"
+            app:boxStrokeColor="@color/sec"
+            app:boxStrokeWidth="4dp"
+            app:boxCornerRadiusTopStart="20dp"
+            app:boxCornerRadiusTopEnd="20dp"
+            app:boxCornerRadiusBottomStart="20dp"
+            app:boxCornerRadiusBottomEnd="20dp">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                />
+                android:inputType="text"
+                android:textSize="15dp"
+                android:textColorHint="@color/black"
+                tools:ignore="TextSizeCheck"
+                android:drawablePadding="10dp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
-            style="@style/Widget.Material3.Button.ElevatedButton"
             android:id="@+id/btn_admin_reg"
+            style="@style/Widget.Material3.Button.ElevatedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/secondary_light"
-            android:text="signup"
-            />
+            android:text="signup" />
+
         <ProgressBar
             android:id="@+id/rProgressBar"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginStart="130dp"
-            android:layout_marginTop="55dp"
-            android:progressTint="@color/pink_light"
-            />
+            android:layout_marginTop="30dp"
+            android:progressTint="@color/pink_light" />
 
 
     </LinearLayout>
