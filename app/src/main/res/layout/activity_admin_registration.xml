@@ -93,14 +93,16 @@
 
 
         <Button
-            android:id="@+id/btn_admin_reg"
             style="@style/Widget.Material3.Button.ElevatedButton"
-            android:layout_width="wrap_content"
+            android:id="@+id/btn_admin_signin"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="@color/sec"
+            android:layout_marginTop="5dp"
+            android:text="sign in"
             android:textColor="@color/white"
-            android:text="signup" />
-
+            android:textSize="20dp"
+            android:elegantTextHeight="true"/>
         <ProgressBar
             android:id="@+id/rProgressBar"
             android:layout_width="50dp"
