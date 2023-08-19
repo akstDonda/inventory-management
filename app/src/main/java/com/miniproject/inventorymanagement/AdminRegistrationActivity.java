@@ -35,15 +35,15 @@ public class AdminRegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_registration);
 
-        commpy = findViewById(R.id.edt_companyname_admin_reg);
+        commpy = findViewById(R.id.edt_company_admin_reg);
         email = findViewById(R.id.edt_email_admin_reg);
-        passwdd = findViewById(R.id.edt_Password_admin_reg);
+        passwdd = findViewById(R.id.edt_password_admin_reg);
 
         mCompanyName = commpy.getEditText();
         mEmail = email.getEditText();
         mPassword = email.getEditText();
 
-        rbtn = findViewById(R.id.btn_admin_reg);
+        rbtn = findViewById(R.id.btn_admin_signin);
         reg_progressbar = findViewById(R.id.rProgressBar);
         mAuth = FirebaseAuth.getInstance();
 

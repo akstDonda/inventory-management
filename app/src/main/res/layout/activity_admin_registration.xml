@@ -22,72 +22,38 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_email_admin_reg"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:layout_marginTop="10dp"
-            android:hint="Email"
-            app:boxStrokeColor="@color/sec"
-            app:boxStrokeWidth="4dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+            style="@style/primaryTextInputLayout"
+            android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/primaryTextInputEditText"
                 android:inputType="textEmailAddress"
-                android:textSize="15dp"
-                android:textColorHint="@color/black"
                 tools:ignore="TextSizeCheck"
-                android:drawableLeft="@drawable/baseline_email_24"
-                android:drawablePadding="10dp"/>
+                android:drawableLeft="@drawable/baseline_email_24"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_password_admin_reg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            app:boxStrokeColor="@color/sec"
-            app:boxStrokeWidth="4dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+            style="@style/primaryTextInputLayout"
+            android:hint="Password">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/primaryTextInputEditText"
                 android:inputType="textPassword"
-                android:textSize="15dp"
                 android:drawableLeft="@drawable/baseline_lock_24"
-                tools:ignore="TextSizeCheck"
-                android:drawablePadding="10dp"/>
+                tools:ignore="TextSizeCheck"/>
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_company_admin_reg"
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="5dp"
-            android:hint="company"
-            app:boxStrokeColor="@color/sec"
-            app:boxStrokeWidth="4dp"
-            app:boxCornerRadiusTopStart="20dp"
-            app:boxCornerRadiusTopEnd="20dp"
-            app:boxCornerRadiusBottomStart="20dp"
-            app:boxCornerRadiusBottomEnd="20dp">
+            style="@style/primaryTextInputLayout"
+            android:hint="company">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/primaryTextInputEditText"
                 android:inputType="text"
-                android:textSize="15dp"
-                android:textColorHint="@color/black"
-                tools:ignore="TextSizeCheck"
-                android:drawablePadding="10dp"/>
+                tools:ignore="TextSizeCheck"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
