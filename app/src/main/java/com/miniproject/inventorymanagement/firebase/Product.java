@@ -14,7 +14,7 @@ public class Product {
 
     private int stockIn;
     private int stockOut;
-    public List<Integer> transactions;
+    public List<Long> transactions;
 
     public Product(String id, String name, String description, int normalBuyPrice, int normalSellPrice) {
         this.id = id;
@@ -30,16 +30,43 @@ public class Product {
     public void addTransaction(@NonNull Transaction transaction){
         transactions.add(transaction.getId());
         addStock(transaction.getQuantity());
+        addTransactionIdToFirebase(transaction.getId());
+    }
+
+    public int addTransactionIdToFirebase(Long transactionId){
+        // TODO: given transactionId, add it to firebase
+        return 0;
     }
 
     public int addStock(int quantity) {
         if  (quantity > 0) {
             stockIn += quantity;
+            updateFirebaseItem("stockIn", quantity);
         }
         else {
             stockOut -= quantity;
+            updateFirebaseItem("stockOut", quantity);
         }
         return 0;
+    }
+
+    // TODO: better approach to update firebase item
+    // TODO: using itemName that is passed in as a parameter in firestore functions
+    // TODO: also what about Sting values?
+    private int updateFirebaseItem(String itemName, int newValue) {
+        if (itemName.equals("stockIn")) {
+            // TODO: update stockIn in firebase
+            return 0;
+        }
+        else if (itemName.equals("stockOut")) {
+            // TODO:  update stockOut in firebase
+            return 0;
+        }
+        else if (itemName.equals("addTransactionIdToFirebase")) {
+            // TODO: update addTransactionIdToFirebase in firebase
+            return 0;
+        }
+        return 1;
     }
 
 
@@ -69,7 +96,7 @@ public class Product {
     public String getDescription() {
         return description;
     }
-    public List<Integer> getTransactions() {
+    public List<Long> getTransactions() {
         return transactions;
     }
 }

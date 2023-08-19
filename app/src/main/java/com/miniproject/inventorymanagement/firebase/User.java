@@ -8,7 +8,7 @@ public class User {
     private String email;
 
     public int refreshUserData(FirebaseAuth firebaseAuth) {
-        if (firebaseAuth == null) {
+        if (firebaseAuth.getCurrentUser() == null) {
             return 1;
         }
 
