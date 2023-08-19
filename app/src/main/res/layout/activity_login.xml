@@ -17,35 +17,17 @@
         tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/round_corner"
-        android:backgroundTint="@color/pri1"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:orientation="vertical"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="50dp"
-        android:layout_marginTop="280dp"
-        android:layout_marginBottom="25dp"
-        android:fadingEdgeLength="40dp"
-        android:elevation="24dp">
+        style="@style/formBackground">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/formTitle"
             android:id="@+id/h1"
-            android:text="LOGIN"
-            android:textSize="40dp"
-            android:textAlignment="center"
-            android:textColor="@color/pri2"
-            android:textStyle="bold"
+            android:text="Login"
             />
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
             android:id="@+id/outlinedTextField11"
-            android:layout_marginTop="20dp"
             android:hint="Email">
 
             <com.google.android.material.textfield.TextInputEditText

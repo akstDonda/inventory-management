@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:fontFamily">@font/font_family_open_sans</item>
+    </style>
+
     <style name="primaryTextInputLayout">
         <item name="boxStrokeColor">@color/sec</item>
         <item name="boxStrokeWidth">4dp</item>
@@ -19,8 +24,27 @@
         <item name="android:drawablePadding">10dp</item>
     </style>
 
-    <style name="pTextInputLayout">
+    <style name="formBackground">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginTop">280dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:background">@drawable/round_corner</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:paddingHorizontal">20dp</item>
+        <item name="android:paddingTop">50dp</item>
+    </style>
 
+    <style name="formTitle">
+            <item name="android:layout_width">match_parent</item>
+            <item name="android:layout_height">wrap_content</item>
+            <item name="android:textSize">40sp</item>
+            <item name="android:textAlignment">center</item>
+            <item name="android:textColor">@color/pri2</item>
+            <item name="android:textStyle">bold</item>
+            <item name="android:layout_marginBottom">20dp</item>
     </style>
 
 </resources>
