@@ -23,6 +23,7 @@
             style="@style/formTitle"
             android:id="@+id/h1"
             android:text="Login"
+
             />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -51,39 +52,36 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <Button
-            style="@style/Widget.Material3.Button.ElevatedButton"
-            android:id="@+id/btn_admin_login"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/sec"
-            android:layout_marginTop="20dp"
-            android:text="LOGIN"
-            android:textColor="@color/white"
-            android:textSize="20dp"
-            android:elegantTextHeight="true"/>
+            android:layout_height="match_parent">
+            <Button
+                style="@style/formBtn"
+                android:id="@+id/btn_admin_login"
+                android:text="Login" />
 
-        <TextView
-            android:id="@+id/openreg"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:clickable="true"
-            android:text="Don't Have Account"
-            android:textAlignment="center"
-            android:textColor="@color/pri2"
-            android:textSize="13dp"
-            android:textStyle="bold"
-            tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
+            <TextView
+                android:id="@+id/openreg"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/btn_admin_login"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:text="Don't Have Account"
+                android:textAlignment="center"
+                android:textColor="@color/pri2"
+                android:textSize="13dp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck,TouchTargetSizeCheck" />
 
-        <ProgressBar
-            android:id="@+id/lProgressBar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:layout_marginLeft="130dp"
-            android:visibility="invisible"
-            android:layout_marginTop="15dp"/>
-
+            <ProgressBar
+                android:id="@+id/lProgressBar"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginLeft="140dp"
+                android:visibility="gone"
+                android:layout_marginTop="30dp"/>
+        </RelativeLayout>
 
     </LinearLayout>
 
