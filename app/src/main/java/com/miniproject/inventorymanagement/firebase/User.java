@@ -7,26 +7,27 @@ public class User {
     private String id;
     private String email;
 
-    public String getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
     public int refreshUserData(FirebaseAuth firebaseAuth) {
-        if (firebaseAuth == null) {
+        if (firebaseAuth.getCurrentUser() == null) {
             return 1;
         }
 
-        this.id = firebaseAuth.getCurrentUser().getUid();
-        this.name = firebaseAuth.getCurrentUser().getDisplayName();
-        this.email = firebaseAuth.getCurrentUser().getEmail();
+        id = firebaseAuth.getCurrentUser().getUid();
+        name = firebaseAuth.getCurrentUser().getDisplayName();
+        email = firebaseAuth.getCurrentUser().getEmail();
         return 0;
+    }
+
+
+
+    // Getters
+    public String getId() {
+        return id;
+    }
+    public String getName() {
+        return name;
+    }
+    public String getEmail() {
+        return email;
     }
 }
