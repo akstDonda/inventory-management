@@ -25,19 +25,19 @@
             android:name=".admin.CreateNewUser"
             android:exported="false" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".common.LoginActivity"
             android:exported="false" />
         <activity
             android:name=".admin.Home"
             android:exported="false" />
         <activity
-            android:name=".AdminRegistrationActivity"
+            android:name=".common.AdminRegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".UserTypeActivity"
+            android:name=".common.UserTypeActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".common.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

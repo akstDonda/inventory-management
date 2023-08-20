@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement;
+package com.miniproject.inventorymanagement.common;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 
 import java.util.Objects;

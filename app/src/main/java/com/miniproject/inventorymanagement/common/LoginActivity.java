@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement;
+package com.miniproject.inventorymanagement.common;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
@@ -28,6 +28,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 
 import java.util.Map;
