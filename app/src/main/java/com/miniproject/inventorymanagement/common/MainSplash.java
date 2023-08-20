@@ -3,27 +3,29 @@ package com.miniproject.inventorymanagement.common;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 
 import com.miniproject.inventorymanagement.R;
 
-public class MainActivity extends AppCompatActivity {
+public class MainSplash extends AppCompatActivity {
     Button btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         //Splash Screen
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(MainActivity.this,UserTypeActivity.class);
+                Intent intent=new Intent(MainSplash.this,UserTypeActivity.class);
                 startActivity(intent);
                 finish();
             }
-        },800);
+        },2000);
     }
 }

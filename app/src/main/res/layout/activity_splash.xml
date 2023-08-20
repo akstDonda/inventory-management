@@ -4,25 +4,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/pri2"
+    android:background="#84a9d6"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_centerInParent="true"
-    tools:context=".common.MainActivity">
+    tools:context=".common.MainSplash">
 
     <ImageView
         android:layout_width="150dp"
         android:layout_height="150dp"
+        android:layout_marginBottom="10dp"
         android:src="@drawable/splash_image"
-        android:layout_marginBottom="10dp" />
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
     <TextView
         android:id="@+id/splash_txt"
+        style="formTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="25dp"
-        style="formTitle"
         android:text="@string/app_name"
-        android:textColor="@color/white" />
+        android:fontFamily="@font/robotoslab_bold"
+        android:textColor="#006064"
+        android:textSize="25sp"
+        tools:ignore="TextSizeCheck" />
     <ProgressBar
         android:layout_width="40dp"
         android:layout_height="40dp"

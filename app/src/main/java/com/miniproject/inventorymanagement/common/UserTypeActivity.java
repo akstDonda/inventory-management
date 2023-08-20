@@ -3,6 +3,7 @@ package com.miniproject.inventorymanagement.common;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
@@ -16,6 +17,8 @@ public class UserTypeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_type);
         btnadmin=findViewById(R.id.floating_action_button_admin);
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         btnadmin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -7,50 +7,49 @@
     android:background="@drawable/loginback"
     tools:context=".common.AdminRegistrationActivity">
 
-
     <LinearLayout
         style="@style/formBackground">
-
-
         <TextView
             style="@style/formTitle"
             android:text="Register"
-            />
-
+            tools:ignore="HardcodedText" />
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_email_admin_reg"
             style="@style/primaryTextInputLayout"
-            android:hint="Email">
-
+            android:hint="Email"
+            tools:ignore="HardcodedText">
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/primaryTextInputEditText"
+                android:drawableStart="@drawable/baseline_email_24"
                 android:inputType="textEmailAddress"
-                tools:ignore="TextSizeCheck"
-                android:drawableLeft="@drawable/baseline_email_24"/>
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_password_admin_reg"
             style="@style/primaryTextInputLayout"
-            android:hint="Password">
+            android:hint="Password"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/primaryTextInputEditText"
+                android:drawableStart="@drawable/baseline_lock_24"
                 android:inputType="textPassword"
-                android:drawableLeft="@drawable/baseline_lock_24"
-                tools:ignore="TextSizeCheck"/>
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_company_admin_reg"
             style="@style/primaryTextInputLayout"
-            android:hint="company">
+            android:hint="company"
+            tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/primaryTextInputEditText"
+                android:drawableStart="@drawable/baseline_business_24"
                 android:inputType="text"
-                tools:ignore="TextSizeCheck"/>
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -60,11 +59,10 @@
             android:layout_height="match_parent">
 
             <Button
-
                 android:id="@+id/btn_admin_signin"
                 style="@style/formBtn"
                 android:text="Create Account"
-                />
+                tools:ignore="HardcodedText,VisualLintButtonSize" />
             <ProgressBar
                 android:id="@+id/rProgressBar"
                 android:layout_width="40dp"
@@ -72,24 +70,8 @@
                 android:layout_marginTop="30dp"
                 android:layout_marginStart="130dp"
                 android:visibility="gone"
-                android:progressTint="@color/pink_light" />
+                android:progressTint="@color/sec" />
         </RelativeLayout>
-
-
-<!--        <Button-->
-
-<!--            android:id="@+id/btn_admin_signin"-->
-<!--            style="@style/formBtn"-->
-<!--            android:text="Create Account"-->
-<!--            />-->
-<!--        <ProgressBar-->
-<!--            android:id="@+id/rProgressBar"-->
-<!--            android:layout_width="40dp"-->
-<!--            android:layout_height="40dp"-->
-<!--            android:layout_marginStart="130dp"-->
-<!--            android:progressTint="@color/pink_light" />-->
-
-
     </LinearLayout>
 
 </RelativeLayout>

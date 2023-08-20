@@ -37,7 +37,7 @@
             android:name=".common.UserTypeActivity"
             android:exported="false" />
         <activity
-            android:name=".common.MainActivity"
+            android:name=".common.MainSplash"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
