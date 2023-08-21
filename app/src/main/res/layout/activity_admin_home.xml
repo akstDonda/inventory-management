@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/pink_light"
         android:layout_margin="8dp">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,19 +23,18 @@
                 android:id="@+id/img_cardview_addproducts"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
-                android:src="@drawable/products"
-                />
+                android:src="@drawable/products" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Products"
-                android:textStyle="bold"
                 android:textSize="30sp"
-                />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        
+
     </com.google.android.material.card.MaterialCardView>
 
     <Button
@@ -51,8 +51,8 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:backgroundTint="@color/accent_light"
-        android:textColor="@color/secondary_dark"
-        android:text="Add User"/>
+        android:text="Add User"
+        android:textColor="@color/secondary_dark" />
 
     <Button
         android:id="@+id/btn_add_remove"
