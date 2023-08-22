@@ -4,35 +4,59 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#84a9d6"
+    android:background="@color/pri1"
     android:orientation="vertical"
     android:gravity="center"
     android:layout_centerInParent="true"
     tools:context=".common.MainSplash">
 
-    <ImageView
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="10dp"
-        android:src="@drawable/splash_image"
-        tools:ignore="ContentDescription,ImageContrastCheck" />
-
-    <TextView
-        android:id="@+id/splash_txt"
-        style="formTitle"
+    <RelativeLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_name"
-        android:fontFamily="@font/robotoslab_bold"
-        android:textColor="#006064"
-        android:textSize="25sp"
-        tools:ignore="TextSizeCheck" />
-    <ProgressBar
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:progressTint="@color/white"
-        />
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
 
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="10dp"
+            android:src="@drawable/splashlogo"
+            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+        <TextView
+            android:id="@+id/splash_txt"
+            style="formTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="500dp"
+            android:fontFamily="@font/robotoslab_bold"
+            android:text="@string/app_name"
+            android:textColor="@color/pri2"
+            android:textSize="50sp"
+            tools:ignore="TextSizeCheck" />
+
+        <TextView
+            android:id="@+id/splash_txt2"
+            style="formTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/splash_txt"
+            android:fontFamily="@font/robotoslab_bold"
+            android:text="Inventory Solution"
+            android:textColor="@color/sec"
+            android:textSize="20sp"
+            tools:ignore="HardcodedText,TextSizeCheck" />
+
+        <ProgressBar
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/splash_txt2"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="30dp"
+            android:progressTint="@color/pri2" />
+
+    </RelativeLayout>
 
 
 </LinearLayout>
