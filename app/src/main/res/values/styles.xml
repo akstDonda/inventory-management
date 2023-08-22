@@ -60,6 +60,18 @@
 
     </style>
 
+    <style name="flatingactionbtn">
+        <item name="android:layout_width">200dp</item>
+        <item name="android:layout_height">200dp</item>
+        <item name="android:layout_gravity">bottom</item>
+        <item name="backgroundTint">@color/pri2</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:elegantTextHeight">true</item>
+        <item name="android:textSize">20sp</item>
+
+
+    </style>
+
 
 
 </resources>

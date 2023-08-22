@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -27,9 +28,10 @@ public class AdminRegistrationActivity extends AppCompatActivity {
     EditText mCompanyName, mEmail, mPassword;
     TextInputLayout email, passwdd, commpy;
     Button rbtn;
-    TextView login_btn;
+    TextView login_btn,lggt;
     ProgressBar reg_progressbar;
     FirebaseAuth mAuth;
+    ImageButton backreg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +41,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
         commpy = findViewById(R.id.edt_company_admin_reg);
         email = findViewById(R.id.edt_email_admin_reg);
         passwdd = findViewById(R.id.edt_password_admin_reg);
+        lggt=findViewById(R.id.openlog);
 
         mCompanyName = commpy.getEditText();
         mEmail = email.getEditText();
@@ -47,6 +50,27 @@ public class AdminRegistrationActivity extends AppCompatActivity {
         rbtn = findViewById(R.id.btn_admin_signin);
         reg_progressbar = findViewById(R.id.rProgressBar);
         mAuth = FirebaseAuth.getInstance();
+        backreg = findViewById(R.id.reg_back_btn);
+
+        //back button
+        backreg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminRegistrationActivity.this,UserTypeActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
+
+        //back to loginpage
+        lggt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AdminRegistrationActivity.this,LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){

@@ -66,7 +66,7 @@ public class LoginActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
         CollectionReference users = db.collection("users");
 
-        //back button so uder go to select usertype activity
+        //back button so user go to select usertype activity
         lg_back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

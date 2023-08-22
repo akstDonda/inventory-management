@@ -4,55 +4,98 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/homeback"
     tools:context=".admin.Home">
 
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_addproducts"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/pink_light"
-        android:layout_margin="8dp">
+        android:layout_marginTop="240dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:ignore="ExtraText">
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_addproducts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink_light"
+            android:layout_margin="8dp">
 
-            <ImageView
-                android:id="@+id/img_cardview_addproducts"
-                android:layout_width="160dp"
-                android:layout_height="160dp"
-                android:src="@drawable/products" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:ignore="ExtraText,UseCompoundDrawables">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Add Products"
-                android:textSize="30sp"
-                android:textStyle="bold" />
+                <ImageView
+                    android:id="@+id/img_cardview_addproducts"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/products"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Products"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
 
-    </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_adduser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/pink_light"
+            android:layout_margin="8dp"
+            android:layout_gravity="end">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                tools:ignore="ExtraText,UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/img_cardview_adduser"
+                    android:layout_width="160dp"
+                    android:layout_height="160dp"
+                    android:src="@drawable/products"
+                    tools:ignore="ContentDescription" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Employee"
+                    android:textSize="30sp"
+                    android:textStyle="bold"
+                    tools:ignore="HardcodedText" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+
+    </FrameLayout>
+
 
     <Button
         android:id="@+id/btn_admin_logOut"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/primary_light"
         android:layout_marginTop="650dp"
-        android:text="logout"/>
+        android:backgroundTint="@color/primary_light"
+        android:text="logout"
+        tools:ignore="HardcodedText,TextContrastCheck" />
 
-    <Button
-        android:id="@+id/btn_admin_addUsers"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:backgroundTint="@color/accent_light"
-        android:text="Add User"
-        android:textColor="@color/secondary_dark" />
+
 
     <Button
         android:id="@+id/btn_add_remove"
@@ -63,7 +106,7 @@
         android:text="+/-"
         android:textColor="@color/white"
 
-        />
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/btn_add"
