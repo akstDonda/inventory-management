@@ -9,9 +9,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="490dp"
-        tools:ignore="UselessParent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="490dp">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_action_button_admin"
@@ -22,11 +21,12 @@
             android:layout_marginStart="50dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/basic_fab_button_description"
             app:maxImageSize="80dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/sec"
+            android:contentDescription="@string/basic_fab_button_description"
             app:srcCompat="@drawable/baseline_admin_panel_settings_24"
-            tools:ignore="DuplicateSpeakableTextCheck" />
+            />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/floating_action_button_user"
@@ -39,33 +39,28 @@
             app:maxImageSize="80dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/sec"
             android:contentDescription="@string/basic_fab_button_description"
             app:srcCompat="@drawable/baseline_supervised_user_circle_24" />
+
 
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/floating_action_button_admin"
-            android:layout_marginStart="70dp"
-            android:text="@string/admin"
-            android:textSize="20sp"
+            android:layout_marginStart="75dp"
             android:textStyle="bold"
-            tools:ignore="TextSizeCheck" />
-
+            android:text="@string/admin"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/floating_action_button_user"
             android:layout_marginStart="280dp"
-            android:text="User"
-            android:textSize="20sp"
             android:textStyle="bold"
-            tools:ignore="HardcodedText,TextSizeCheck" />
-
+            android:text="User"
+            tools:ignore="HardcodedText" />
 
     </RelativeLayout>
-
-
 
 </RelativeLayout>
