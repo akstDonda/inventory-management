@@ -14,31 +14,26 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_addproducts"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_light"
-            android:layout_margin="8dp">
+            style="@style/cardviewhome">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@color/pri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
                     android:id="@+id/img_cardview_addproducts"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
+                    style="@style/imgcardview"
                     android:src="@drawable/products"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Products"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
+                    style="@style/txtcardview"
+                    android:text="ADD PRODUCT"
+                    android:layout_marginBottom="10dp"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
@@ -49,31 +44,26 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_adduser"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/pink_light"
-            android:layout_margin="8dp"
+            style="@style/cardviewhome"
             android:layout_gravity="end">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@color/pri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
                     android:id="@+id/img_cardview_adduser"
-                    android:layout_width="160dp"
-                    android:layout_height="160dp"
-                    android:src="@drawable/products"
+                    style="@style/imgcardview"
+                    android:src="@drawable/baseline_supervised_user_circle_24"
+                    android:contentDescription="TODO"
                     tools:ignore="ContentDescription" />
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Employee"
-                    android:textSize="30sp"
-                    android:textStyle="bold"
+                    style="@style/txtcardview"
+                    android:text="ADD EMPLOYEE"
                     tools:ignore="HardcodedText" />
 
             </LinearLayout>
