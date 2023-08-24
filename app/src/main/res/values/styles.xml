@@ -61,8 +61,8 @@
     </style>
 
     <style name="cardviewhome">
-        <item name="android:layout_width">180dp</item>
-        <item name="android:layout_height">180dp</item>
+        <item name="android:layout_width">160dp</item>
+        <item name="android:layout_height">160dp</item>
         <item name="android:layout_margin">20dp</item>
         <item name="cardCornerRadius">40dp</item>
         <item name="android:elegantTextHeight">true</item>
@@ -71,8 +71,8 @@
     </style>
 
     <style name="imgcardview">
-        <item name="android:layout_width">110dp</item>
-        <item name="android:layout_height">110dp</item>
+        <item name="android:layout_width">90dp</item>
+        <item name="android:layout_height">90dp</item>
         <item name="android:layout_marginTop">20dp</item>
         <item name="android:elegantTextHeight">true</item>
         <item name="android:layout_gravity">center</item>
@@ -83,7 +83,7 @@
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/pri1</item>
-        <item name="android:textSize">18dp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
