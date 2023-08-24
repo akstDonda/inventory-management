@@ -19,8 +19,8 @@
 
     <color name="dia">#E3E3E3</color>
     <color name="pri1">#FFFFFF</color>
-    <color name="pri2">#4668BD</color>
+    <color name="pri2">#3F5BA3</color>
     <color name="sec">#549143</color>
     <color name="third">#000000</color>
-    <color name="lightpri2">#D2D9EC</color>
+    <color name="lightpri2">#DBE3F7</color>
 </resources>

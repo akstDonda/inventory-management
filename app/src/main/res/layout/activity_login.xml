@@ -16,7 +16,7 @@
         tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     <LinearLayout
-        style="@style/formBackground">
+        style="@style/formBackground" >
         <TextView
             style="@style/formTitle"
             android:id="@+id/h1"
