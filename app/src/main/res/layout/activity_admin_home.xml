@@ -6,16 +6,16 @@
     android:layout_height="match_parent"
     android:background="@drawable/homeback1"
     tools:context=".admin.Home">
-
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="100dp"
+        android:id="@+id/layout1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_addproducts"
+            android:id="@+id/card_dashbord"
             style="@style/cardviewhome">
 
             <LinearLayout
@@ -26,16 +26,16 @@
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
-                    android:id="@+id/img_cardview_addproducts"
+                    android:id="@+id/img_cardview_dashbord"
                     style="@style/imgcardview"
-                    android:src="@drawable/products"
+                    android:src="@drawable/dashbord"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
 
                 <TextView
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
-                    android:text="ADD PRODUCT"
+                    android:text="DASHBORD"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
             </LinearLayout>
@@ -72,10 +72,145 @@
 
         </com.google.android.material.card.MaterialCardView>
 
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout2"
+        android:layout_below="@+id/layout1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_lowstock"
+            style="@style/cardviewhome">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/pri2"
+                tools:ignore="ExtraText,UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/img_cardview_lowstock"
+                    style="@style/imgcardview"
+                    android:src="@drawable/lowstock"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
+
+                <TextView
+                    style="@style/txtcardview"
+                    android:layout_marginBottom="10dp"
+                    android:text="LOW STOCK"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
 
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_transaction"
+            style="@style/cardviewhome"
+            android:layout_gravity="end">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/pri2"
+                tools:ignore="ExtraText,UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/img_cardview_transaction"
+                    style="@style/imgcardview"
+                    android:src="@drawable/transaction"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
+
+                <TextView
+                    style="@style/txtcardview"
+                    android:text="TRANSACTIN"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
 
     </FrameLayout>
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/layout3"
+        android:layout_below="@+id/layout2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_addproduct"
+            style="@style/cardviewhome">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/pri2"
+                tools:ignore="ExtraText,UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/img_cardview_addproducts"
+                    style="@style/imgcardview"
+                    android:src="@drawable/products"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
+
+                <TextView
+                    style="@style/txtcardview"
+                    android:layout_marginBottom="10dp"
+                    android:text="ADD PRODUCT"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_setting"
+            style="@style/cardviewhome"
+            android:layout_gravity="end">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:background="@color/pri2"
+                tools:ignore="ExtraText,UseCompoundDrawables">
+
+                <ImageView
+                    android:id="@+id/img_cardview_setting"
+                    style="@style/imgcardview"
+                    android:src="@drawable/setting"
+                    android:contentDescription="TODO"
+                    tools:ignore="ContentDescription,HardcodedText" />
+
+                <TextView
+                    style="@style/txtcardview"
+                    android:text="SETTING"
+                    tools:ignore="HardcodedText,TextSizeCheck" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </FrameLayout>
+
+
 
 
     <Button
