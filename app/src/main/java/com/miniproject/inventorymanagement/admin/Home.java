@@ -3,29 +3,35 @@ package com.miniproject.inventorymanagement.admin;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.R;
 
+
 public class Home extends AppCompatActivity {
     Button btn,addremove,add,remove;
     CardView cardAddProducts;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+        requestWindowFeature(Window.FEATURE_ACTION_BAR);
 
         btn=findViewById(R.id.btn_admin_logOut);
         addremove=findViewById(R.id.btn_add_remove);
         add=findViewById(R.id.btn_add);
         remove=findViewById(R.id.btn_remove);
-        cardAddProducts=findViewById(R.id.card_addproducts);
+        cardAddProducts=findViewById(R.id.card_addproduct);
+
 
 
         //cardView
