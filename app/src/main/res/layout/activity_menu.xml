@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lightpri2"
+    android:backgroundTintMode="src_atop"
+    tools:context=".menu">
+
+    <TextView
+        android:id="@+id/menuhead"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="MENU"
+        android:textColor="@color/pri2"
+        android:textStyle="bold"
+        android:textSize="50dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="25dp"
+        tools:ignore="HardcodedText,MissingPrefix,SpUsage" />
+
+    <View
+        android:id="@+id/line1"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_below="@+id/menuhead"
+        android:background="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/txtau"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line1"
+        android:layout_marginLeft="25dp"
+        android:clickable="true"
+        android:drawableLeft="@drawable/baseline_aboutus_24"
+        android:drawablePadding="10dp"
+        android:text="About Us"
+        android:textColor="@color/pri2"
+        android:textSize="25dp"
+        tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TouchTargetSizeCheck" />
+
+    <View
+        android:id="@+id/line2"
+        android:layout_width="match_parent"
+        android:layout_height="3dp"
+        android:layout_below="@+id/txtau"
+        android:background="@drawable/round_corner"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        />
+
+    <TextView
+        android:id="@+id/txttac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line2"
+        android:layout_marginLeft="25dp"
+        android:drawableLeft="@drawable/baseline_tc_24"
+        android:drawablePadding="10dp"
+        android:clickable="true"
+        android:text="Terms And Condition"
+        android:textColor="@color/pri2"
+        android:textSize="25dp"
+        tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TouchTargetSizeCheck" />
+
+    <View
+        android:id="@+id/line3"
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:layout_above="@+id/btn_admin_logOut"
+        android:background="@color/white"
+        android:layout_marginTop="10dp"
+        android:paddingBottom="60dp"
+        android:layout_marginBottom="10dp"
+        />
+
+    <TextView
+        android:id="@+id/btn_admin_logOut"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="@color/pri2"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="10dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="LOG OUT"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TouchTargetSizeCheck" />
+
+</RelativeLayout>

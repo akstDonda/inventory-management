@@ -22,5 +22,6 @@
     <color name="pri2">#3F5BA3</color>
     <color name="sec">#549143</color>
     <color name="third">#000000</color>
-    <color name="lightpri2">#DBE3F7</color>
+    <color name="lightpri2">#C0CAE4</color>
+    <color name="menu">#6F82B5</color>
 </resources>

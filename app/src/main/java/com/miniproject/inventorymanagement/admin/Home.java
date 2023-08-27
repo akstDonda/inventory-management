@@ -9,28 +9,32 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.menu;
 
 
 public class Home extends AppCompatActivity {
-    Button btn,addremove,add,remove;
+    Button addremove,add,remove;
     CardView cardAddProducts;
+
+    ImageView hmenu,hback;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_home);
-        requestWindowFeature(Window.FEATURE_ACTION_BAR);
+        setContentView(R.layout.activity_admin_home); 
 
-        btn=findViewById(R.id.btn_admin_logOut);
         addremove=findViewById(R.id.btn_add_remove);
         add=findViewById(R.id.btn_add);
         remove=findViewById(R.id.btn_remove);
         cardAddProducts=findViewById(R.id.card_addproduct);
+        hmenu=findViewById(R.id.homemenu);
+        hback=findViewById(R.id.homeback);
 
 
 
@@ -61,13 +65,22 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        //logout btn
-        btn.setOnClickListener(new View.OnClickListener() {
+
+        //menu open
+        hmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(Home.this, LoginActivity.class));
-                finish();
+                Intent intent=new Intent(Home.this, menu.class);
+                startActivity(intent);
+            }
+        });
+
+        //back to login
+        hback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(Home.this, LoginActivity.class);
+                startActivity(intent);
             }
         });
     }

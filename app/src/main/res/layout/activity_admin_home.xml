@@ -4,8 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/homeback1"
+    android:background="@color/white"
     tools:context=".admin.Home">
+
+    <include layout="@layout/toolbar"/>
+
 
 
     <FrameLayout
@@ -24,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/pri2"
+                android:background="@color/lightpri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
@@ -38,7 +41,7 @@
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
                     android:text="DASHBOARD"
-                    tools:ignore="HardcodedText,TextSizeCheck" />
+                    tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
             </LinearLayout>
 
@@ -55,15 +58,15 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/pri2"
+                android:background="@color/lightpri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
                     android:id="@+id/img_cardview_adduser"
                     style="@style/imgcardview"
-                    android:src="@drawable/baseline_supervised_user_circle_24"
                     android:contentDescription="TODO"
-                    tools:ignore="ContentDescription,HardcodedText" />
+                    android:src="@drawable/baseline_supervised_user_circle_24"
+                    tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
                     style="@style/txtcardview"
@@ -78,7 +81,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:id="@+id/layout2"
         android:layout_below="@+id/layout1"
         android:layout_marginLeft="10dp"
@@ -92,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/pri2"
+                android:background="@color/lightpri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
@@ -106,7 +108,7 @@
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
                     android:text="LOW STOCK"
-                    tools:ignore="HardcodedText,TextSizeCheck" />
+                    tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
             </LinearLayout>
 
@@ -123,7 +125,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/pri2"
+                android:background="@color/lightpri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
@@ -136,7 +138,7 @@
                 <TextView
                     style="@style/txtcardview"
                     android:text="TRANSACTIN"
-                    tools:ignore="HardcodedText,TextSizeCheck" />
+                    tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
             </LinearLayout>
 
@@ -146,7 +148,6 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
         android:id="@+id/layout3"
         android:layout_below="@+id/layout2"
         android:layout_marginLeft="10dp"
@@ -160,21 +161,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/pri2"
+                android:background="@color/lightpri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
                     android:id="@+id/img_cardview_addproducts"
                     style="@style/imgcardview"
-                    android:src="@drawable/products"
                     android:contentDescription="TODO"
-                    tools:ignore="ContentDescription,HardcodedText" />
+                    android:src="@drawable/products"
+                    tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
                     android:text="ADD PRODUCT"
-                    tools:ignore="HardcodedText,TextSizeCheck" />
+                    tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck,TextContrastCheck" />
 
             </LinearLayout>
 
@@ -191,7 +192,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:background="@color/pri2"
+                android:background="@color/lightpri2"
                 tools:ignore="ExtraText,UseCompoundDrawables">
 
                 <ImageView
@@ -212,17 +213,6 @@
 
     </FrameLayout>
 
-
-
-
-    <Button
-        android:id="@+id/btn_admin_logOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="650dp"
-        android:backgroundTint="@color/primary_light"
-        android:text="logout"
-        tools:ignore="HardcodedText,TextContrastCheck" />
 
 
 

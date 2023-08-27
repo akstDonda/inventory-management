@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:fontFamily">@font/font_family_open_sans</item>
     </style>
 
@@ -24,8 +24,6 @@
         <item name="android:textSize">15dp</item>
         <item name="android:textColorHint">@color/black</item>
         <item name="android:drawablePadding">10dp</item>
-        <item name="android:backgroundTintMode">src_over</item>
-        <item name="android:backgroundTint">#22000000</item>
     </style>
 
     <style name="formBackground">
@@ -86,8 +84,8 @@
     <style name="txtcardview">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textColor">@color/pri1</item>
-        <item name="android:textSize">14dp</item>
+        <item name="android:textColor">@color/pri2</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>

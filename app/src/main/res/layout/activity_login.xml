@@ -6,6 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/loginback"
     tools:context=".common.LoginActivity">
+
     <ImageButton
         android:id="@+id/login_back_btn"
         android:layout_width="wrap_content"
