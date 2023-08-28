@@ -169,4 +169,20 @@ public class DatabaseHandler {
         // TODO: uncomment code below to get transactions ref for company
         // return firestore.collection("transactions").document(company.getId());
     }
+
+    public int addProductToFirebase(Product product) {
+        // TODO: add product to firebase
+        return 0;
+    }
+
+    public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice) {
+        for (String t_id: products.keySet()) {
+            if (t_id == id) {
+                return 101;
+            }
+        }
+        Product newProduct = new Product(id, name, description, normalBuyPrice, normalSellPrice);
+        products.put(id, newProduct);
+        return addProductToFirebase(newProduct);
+    }
 }
