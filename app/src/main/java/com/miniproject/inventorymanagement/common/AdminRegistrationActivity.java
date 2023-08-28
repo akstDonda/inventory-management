@@ -45,7 +45,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
 
         mCompanyName = commpy.getEditText();
         mEmail = email.getEditText();
-        mPassword = email.getEditText();
+        mPassword = passwdd.getEditText();
 
         rbtn = findViewById(R.id.btn_admin_signin);
         reg_progressbar = findViewById(R.id.rProgressBar);
@@ -82,6 +82,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email=mEmail.getText().toString().trim();
                 String password=mPassword.getText().toString().trim();
+                Toast.makeText(AdminRegistrationActivity.this, email + password, Toast.LENGTH_SHORT).show();
 
                 if (TextUtils.isEmpty(email)){
                     mEmail.setError("Email is Required");

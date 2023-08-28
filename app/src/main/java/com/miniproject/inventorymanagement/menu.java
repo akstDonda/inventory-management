@@ -15,6 +15,7 @@ public class menu extends AppCompatActivity {
 
     TextView txtlout;
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
