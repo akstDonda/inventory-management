@@ -95,6 +95,22 @@
 
     </style>
 
+    <style name="floatbtn">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="background">@drawable/round_floatbtn</item>
+        <item name="backgroundTint">@color/sec</item>
+        <item name="backgroundTintMode">src_in</item>
+    </style>
+
+    <style name="floatbtnaddremove">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="background">@drawable/round_floatbtn</item>
+        <item name="backgroundTint">@color/sec</item>
+        <item name="backgroundTintMode">src_in</item>
+    </style>
+
 
 
 </resources>
