@@ -12,6 +12,7 @@ import androidx.cardview.widget.CardView;
 
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.LoginActivity;
+import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.menu;
 
 
@@ -40,7 +41,7 @@ public class Home extends AppCompatActivity {
         cardAddProducts.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), AddProducts.class));
+                startActivity(new Intent(getApplicationContext(), ProductList.class));
 
             }
         });

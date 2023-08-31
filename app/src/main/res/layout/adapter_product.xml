@@ -11,16 +11,18 @@
         android:id="@+id/productNameTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="18sp"
+        android:textSize="22sp"
         android:textStyle="bold"
         android:text="Product Name" />
 
     <TextView
-        android:id="@+id/productDescriptionTextView"
+        android:id="@+id/productCurrentStockTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:text="Product Description" />
+        android:textSize="20sp"
+        android:text="Current stock: 100" />
+
+
 
     <!-- Add more UI components here as needed -->
 
