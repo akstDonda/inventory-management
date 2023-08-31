@@ -23,6 +23,7 @@ public class menu extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
+        imgback=findViewById(R.id.homeback);
         txtlout=findViewById(R.id.btn_admin_logOut);
 
         //logout

@@ -111,6 +111,14 @@
         <item name="backgroundTintMode">src_in</item>
     </style>
 
-
+    <!--for add product detail page -->
+    <style name="labelforaddpro">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/sec</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_marginLeft">12dp</item>
+    </style>
 
 </resources>

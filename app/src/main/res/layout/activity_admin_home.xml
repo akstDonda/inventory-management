@@ -14,7 +14,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
+        android:layout_marginTop="55dp"
         android:id="@+id/layout1"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
@@ -234,7 +234,7 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="100dp"
         android:text="PRODUCT ADD"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
@@ -248,9 +248,10 @@
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="160dp"
         android:text="PRODUCT REMOVE"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
         android:visibility="gone"
         tools:ignore="HardcodedText,TextSizeCheck" />
+
 </RelativeLayout>
