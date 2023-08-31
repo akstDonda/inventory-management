@@ -95,6 +95,30 @@
 
     </style>
 
+    <style name="floatbtn">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="background">@drawable/round_floatbtn</item>
+        <item name="backgroundTint">@color/sec</item>
+        <item name="backgroundTintMode">src_in</item>
+    </style>
 
+    <style name="floatbtnaddremove">
+        <item name="android:layout_width">230dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="background">@drawable/round_floatbtn</item>
+        <item name="backgroundTint">@color/sec</item>
+        <item name="backgroundTintMode">src_in</item>
+    </style>
+
+    <!--for add product detail page -->
+    <style name="labelforaddpro">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/sec</item>
+        <item name="android:textSize">18dp</item>
+        <item name="android:layout_marginLeft">12dp</item>
+    </style>
 
 </resources>

@@ -4,100 +4,133 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/addproductdetails"
     tools:context=".admin.AddProductsDetaileAdd">
+
+    <ImageView
+        android:id="@+id/backbtnhome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:src="@drawable/baseline_arrow_circle_left_24_white"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/lblap"
+        style="@style/formTitle"
+        android:text="ADD PRODUCT"
+        android:layout_below="@+id/backbtnhome"
+        android:layout_marginTop="130dp"
+        tools:ignore="HardcodedText" />
+
 
     <TextView
         android:id="@+id/txt_productadd_productName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/labelforaddpro"
+        android:layout_below="@+id/lblap"
         android:text="Product Name"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/sec"
-        android:textSize="25dp"
-        />
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
 
     <EditText
         android:id="@+id/edt_productadd_productName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_productadd_productName"
-        android:layout_marginTop="5dp"
-        android:hint="  Ex.Pen"
-        android:minHeight="48dp" />
+        android:background="@drawable/border1"
+        android:backgroundTint="#306F82B5"
+        android:hint="Ex. Pen"
+        android:textColorHint="@color/black"
+        android:paddingLeft="18dp"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"
+        tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <TextView
         android:id="@+id/txt_productadd_productId"
+        style="@style/labelforaddpro"
         android:layout_below="@+id/edt_productadd_productName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="Product Id"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/sec"
-        android:textSize="25dp"
-        />
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <EditText
         android:id="@+id/edt_productadd_productId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_productadd_productId"
-        android:layout_marginTop="5dp"
-        android:hint="  Ex.P10(Unique)"
-        android:minHeight="48dp" />
+        android:background="@drawable/border1"
+        android:backgroundTint="#306F82B5"
+        android:hint="Ex. PenId (Unique)"
+        android:textColorHint="@color/black"
+        android:paddingLeft="18dp"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"
+        tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <TextView
-        android:id="@+id/txt_productadd_producrate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/txt_productadd_productprice"
+        style="@style/labelforaddpro"
         android:layout_below="@id/edt_productadd_productId"
         android:text="Product Price"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/sec"
-        android:textSize="25dp"
-        />
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <EditText
         android:id="@+id/edt_productadd_productrate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_productadd_producrate"
-        android:layout_marginTop="5dp"
-        android:hint="  Ex. 4.50"
-        android:minHeight="48dp" />
+        android:layout_below="@id/txt_productadd_productprice"
+        android:background="@drawable/border1"
+        android:backgroundTint="#306F82B5"
+        android:hint="Ex. 4.50"
+        android:textColorHint="@color/black"
+        android:paddingLeft="18dp"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"
+        tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <TextView
-        android:id="@+id/txt_productadd_producdec"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/txt_productadd_productdec"
+        style="@style/labelforaddpro"
         android:layout_below="@id/edt_productadd_productrate"
         android:text="Description"
-        android:layout_marginTop="20dp"
-        android:textStyle="bold"
-        android:textColor="@color/sec"
-        android:textSize="25dp"
-        />
+        tools:ignore="HardcodedText,TextSizeCheck" />
 
     <EditText
         android:id="@+id/edt_productadd_productdec"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_productadd_producdec"
-        android:layout_marginTop="5dp"
-        android:hint="  Ex. Blue Pen"
-        android:minHeight="48dp" />
+        android:layout_below="@id/txt_productadd_productdec"
+        android:background="@drawable/border1"
+        android:backgroundTint="#306F82B5"
+        android:hint="Ex. Blue Pen"
+        android:textColorHint="@color/black"
+        android:paddingLeft="18dp"
+        android:minHeight="48dp"
+        android:layout_margin="10dp"
+        tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <Button
         android:id="@+id/btn_product_submit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_productadd_productdec"
-        android:layout_marginTop="35dp"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/round_corner"
         android:backgroundTint="@color/sec"
-        android:text="Add Product"
-        />
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="20dp"
+        android:clickable="true"
+        android:gravity="center"
+        android:text="ADD TO STORE"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:textSize="30dp"
+        tools:ignore="HardcodedText,SpUsage,VisualLintButtonSize" />
 
 
 

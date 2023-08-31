@@ -4,9 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightpri2"
+    android:background="@color/white"
     android:backgroundTintMode="src_atop"
     tools:context=".menu">
+
+    <ImageView
+        android:id="@+id/homeback"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:clickable="true"
+        android:src="@drawable/baseline_arrow_circle_left_24_white"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/menuhead"
@@ -16,16 +28,16 @@
         android:textColor="@color/pri2"
         android:textStyle="bold"
         android:textSize="50dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="47dp"
         android:layout_marginLeft="25dp"
-        tools:ignore="HardcodedText,MissingPrefix,SpUsage" />
+        tools:ignore="HardcodedText,MissingPrefix,RtlHardcoded,SpUsage" />
 
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:layout_below="@+id/menuhead"
-        android:background="@color/white"
+        android:background="@color/lightpri2"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="10dp"
         />
@@ -42,7 +54,7 @@
         android:text="About Us"
         android:textColor="@color/pri2"
         android:textSize="25dp"
-        tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TouchTargetSizeCheck" />
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage,TextSizeCheck,TouchTargetSizeCheck,UseCompatTextViewDrawableXml" />
 
     <View
         android:id="@+id/line2"
@@ -50,6 +62,7 @@
         android:layout_height="3dp"
         android:layout_below="@+id/txtau"
         android:background="@drawable/round_corner"
+        android:backgroundTint="@color/lightpri2"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:layout_marginLeft="15dp"
@@ -68,29 +81,45 @@
         android:text="Terms And Condition"
         android:textColor="@color/pri2"
         android:textSize="25dp"
-        tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TouchTargetSizeCheck" />
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage,TextSizeCheck,TouchTargetSizeCheck,UseCompatTextViewDrawableXml" />
 
     <View
-        android:id="@+id/line3"
+        android:id="@+id/line4"
         android:layout_width="match_parent"
-        android:layout_height="10dp"
-        android:layout_above="@+id/btn_admin_logOut"
-        android:background="@color/white"
+        android:layout_height="3dp"
+        android:layout_below="@+id/txttac"
+        android:background="@drawable/round_corner"
+        android:backgroundTint="@color/lightpri2"
         android:layout_marginTop="10dp"
-        android:paddingBottom="60dp"
         android:layout_marginBottom="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
         />
+
+    <TextView
+        android:id="@+id/txtfb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/line4"
+        android:layout_marginLeft="25dp"
+        android:drawableLeft="@drawable/baseline_feedback_24"
+        android:drawablePadding="10dp"
+        android:clickable="true"
+        android:text="Feed Back"
+        android:textColor="@color/pri2"
+        android:textSize="25dp"
+        tools:ignore="HardcodedText,RtlHardcoded,SpUsage,TextSizeCheck,TouchTargetSizeCheck,UseCompatTextViewDrawableXml" />
 
     <TextView
         android:id="@+id/btn_admin_logOut"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@drawable/round_corner"
-        android:backgroundTint="@color/pri2"
+        android:backgroundTint="@color/sec"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         android:clickable="true"
         android:gravity="center"
         android:text="LOG OUT"

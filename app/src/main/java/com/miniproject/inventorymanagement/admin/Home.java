@@ -1,19 +1,17 @@
 package com.miniproject.inventorymanagement.admin;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 
-import com.google.firebase.auth.FirebaseAuth;
-import com.miniproject.inventorymanagement.common.LoginActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.menu;
 
 
