@@ -1,6 +1,5 @@
 package com.miniproject.inventorymanagement.common;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,7 +11,7 @@ import android.widget.Button;
 
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.ProductAdapter;
-import com.miniproject.inventorymanagement.admin.AddProductsDetaileAdd;
+import com.miniproject.inventorymanagement.admin.AddNewProduct;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class ProductList extends AppCompatActivity {
@@ -24,13 +23,13 @@ public class ProductList extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
 
-//        add=findViewById(R.id.iconButton_add_product);
-//        add.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                startActivity(new Intent(getApplicationContext(), AddProductsDetaileAdd.class));
-//            }
-//        });
+        add=findViewById(R.id.some1);
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddNewProduct.class));
+            }
+        });
         dbhandler=DatabaseHandler.getInstance();
 
         dbhandler.addProduct("a","pen","black pen",4,5);

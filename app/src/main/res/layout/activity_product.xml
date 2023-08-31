@@ -14,15 +14,15 @@
         />
 
 
-<!--    <Button-->
+    <Button
 
-<!--        style="?attr/materialIconButtonStyle"-->
-<!--        android:id="@+id/iconButton_add_product"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:backgroundTint="@color/black"-->
-<!--        android:text="Add"-->
-<!--        android:textColor="@color/pink_light"-->
-<!--        />-->
+        style="?attr/materialIconButtonStyle"
+        android:id="@+id/some1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/black"
+        android:text="Add"
+        android:textColor="@color/pink_light"
+        />
 
 </RelativeLayout>

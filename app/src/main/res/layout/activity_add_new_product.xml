@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/addproductdetails"
-    tools:context=".admin.AddProductsDetaileAdd">
+    tools:context=".admin.AddNewProduct">
 
     <ImageView
         android:id="@+id/backbtnhome"
@@ -27,7 +27,6 @@
         android:layout_marginTop="130dp"
         tools:ignore="HardcodedText" />
 
-
     <TextView
         android:id="@+id/txt_productadd_productName"
         style="@style/labelforaddpro"
@@ -41,13 +40,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_productadd_productName"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/border1"
         android:backgroundTint="#306F82B5"
         android:hint="Ex. Pen"
-        android:textColorHint="@color/black"
-        android:paddingLeft="18dp"
         android:minHeight="48dp"
-        android:layout_margin="10dp"
+        android:paddingLeft="18dp"
+        android:textColorHint="@color/black"
         tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <TextView
@@ -83,13 +85,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_productadd_productprice"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/border1"
         android:backgroundTint="#306F82B5"
         android:hint="Ex. 4.50"
-        android:textColorHint="@color/black"
-        android:paddingLeft="18dp"
         android:minHeight="48dp"
-        android:layout_margin="10dp"
+        android:paddingLeft="18dp"
+        android:textColorHint="@color/black"
         tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <TextView
@@ -104,13 +109,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_productadd_productdec"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/border1"
         android:backgroundTint="#306F82B5"
         android:hint="Ex. Blue Pen"
-        android:textColorHint="@color/black"
-        android:paddingLeft="18dp"
         android:minHeight="48dp"
-        android:layout_margin="10dp"
+        android:paddingLeft="18dp"
+        android:textColorHint="@color/black"
         tools:ignore="Autofill,HardcodedText,RtlHardcoded,RtlSymmetry,TextFields,VisualLintTextFieldSize" />
 
     <Button
