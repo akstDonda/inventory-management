@@ -6,10 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputLayout;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
@@ -19,7 +21,7 @@ public class AddNewProduct extends AppCompatActivity {
     DatabaseHandler dbHandler;
 
     String productName, productId, productDescription;
-    EditText productNameText, productIdText, productDescriptionText, productPriceText;
+    TextInputLayout productNameText, productIdText, productDescriptionText, normalBuyPriceText, normalSellPriceText;
     int normalProductSellingPrice, normalProductBuyingPrice;
     Button addProductButton;
 
@@ -33,21 +35,23 @@ public class AddNewProduct extends AppCompatActivity {
 
         dbHandler=DatabaseHandler.getInstance();
 
-        productNameText = findViewById(R.id.edt_productadd_productName);
-        productDescriptionText = findViewById(R.id.edt_productadd_productdec);
-        productIdText = findViewById(R.id.edt_productadd_productId);
-        productPriceText = findViewById(R.id.edt_productadd_productrate);
+        productNameText = findViewById(R.id.addProductName);
+        EditText e = productNameText.getEditText()
+        productDescriptionText = findViewById(R.id.addProductDescription);
+        productIdText = findViewById(R.id.addProductId);
+        normalBuyPriceText = findViewById(R.id.addProductNormalBuyPrice);
+        normalSellPriceText = findViewById(R.id.addProductNormalSellPrice);
 
-        addProductButton = findViewById(R.id.btn_product_submit);
+        addProductButton = findViewById(R.id.btn_sbmt);
 
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                productName = productNameText.getText().toString();
-                productId = productIdText.getText().toString();
-                productDescription = productDescriptionText.getText().toString();
-                normalProductBuyingPrice = Integer.parseInt(productPriceText.getText().toString());
-                normalProductSellingPrice = Integer.parseInt(productPriceText.getText().toString());
+                productName = productNameText.getEditText().getText().toString();
+                productId = productIdText.getEditText().getText().toString();
+                productDescription = productDescriptionText.getEditText().getText().toString();
+                normalProductBuyingPrice = Integer.parseInt(normalBuyPriceText.getEditText().getText().toString());
+                normalProductSellingPrice = Integer.parseInt(normalSellPriceText.getEditText().getText().toString());
                 
                 dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice);
                 Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
