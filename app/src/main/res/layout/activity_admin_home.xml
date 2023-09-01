@@ -40,7 +40,7 @@
                 <TextView
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
-                    android:text="DASHBOARD"
+                    android:text="Dashboard"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
             </LinearLayout>
@@ -70,7 +70,7 @@
 
                 <TextView
                     style="@style/txtcardview"
-                    android:text="ADD EMPLOYEE"
+                    android:text="Add Employee"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
             </LinearLayout>
@@ -107,7 +107,7 @@
                 <TextView
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
-                    android:text="LOW STOCK"
+                    android:text="Low Stock"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
             </LinearLayout>
@@ -137,7 +137,7 @@
 
                 <TextView
                     style="@style/txtcardview"
-                    android:text="TRANSACTIN"
+                    android:text="Transactions"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
             </LinearLayout>
@@ -174,7 +174,7 @@
                 <TextView
                     style="@style/txtcardview"
                     android:layout_marginBottom="10dp"
-                    android:text="ADD PRODUCT"
+                    android:text="Products"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck,TextContrastCheck" />
 
             </LinearLayout>
@@ -204,7 +204,7 @@
 
                 <TextView
                     style="@style/txtcardview"
-                    android:text="SETTING"
+                    android:text="Settings"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
             </LinearLayout>
@@ -233,7 +233,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="100dp"
-        android:text="PRODUCT ADD"
+        android:text="Add Transaction"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -247,7 +247,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginEnd="15dp"
         android:layout_marginBottom="160dp"
-        android:text="PRODUCT REMOVE"
+        android:text="Add Product"
         android:textColor="@color/white"
         android:textSize="20sp"
         android:textStyle="bold"

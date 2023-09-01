@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/loginback"
+    tools:context=".common.LoginActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        style="@style/formBackground">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/transactionProductIdTextInputLayout"
+            style="@style/primaryTextInputLayout"
+            android:hint="Product Id"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:inputType="text"
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/transactionDateTextInputLayout"
+            style="@style/primaryTextInputLayout"
+            android:hint="Date"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:inputType="date"
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/transactionTypeTextInputLayout"
+            style="@style/primaryTextInputLayout"
+            android:hint="Type"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:inputType="text"
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/productDateTextInputLayout"
+            style="@style/primaryTextInputLayout"
+            android:hint="Quantity"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:inputType="number"
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/transactionPriceTextInputLayout"
+            style="@style/primaryTextInputLayout"
+            android:hint="Price (Per Unit)"
+            tools:ignore="HardcodedText">
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:inputType="number"
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/addTransactionButton"
+            android:text="Add Transaction"/>
+
+    </LinearLayout>
+</RelativeLayout>
