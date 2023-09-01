@@ -8,6 +8,7 @@ import android.os.Bundle;
 import java.util.Date;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.ProductAdapter;
+import com.miniproject.inventorymanagement.adapters.TransactionAdapter;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Transactions extends AppCompatActivity {
@@ -26,7 +27,7 @@ public class Transactions extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.all_transaction_recycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ProductAdapter adapter = new ProductAdapter(dbhandler.getProducts());
+        TransactionAdapter adapter = new TransactionAdapter(dbhandler.getTransactions());
         recyclerView.setAdapter(adapter);
 
     }

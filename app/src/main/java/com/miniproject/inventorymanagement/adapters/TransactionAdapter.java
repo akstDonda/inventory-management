@@ -10,13 +10,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.firebase.Transaction;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
     private List<Transaction> transactionList;
 
-    public TransactionAdapter(List<Transaction> transactionList) {
-        this.transactionList = transactionList;
+    public TransactionAdapter(Map<Long, Transaction> transactionMap) {
+        transactionList = new ArrayList<>(transactionMap.values());
     }
 
     @NonNull
