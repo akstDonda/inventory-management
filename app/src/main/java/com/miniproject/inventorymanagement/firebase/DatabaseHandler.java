@@ -3,19 +3,25 @@ package com.miniproject.inventorymanagement.firebase;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.miniproject.inventorymanagement.common.ProductList;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.sql.Time;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -171,13 +177,56 @@ public class DatabaseHandler {
     }
 
     public int addProductToFirebase(Product product) {
-        // TODO: add product to firebase
-        return 0;
+        try {
+            // Get a reference to the "products" collection in Firestore
+            CollectionReference productsCollectionRef = firestore.collection("products");
+
+            // Create a new document with a custom ID (e.g., product ID)
+            // You can also use .add() to auto-generate a document ID if needed
+            if (company == null) {
+                fetchCompany();
+            }
+            DocumentReference productDocRef = productsCollectionRef.document(company.getId());
+
+            // Create a map for the product data
+            Map<String, Object> productData = new HashMap<>();
+            productData.put("id", product.getId());
+            productData.put("name", product.getName());
+            productData.put("description", product.getDescription());
+            productData.put("normalBuyPrice", product.getNormalBuyPrice());
+            productData.put("normalSellPrice", product.getNormalSellPrice());
+
+            // Add the product data to Firestore
+            productDocRef.update(product.getId(), productData)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            // Product added successfully
+                            // You can perform any necessary actions here
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            // Error adding product
+                            // Handle the error, such as showing an error message to the user
+                        }
+                    });
+
+            return 1; // Return a success code
+        } catch (Exception e) {
+            e.printStackTrace();
+            return -1; // Return an error code
+        }
     }
 
+
     public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice) {
-        for (String t_id: products.keySet()) {
-            if (t_id == id) {
+
+        // TODO: checking product_id duplication NOT WORKING!!
+        // TODO: fix code below!!
+        for (Product p: products.values()) {
+            if (p.getId() == id) {
                 return 101;
             }
         }
