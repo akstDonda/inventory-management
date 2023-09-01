@@ -13,12 +13,13 @@ import androidx.cardview.widget.CardView;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.common.ProductList;
+import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.menu;
 
 
 public class Home extends AppCompatActivity {
     Button addremove,add,remove;
-    CardView cardAddProducts;
+    CardView cardAddProducts,cardAddtransaction;
 
     ImageView hmenu,hback;
 
@@ -32,6 +33,7 @@ public class Home extends AppCompatActivity {
         add=findViewById(R.id.btn_add);
         remove=findViewById(R.id.btn_remove);
         cardAddProducts=findViewById(R.id.card_addproduct);
+        cardAddtransaction=findViewById(R.id.card_transaction);
         hmenu=findViewById(R.id.homemenu);
         hback=findViewById(R.id.homeback);
 
@@ -45,6 +47,13 @@ public class Home extends AppCompatActivity {
 
             }
         });
+        cardAddtransaction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Transactions.class));
+            }
+        });
+
 
 
 

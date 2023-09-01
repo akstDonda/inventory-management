@@ -57,7 +57,7 @@ public class DatabaseHandler {
         addTransactionToFirestore(transaction);
 
         // update product in local memory and firestore
-        product.addTransaction(transaction);
+      //  product.addTransaction(transaction);
         updateProductToFirestore(product);
     }
 
