@@ -15,6 +15,9 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class AddNewProduct extends AppCompatActivity {
 
     ImageView imgbtnback;
@@ -66,6 +69,18 @@ public class AddNewProduct extends AppCompatActivity {
                 //dbHandler.addProduct();
             }
         });
+
+
+
+
+    }
+
+    public void insertdata(){
+
+        Map<String, Object> product_detailes = new HashMap<>();
+        product_detailes.put("product_id",productId);
+        product_detailes.put("product_name",productName);
+
 
 
     }

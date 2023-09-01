@@ -14,6 +14,7 @@ public class Company {
     public int refreshCompanyData(FirebaseAuth  auth, FirebaseFirestore db) {
         // TODO: get user from auth
         // TODO: get company data using user data
+        id = "Yy5LPrpfC4fcU3FfhQsYFbV2prt1";
         return 0;
     }
 
