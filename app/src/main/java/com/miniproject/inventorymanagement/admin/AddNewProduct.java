@@ -36,7 +36,6 @@ public class AddNewProduct extends AppCompatActivity {
         dbHandler=DatabaseHandler.getInstance();
 
         productNameText = findViewById(R.id.addProductName);
-        EditText e = productNameText.getEditText()
         productDescriptionText = findViewById(R.id.addProductDescription);
         productIdText = findViewById(R.id.addProductId);
         normalBuyPriceText = findViewById(R.id.addProductNormalBuyPrice);
