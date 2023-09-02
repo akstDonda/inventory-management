@@ -13,6 +13,9 @@
         android:theme="@style/Theme.InventoryManagement"
         tools:targetApi="31">
         <activity
+            android:name=".common.Settings"
+            android:exported="false" />
+        <activity
             android:name=".admin.AddNewTransaction"
             android:exported="false" />
         <activity
