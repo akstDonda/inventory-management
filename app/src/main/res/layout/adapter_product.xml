@@ -1,29 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- res/layout/item_layout.xml -->
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="16dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="5dp"
+    android:elevation="4dp"
+    android:padding="16dp"
+    android:backgroundTint="@color/sec"
+    app:cardUseCompatPadding="true">
 
-    <TextView
-        android:id="@+id/productNameTextView"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:text="Product Name" />
+        android:padding="16dp" >
 
-    <TextView
-        android:id="@+id/productCurrentStockTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Current stock: 100" />
+        <TextView
+            android:id="@+id/productNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:text="Product Name" />
+
+        <TextView
+            android:id="@+id/productCurrentStockTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/productNameTextView"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:text="Current stock: 100" />
+
+    </RelativeLayout>
+
 
 
 
     <!-- Add more UI components here as needed -->
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
