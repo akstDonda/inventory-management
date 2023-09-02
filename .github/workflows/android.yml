@@ -49,16 +49,16 @@ jobs:
         run: mkdir -p releases
         
       - name: Copy APK to Releases Directory
-        run: cp app/build/outputs/apk/debug/app-debug.apk releases/app-v${{ github.run_number }}.apk
+        run: cp app/build/outputs/apk/debug/app-debug.apk releases/app-v${{ github.event.inputs.tag }}${{ github.run_number }}.apk
 
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            release/*.apk
+            releases/*.apk
           tag_name: ${{ github.event.inputs.tag }}
-          title: Release ${{ github.event.inputs.tag }}
+          title: Release ${{ github.event.inputs.tag }}.${{ github.run_number }}
           draft: false
           prerelease: ${{ github.event.inputs.prerelease == 'true' }}
         env:
