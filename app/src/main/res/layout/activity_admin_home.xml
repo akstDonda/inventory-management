@@ -9,49 +9,47 @@
 
     <include layout="@layout/toolbar"/>
 
-
-
-    <FrameLayout
+    <GridLayout
+        android:id="@+id/grid_layout"
+        android:layout_marginTop="60dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        android:id="@+id/layout1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
+        android:layout_height="match_parent"
+        android:columnCount="2"
+        android:rowCount="3"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp">
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_dashbord"
-            style="@style/cardviewhome">
+        android:id="@+id/card_dashbord"
+        style="@style/homeCardView">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@color/lightpri2"
-                tools:ignore="ExtraText,UseCompoundDrawables">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="@color/lightpri2"
+            tools:ignore="ExtraText,UseCompoundDrawables">
 
-                <ImageView
-                    android:id="@+id/img_cardview_dashbord"
-                    style="@style/imgcardview"
-                    android:src="@drawable/dashbord"
-                    android:contentDescription="TODO"
-                    tools:ignore="ContentDescription,HardcodedText" />
+            <ImageView
+                android:id="@+id/img_cardview_dashbord"
+                style="@style/imgcardview"
+                android:src="@drawable/dashboard_24px"
+                android:contentDescription="TODO"
+                tools:ignore="ContentDescription,HardcodedText" />
 
-                <TextView
-                    style="@style/txtcardview"
-                    android:layout_marginBottom="10dp"
-                    android:text="Dashboard"
-                    tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
+            <TextView
+                style="@style/txtcardview"
+                android:layout_marginBottom="10dp"
+                android:text="Dashboard"
+                tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
-            </LinearLayout>
+        </LinearLayout>
 
-        </com.google.android.material.card.MaterialCardView>
-
-
+    </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_adduser"
-            style="@style/cardviewhome"
+            style="@style/homeCardView"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -76,19 +74,9 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout2"
-        android:layout_below="@+id/layout1"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_lowstock"
-            style="@style/cardviewhome">
+            style="@style/homeCardView">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -114,11 +102,9 @@
 
         </com.google.android.material.card.MaterialCardView>
 
-
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_transaction"
-            style="@style/cardviewhome"
+            style="@style/homeCardView"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -143,19 +129,9 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/layout3"
-        android:layout_below="@+id/layout2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp">
-
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_addproduct"
-            style="@style/cardviewhome">
+            style="@style/homeCardView">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -185,7 +161,7 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_setting"
-            style="@style/cardviewhome"
+            style="@style/homeCardView"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -210,8 +186,7 @@
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>
-
-    </FrameLayout>
+    </GridLayout>
 
 
 
