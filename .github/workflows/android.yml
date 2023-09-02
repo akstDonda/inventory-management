@@ -40,15 +40,6 @@ jobs:
       - name: Copy APK to Releases Directory
         run: cp app/build/outputs/apk/debug/app-debug.apk releases/app-v${{ github.run_number }}.apk
 
-      - name: Commit and Tag
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add releases
-          git commit -m "Add release APK for v${{ github.run_number }}"
-          git tag "v${{ github.run_number }}"
-          git push --follow-tags
-
       - name: Create Release
         id: create_release
         uses: softprops/action-gh-release@v1
