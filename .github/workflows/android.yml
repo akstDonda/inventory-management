@@ -2,6 +2,13 @@ name: Build and Release APK
 
 on:
   workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Tag to use for the release'
+        required: true
+  push:
+    tags:
+      - 'release'
 
 jobs:
   build:
