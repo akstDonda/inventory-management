@@ -32,13 +32,13 @@
 
             <ImageView
                 android:id="@+id/img_cardview_dashbord"
-                style="@style/imgcardview"
+                style="@style/homeCardViewImage"
                 android:src="@drawable/dashboard_24px"
                 android:contentDescription="TODO"
                 tools:ignore="ContentDescription,HardcodedText" />
 
             <TextView
-                style="@style/txtcardview"
+                style="@style/homeCardViewText"
                 android:layout_marginBottom="10dp"
                 android:text="Dashboard"
                 tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
@@ -61,13 +61,13 @@
 
                 <ImageView
                     android:id="@+id/img_cardview_adduser"
-                    style="@style/imgcardview"
+                    style="@style/homeCardViewImage"
                     android:contentDescription="TODO"
                     android:src="@drawable/baseline_supervised_user_circle_24"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
-                    style="@style/txtcardview"
+                    style="@style/homeCardViewText"
                     android:text="Add Employee"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 
@@ -87,13 +87,13 @@
 
                 <ImageView
                     android:id="@+id/img_cardview_lowstock"
-                    style="@style/imgcardview"
+                    style="@style/homeCardViewImage"
                     android:contentDescription="TODO"
                     android:src="@drawable/lowstock"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
-                    style="@style/txtcardview"
+                    style="@style/homeCardViewText"
                     android:layout_marginBottom="10dp"
                     android:text="Low Stock"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
@@ -116,13 +116,13 @@
 
                 <ImageView
                     android:id="@+id/img_cardview_transaction"
-                    style="@style/imgcardview"
+                    style="@style/homeCardViewImage"
                     android:src="@drawable/transaction"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
 
                 <TextView
-                    style="@style/txtcardview"
+                    style="@style/homeCardViewText"
                     android:text="Transactions"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck" />
 
@@ -142,13 +142,13 @@
 
                 <ImageView
                     android:id="@+id/img_cardview_addproducts"
-                    style="@style/imgcardview"
+                    style="@style/homeCardViewImage"
                     android:contentDescription="TODO"
                     android:src="@drawable/products"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
-                    style="@style/txtcardview"
+                    style="@style/homeCardViewText"
                     android:layout_marginBottom="10dp"
                     android:text="Products"
                     tools:ignore="HardcodedText,TextSizeCheck,TextContrastCheck,TextContrastCheck" />
@@ -173,13 +173,13 @@
 
                 <ImageView
                     android:id="@+id/img_cardview_setting"
-                    style="@style/imgcardview"
+                    style="@style/homeCardViewImage"
                     android:src="@drawable/setting"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
 
                 <TextView
-                    style="@style/txtcardview"
+                    style="@style/homeCardViewText"
                     android:text="Settings"
                     tools:ignore="HardcodedText,TextSizeCheck" />
 

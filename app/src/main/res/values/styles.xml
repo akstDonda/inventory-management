@@ -72,7 +72,7 @@
 
     </style>
 
-    <style name="imgcardview">
+    <style name="homeCardViewImage">
         <item name="android:layout_width">90dp</item>
         <item name="android:layout_height">90dp</item>
         <item name="android:layout_marginTop">20dp</item>
@@ -81,12 +81,14 @@
 
     </style>
 
-    <style name="txtcardview">
+    <style name="homeCardViewText">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textColor">@color/pri2</item>
         <item name="android:textSize">16dp</item>
         <item name="android:textStyle">bold</item>
+        <item name="android:gravity">center</item>
+        <item name="height">40dp</item>
         <item name="android:layout_marginLeft">20dp</item>
         <item name="android:layout_marginRight">20dp</item>
         <item name="android:layout_marginBottom">10dp</item>
