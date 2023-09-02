@@ -48,3 +48,24 @@ jobs:
           git commit -m "Add release APK for v${{ github.run_number }}"
           git tag "v${{ github.run_number }}"
           git push --follow-tags
+
+      - name: Create Release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            release/*.apk
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Update Latest Release
+        run: |
+          echo "Updating latest release..."
+          RELEASE_ID=$(jq -r .release.id ${{ steps.create_release.outputs.response }})
+          echo "Release ID: $RELEASE_ID"
+          curl -X PATCH \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/${{ github.repository }}/releases/$RELEASE_ID" \
+            -d '{"prerelease": true}'
+        if: success()
