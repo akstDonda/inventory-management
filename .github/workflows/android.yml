@@ -6,6 +6,10 @@ on:
       tag:
         description: 'Tag to use for the release'
         required: true
+      prerelease:
+        description: 'Is this a pre-release?'
+        required: false
+        default: 'true'
   push:
     tags:
       - 'release'
@@ -53,6 +57,10 @@ jobs:
         with:
           files: |
             release/*.apk
+          tag_name: ${{ github.event.inputs.tag }}
+          title: Release ${{ github.event.inputs.tag }}
+          draft: false
+          prerelease: ${{ github.event.inputs.prerelease == 'true' }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
