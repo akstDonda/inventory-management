@@ -26,17 +26,17 @@
         <item name="colorOnSurfaceInverse">@color/md_theme_light_inverseOnSurface</item>
         <item name="colorSurfaceInverse">@color/md_theme_light_inverseSurface</item>
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
-        <!-- Base application theme. -->
-        <style name="Base.Theme.InventoryManagement" parent="Theme.Material3.DayNight.NoActionBar">
-            <!-- Customize your light theme here. -->
-            <item name="colorPrimary">@color/black</item>
-        </style>
-    
-        <style name="Base.Theme.InventoryManagement_Tital" parent="Theme.AppCompat">
-            <!-- Customize your light theme here. -->
-            <item name="colorPrimary">@color/black</item>
-        </style>
-    
-        <style name="Theme.InventoryManagement" parent="Base.Theme.InventoryManagement" />
     </style>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.InventoryManagement" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Base.Theme.InventoryManagement_Tital" parent="Theme.AppCompat">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Theme.InventoryManagement" parent="Base.Theme.InventoryManagement" />
 </resources>
