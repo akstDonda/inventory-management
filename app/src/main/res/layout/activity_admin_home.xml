@@ -20,7 +20,7 @@
         android:paddingRight="20dp">
 
         <com.google.android.material.card.MaterialCardView
-        android:id="@+id/card_dashbord"
+        android:id="@+id/card_dashboard"
         style="@style/homeCardView">
 
         <LinearLayout
@@ -48,7 +48,7 @@
     </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_adduser"
+            android:id="@+id/card_add_employee"
             style="@style/homeCardView"
             android:layout_gravity="end">
 
@@ -160,7 +160,7 @@
 
 
         <com.google.android.material.card.MaterialCardView
-            android:id="@+id/card_setting"
+            android:id="@+id/card_settings"
             style="@style/homeCardView"
             android:layout_gravity="end">
 

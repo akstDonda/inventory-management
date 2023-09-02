@@ -11,53 +11,80 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.Dashboard;
 import com.miniproject.inventorymanagement.common.LoginActivity;
+import com.miniproject.inventorymanagement.common.LowStock;
 import com.miniproject.inventorymanagement.common.ProductList;
+import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.menu;
 
-
 public class Home extends AppCompatActivity {
-    Button addremove,add,remove;
-    CardView cardAddProducts,cardAddtransaction;
+    Button addremove, add, remove;
+    CardView productsCardView, transactionsCardView, settingsCardView, dashboardCardView, lowStockCardView, addEmployeeCardView;
 
-    ImageView hmenu,hback;
+    ImageView hmenu, hback;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_home); 
+        setContentView(R.layout.activity_admin_home);
 
-        addremove=findViewById(R.id.btn_add_remove);
-        add=findViewById(R.id.btn_add);
-        remove=findViewById(R.id.btn_remove);
-        cardAddProducts=findViewById(R.id.card_addproduct);
-        cardAddtransaction=findViewById(R.id.card_transaction);
-        hmenu=findViewById(R.id.homemenu);
-        hback=findViewById(R.id.homeback);
+        addremove = findViewById(R.id.btn_add_remove);
+        add = findViewById(R.id.btn_add);
+        remove = findViewById(R.id.btn_remove);
+        
+        hmenu = findViewById(R.id.homemenu);
+        hback = findViewById(R.id.homeback);
 
+        // Card Views
+        productsCardView = findViewById(R.id.card_addproduct);
+        transactionsCardView = findViewById(R.id.card_transaction);
+        settingsCardView = findViewById(R.id.card_settings);
+        dashboardCardView = findViewById(R.id.card_dashboard);
+        lowStockCardView = findViewById(R.id.card_lowstock);
+        addEmployeeCardView = findViewById(R.id.card_add_employee);
 
-
-        //cardView
-        cardAddProducts.setOnClickListener(new View.OnClickListener() {
+        // Click Handlers
+        productsCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), ProductList.class));
-
             }
         });
-        cardAddtransaction.setOnClickListener(new View.OnClickListener() {
+        dashboardCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Dashboard.class));
+            }
+        });
+        lowStockCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), LowStock.class));
+            }
+        });
+        addEmployeeCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), CreateNewUser.class));
+            }
+        });
+        settingsCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Settings.class));
+            }
+        });
+        transactionsCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Transactions.class));
             }
         });
 
-
-
-
-        //product add remove btn
+        // product add remove btn
         addremove.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,29 +92,27 @@ public class Home extends AppCompatActivity {
                 if (currentVisibility == View.VISIBLE) {
                     add.setVisibility(View.GONE);
                     remove.setVisibility(View.GONE);
-                }
-                else {
+                } else {
                     add.setVisibility(View.VISIBLE);
                     remove.setVisibility(View.VISIBLE);
                 }
             }
         });
 
-
-        //menu open
+        // menu open
         hmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Home.this, menu.class);
+                Intent intent = new Intent(Home.this, menu.class);
                 startActivity(intent);
             }
         });
 
-        //back to login
+        // back to login
         hback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(Home.this, LoginActivity.class);
+                Intent intent = new Intent(Home.this, LoginActivity.class);
                 startActivity(intent);
             }
         });
