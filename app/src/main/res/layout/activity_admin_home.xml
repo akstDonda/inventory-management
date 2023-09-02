@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/background"
     tools:context=".admin.Home">
 
     <include layout="@layout/toolbar"/>
@@ -63,7 +63,7 @@
                     android:id="@+id/img_cardview_adduser"
                     style="@style/homeCardViewImage"
                     android:contentDescription="TODO"
-                    android:src="@drawable/baseline_supervised_user_circle_24"
+                    android:src="@drawable/group_add_24px"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
@@ -117,7 +117,7 @@
                 <ImageView
                     android:id="@+id/img_cardview_transaction"
                     style="@style/homeCardViewImage"
-                    android:src="@drawable/transaction"
+                    android:src="@drawable/receipt_long_24px"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
 
@@ -144,7 +144,7 @@
                     android:id="@+id/img_cardview_addproducts"
                     style="@style/homeCardViewImage"
                     android:contentDescription="TODO"
-                    android:src="@drawable/products"
+                    android:src="@drawable/inventory_2_24px"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView
@@ -174,7 +174,7 @@
                 <ImageView
                     android:id="@+id/img_cardview_setting"
                     style="@style/homeCardViewImage"
-                    android:src="@drawable/setting"
+                    android:src="@drawable/settings"
                     android:contentDescription="TODO"
                     tools:ignore="ContentDescription,HardcodedText" />
 
