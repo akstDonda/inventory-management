@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lightpri2"
+    android:background="@drawable/loginback"
     android:backgroundTintMode="src_atop"
     tools:context=".menu">
 
@@ -19,7 +19,8 @@
         android:layout_marginTop="30dp"
         android:layout_marginLeft="25dp"
         tools:ignore="HardcodedText,MissingPrefix,SpUsage" />
-
+    <LinearLayout
+        style="@style/formBackground" >
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
@@ -98,5 +99,5 @@
         android:textColor="@color/white"
         android:textSize="30dp"
         tools:ignore="HardcodedText,SpUsage,TextSizeCheck,TouchTargetSizeCheck" />
-
+    </LinearLayout>
 </RelativeLayout>
