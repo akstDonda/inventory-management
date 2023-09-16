@@ -193,6 +193,7 @@
 
     <Button
         android:id="@+id/btn_add_remove"
+<<<<<<< HEAD
         style="@style/floatbtn"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
@@ -200,6 +201,17 @@
         android:layout_marginBottom="15dp"
         android:drawableTop="@drawable/baseline_storefront_24"
         tools:ignore="SpeakableTextPresentCheck" />
+=======
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layout3"
+        android:layout_marginTop="32dp"
+        android:layout_marginStart="310dp"
+        android:text="+/-"
+        android:textColor="@color/white"
+
+        tools:ignore="HardcodedText" />
+>>>>>>> master
 
     <Button
         android:id="@+id/btn_add"

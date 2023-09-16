@@ -30,9 +30,9 @@ public class CreateNewUser extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_user);
 
         // get fields
-        addUser = findViewById(R.id.btn_add_user);
-        username = findViewById(R.id.edt_username);
-        password = findViewById(R.id.edt_password);
+        addUser = findViewById(R.id.adduser);
+        username = findViewById(R.id.adduseremail);
+        password = findViewById(R.id.adduserpass);
         mAuth = FirebaseAuth.getInstance();
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
