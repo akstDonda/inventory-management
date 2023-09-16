@@ -37,10 +37,12 @@ public class ProductList extends AppCompatActivity {
         });
         dbhandler=DatabaseHandler.getInstance();
 
+        dbhandler.refreshProducts();
 
 
-        dbhandler.addProduct("a","pen","black pen",4,5);
-        dbhandler.addProduct("b","nothing","white pen",40000,50000);
+
+//        dbhandler.addProduct("a","pen","black pen",4,5);
+//        dbhandler.addProduct("b","nothing","white pen",40000,50000);
 
 
         RecyclerView recyclerView=findViewById(R.id.product_list_recycleView);

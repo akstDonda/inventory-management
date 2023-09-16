@@ -133,6 +133,75 @@ public class DatabaseHandler {
     }
 
     public int refreshProducts() {
+        DocumentReference productRef = getProductsRef();
+        Map<String, Product> newProducts;
+        productRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()) {
+                    DocumentSnapshot document = task.getResult();
+                    if (document.exists()) {
+                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
+                        Map<String, Object> documentData = document.getData();
+                        for (Map.Entry<String, Object> entry : documentData.entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+                            Product newProduct = new Product();
+                            if (value instanceof HashMap) {
+                                Map<String, Object> rawProductData = (Map<String, Object>) value;
+
+                                for (Map.Entry<String, Object> rawProdMap: rawProductData.entrySet()) {
+                                    String keu2 = rawProdMap.getKey().toString();
+                                    Object aluev = rawProdMap.getValue();
+                                    Log.e(TAG, "ALUEV: " + aluev + " KEU2: " + keu2);
+//                                    if (keu2.compareTo("id") == 0) {
+//                                        Log.e(TAG, "DONE:ID");
+//                                        newProduct.setId((String) aluev);
+//                                    }
+//                                    else if (keu2 == "name") {
+//                                        prdname = (String) aluev;
+//                                    } else if (keu2 == "description") {
+//                                        prdDescription = (String) aluev;
+//                                    } else if (keu2 == "normalBuyPrice") {
+//                                        buyP = (Integer) aluev;
+//                                    } else if (keu2 == "normalSellPrice") {
+//                                        sellP = (Integer) aluev;
+//
+//                                    }
+                                    switch (keu2) {
+                                        case "id":
+                                            newProduct.setId((String) aluev);
+                                            break;
+                                        case "name":
+                                            newProduct.setName((String) aluev);
+                                            break;
+                                        case "description":
+                                            newProduct.setDescription((String) aluev);
+                                            break;
+                                        case "normalBuyPrice":
+                                            newProduct.setNormalBuyPrice((Long) aluev);
+                                            break;
+                                        case "normalSellPrice":
+                                            newProduct.setNormalSellPrice((Long) aluev);
+                                            break;
+                                    }
+
+                                }
+
+                            }
+                            Log.e(TAG, newProduct.getId() + newProduct.getName());
+                            products.put(newProduct.getId(), newProduct);
+                            Log.d(TAG, "PRODUCTS: " + products);
+                        }
+                    } else {
+                        Log.d(TAG, "No such document");
+                    }
+                } else {
+                    Log.d(TAG, "get failed with ", task.getException());
+                }
+            }
+        });
+
         // TODO:  refresh products from firestore
         return 0;
     }
