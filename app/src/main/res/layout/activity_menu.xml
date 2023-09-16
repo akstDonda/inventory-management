@@ -4,11 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-<<<<<<< HEAD
-    android:background="@color/white"
-=======
+
     android:background="@drawable/loginback"
->>>>>>> master
     android:backgroundTintMode="src_atop"
     tools:context=".menu">
 
@@ -34,14 +31,9 @@
         android:textSize="50dp"
         android:layout_marginTop="47dp"
         android:layout_marginLeft="25dp"
-<<<<<<< HEAD
-        tools:ignore="HardcodedText,MissingPrefix,RtlHardcoded,SpUsage" />
-
-=======
         tools:ignore="HardcodedText,MissingPrefix,SpUsage" />
     <LinearLayout
         style="@style/formBackground" >
->>>>>>> master
     <View
         android:id="@+id/line1"
         android:layout_width="match_parent"
