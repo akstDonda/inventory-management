@@ -21,6 +21,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.Objects;
 
@@ -32,11 +33,14 @@ public class AdminRegistrationActivity extends AppCompatActivity {
     ProgressBar reg_progressbar;
     FirebaseAuth mAuth;
     ImageButton backreg;
+    DatabaseHandler dbHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_registration);
+
+        dbHandler = DatabaseHandler.getInstance();
 
         commpy = findViewById(R.id.edt_company_admin_reg);
         email = findViewById(R.id.edt_email_admin_reg);
@@ -103,6 +107,9 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
+                            dbHandler.refreshUserData();
+                            dbHandler.refreshCompanyData();
+                            dbHandler.createDocuments(dbHandler.getFirebaseAuth().getCurrentUser().getUid());
                             startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
                             Toast.makeText(AdminRegistrationActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();

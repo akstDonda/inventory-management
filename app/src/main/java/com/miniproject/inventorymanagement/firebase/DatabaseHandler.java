@@ -15,11 +15,14 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firestore.v1.WriteResult;
 import com.miniproject.inventorymanagement.common.ProductList;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.sql.Time;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -84,6 +87,16 @@ public class DatabaseHandler {
     public void fetchCompany() {
         company = new Company();
         company.refreshCompanyData(firebaseAuth, firestore);
+    }
+
+    public void createDocuments(String userId) {
+        List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users"));
+
+        for (String collection: firebaseCollections) {
+            DocumentReference docRef = firestore.collection(collection).document(userId);
+            docRef.set(new HashMap<>());
+        }
+
     }
     public void fetchTransactions() {
         DocumentReference transactionDocRef = getTransactionsRef();
