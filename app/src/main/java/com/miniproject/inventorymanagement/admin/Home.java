@@ -68,7 +68,8 @@ public class Home extends AppCompatActivity {
         addEmployeeCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), CreateNewUser.class));
+                Intent intent=new Intent(Home.this,CreateNewUser.class);
+                startActivity(intent);
             }
         });
         settingsCardView.setOnClickListener(new View.OnClickListener() {
