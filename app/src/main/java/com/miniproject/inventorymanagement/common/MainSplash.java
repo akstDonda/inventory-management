@@ -26,6 +26,6 @@ public class MainSplash extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
-        },2000);
+        },400);
     }
 }
