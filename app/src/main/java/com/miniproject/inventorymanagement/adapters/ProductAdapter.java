@@ -116,5 +116,9 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             productDescriptionEditText.setText(Integer.toString(product.getStockIn() - product.getStockOut()));
             // ... bind other data
         }
+
+    }
+    public void setProductList(Map<String, Product> productsMap) {
+        productList = new ArrayList<>(productsMap.values());
     }
 }

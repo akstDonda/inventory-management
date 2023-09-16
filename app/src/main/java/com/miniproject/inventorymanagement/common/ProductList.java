@@ -1,14 +1,19 @@
 package com.miniproject.inventorymanagement.common;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.ProductAdapter;
@@ -36,11 +41,7 @@ public class ProductList extends AppCompatActivity {
             }
         });
         dbhandler=DatabaseHandler.getInstance();
-
-
-
-        dbhandler.addProduct("a","pen","black pen",4,5);
-        dbhandler.addProduct("b","nothing","white pen",40000,50000);
+        Task<DocumentSnapshot> task = dbhandler.refreshProducts();
 
 
         RecyclerView recyclerView=findViewById(R.id.product_list_recycleView);
@@ -48,6 +49,13 @@ public class ProductList extends AppCompatActivity {
 
         ProductAdapter adapter = new ProductAdapter(dbhandler.getProducts());
         recyclerView.setAdapter(adapter);
+        task.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                adapter.setProductList(dbhandler.getProducts());
+                adapter.notifyDataSetChanged();
+            }
+        });
     }
 
 }
