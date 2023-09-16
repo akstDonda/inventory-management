@@ -7,22 +7,87 @@
     tools:context=".common.ProductList">
 
 
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/round_cornertoolbar"
+        android:visibility="visible">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:ignore="UselessParent"
+            android:minHeight="60dp">
+
+            <ImageView
+                android:id="@+id/protohomeback"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:clickable="true"
+                android:src="@drawable/baseline_arrow_circle_left_24_white"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
+
+            <ImageView
+                android:id="@+id/shi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="5dp"
+                android:clickable="true"
+                android:src="@drawable/baseline_manage_search_24"
+                android:layout_alignParentEnd="true"
+                tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck,ImageContrastCheck" />
+
+
+
+            <SearchView
+                android:id="@+id/simpleSearchView"
+                android:visibility="gone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginLeft="60dp"
+                android:layout_marginRight="16dp"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Product Here"
+                android:background="@drawable/round_corner"
+                android:backgroundTint="#70ffffff"
+                />
+
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="100dp"
         android:id="@+id/product_list_recycleView"
         />
 
 
     <Button
-
-        style="?attr/materialIconButtonStyle"
         android:id="@+id/some1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/black"
+        style="@style/floatbtn"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="15dp"
         android:text="Add"
-        android:textColor="@color/pink_light"
-        />
+        android:textAlignment="center"
+        android:textSize="14sp"
+        tools:ignore="HardcodedText,SpeakableTextPresentCheck,TextContrastCheck" />
 
 </RelativeLayout>
