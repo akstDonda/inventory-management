@@ -168,20 +168,6 @@ public class DatabaseHandler {
                                     String keu2 = rawProdMap.getKey().toString();
                                     Object aluev = rawProdMap.getValue();
                                     Log.e(TAG, "ALUEV: " + aluev + " KEU2: " + keu2);
-//                                    if (keu2.compareTo("id") == 0) {
-//                                        Log.e(TAG, "DONE:ID");
-//                                        newProduct.setId((String) aluev);
-//                                    }
-//                                    else if (keu2 == "name") {
-//                                        prdname = (String) aluev;
-//                                    } else if (keu2 == "description") {
-//                                        prdDescription = (String) aluev;
-//                                    } else if (keu2 == "normalBuyPrice") {
-//                                        buyP = (Integer) aluev;
-//                                    } else if (keu2 == "normalSellPrice") {
-//                                        sellP = (Integer) aluev;
-//
-//                                    }
                                     switch (keu2) {
                                         case "id":
                                             newProduct.setId((String) aluev);
