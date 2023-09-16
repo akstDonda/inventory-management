@@ -13,6 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.HashMap;
@@ -57,6 +58,9 @@ public class AddNewProduct extends AppCompatActivity {
                 
                 dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice);
                 Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
+
+                Intent intent = new Intent(AddNewProduct.this, ProductList.class);
+                startActivity(intent);
             }
         });
 

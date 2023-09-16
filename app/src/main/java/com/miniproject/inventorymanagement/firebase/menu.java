@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement;
+package com.miniproject.inventorymanagement.firebase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.common.LoginActivity;
 

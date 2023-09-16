@@ -17,6 +17,7 @@
             android:exported="false" />
         <activity
             android:name=".common.Dashboard"
+            android:parentActivityName=".admin.Home"
             android:exported="false" />
         <activity
             android:name=".common.Settings"
@@ -28,7 +29,7 @@
             android:name=".common.Transactions"
             android:exported="false" />
         <activity
-            android:name=".menu"
+            android:name=".firebase.menu"
             android:exported="false" />
         <activity
             android:name=".admin.AddNewProduct"
@@ -40,6 +41,7 @@
             android:exported="false" />
         <activity
             android:name=".admin.CreateNewUser"
+            android:parentActivityName=".admin.Home"
             android:exported="false" />
         <activity
             android:name=".common.LoginActivity"

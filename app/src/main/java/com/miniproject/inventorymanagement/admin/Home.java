@@ -17,7 +17,7 @@ import com.miniproject.inventorymanagement.common.LowStock;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
-import com.miniproject.inventorymanagement.menu;
+import com.miniproject.inventorymanagement.firebase.menu;
 
 public class Home extends AppCompatActivity {
     Button addremove, add, remove;
@@ -32,8 +32,8 @@ public class Home extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         addremove = findViewById(R.id.btn_add_remove);
-        add = findViewById(R.id.btn_add);
-        remove = findViewById(R.id.btn_remove);
+        add = findViewById(R.id.btn_add_transaction);
+        remove = findViewById(R.id.btn_add_product);
         
         hmenu = findViewById(R.id.homemenu);
         hback = findViewById(R.id.homeback);
@@ -96,6 +96,22 @@ public class Home extends AppCompatActivity {
                     add.setVisibility(View.VISIBLE);
                     remove.setVisibility(View.VISIBLE);
                 }
+            }
+        });
+
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, AddNewTransaction.class);
+                startActivity(intent);
+            }
+        });
+
+        remove.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, AddNewProduct.class);
+                startActivity(intent);
             }
         });
 

@@ -7,7 +7,7 @@
 
     android:background="@drawable/loginback"
     android:backgroundTintMode="src_atop"
-    tools:context=".menu">
+    tools:context=".firebase.menu">
 
     <ImageView
         android:id="@+id/homeback"

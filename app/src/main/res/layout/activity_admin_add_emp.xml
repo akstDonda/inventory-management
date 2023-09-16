@@ -21,7 +21,7 @@
         <TextView
             style="@style/formTitle"
             android:id="@+id/uadd"
-            android:text="Add user"
+            android:text="Add Employee"
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.textfield.TextInputLayout

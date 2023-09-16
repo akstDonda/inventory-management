@@ -27,7 +27,7 @@ public class CreateNewUser extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_add_user);
+        setContentView(R.layout.activity_admin_add_emp);
 
         // get fields
         addUser = findViewById(R.id.adduser);
