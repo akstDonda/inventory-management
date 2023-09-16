@@ -50,6 +50,8 @@
                 tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_company_admin_reg"
             style="@style/primaryTextInputLayout"

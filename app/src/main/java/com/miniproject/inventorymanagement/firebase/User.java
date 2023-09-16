@@ -18,8 +18,6 @@ public class User {
         return 0;
     }
 
-
-
     // Getters
     public String getId() {
         return id;

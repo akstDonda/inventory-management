@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement.admin;
+package com.miniproject.inventorymanagement.common;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,12 +6,11 @@ import android.os.Bundle;
 
 import com.miniproject.inventorymanagement.R;
 
-public class AddProductsDetaileAdd extends AppCompatActivity {
+public class LowStock extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_products_detaile_add);
-        this.setTitle("Product Add");
+        setContentView(R.layout.activity_low_stock);
     }
 }

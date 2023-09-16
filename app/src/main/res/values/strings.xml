@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">STOCK NEST</string>
+    <string name="APP_NAME">Stock Nest</string>
     <string name="admin">Admin</string>
     <string name="basic_fab_button_description">fab_content_desc</string>
 </resources>

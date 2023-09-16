@@ -1,0 +1,2 @@
+101: productId or transactionId already in use.
+102: porduct or transaction update to firebase failed.

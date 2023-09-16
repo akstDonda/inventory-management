@@ -30,7 +30,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="500dp"
             android:fontFamily="@font/robotoslab_bold"
-            android:text="@string/app_name"
+            android:text="@string/APP_NAME"
             android:textColor="@color/pri2"
             android:textSize="50sp"
             tools:ignore="TextSizeCheck" />

@@ -122,33 +122,6 @@ public class LoginActivity extends AppCompatActivity {
                             String userID = "Some";
 
                             DocumentReference docRef = db.collection("users").document(currentUser.getUid());
-
-                            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                                @Override
-                                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                                    if (task.isSuccessful()) {
-                                        // Document found in the offline cache
-                                        DocumentSnapshot document = task.getResult();
-                                        Log.d(TAG, "Cached document data: " + document.getData());
-                                        Map<String, Object> data = document.getData();
-                                        Log.d(TAG, "Size: " + document.getData().size());
-                                        Log.d(TAG, "Company: " + data.get("company").toString());
-                                        Log.d(TAG, "UID: " + currentUser.getUid().toString());
-
-                                        Toast.makeText(LoginActivity.this, data.get("company").toString(), Toast.LENGTH_LONG).show();
-                                        if (data.get("company").toString().compareTo(currentUser.getUid().toString()) == 0) {
-                                            Toast.makeText(LoginActivity.this, "done dona done", Toast.LENGTH_LONG).show();
-                                        }
-                                        else {
-                                            Toast.makeText(LoginActivity.this, "hehe user!!!", Toast.LENGTH_SHORT).show();
-                                        }
-//                                        Toast.makeText(AdminLogin.this, currentUser.getUid(), Toast.LENGTH_SHORT).show();
-
-                                    } else {
-                                        Log.d(TAG, "Cached get failed: ", task.getException());
-                                    }
-                                }
-                            });
 //                            Toast.makeText(AdminLogin.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
