@@ -12,6 +12,28 @@
         android:layout_height="match_parent"
         style="@style/formBackground">
 
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/button1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button 1"
+                />
+
+            <Button
+                style="?attr/materialButtonOutlinedStyle"
+                android:id="@+id/button3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Button 3"
+                />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/transactionProductIdTextInputLayout"
             style="@style/primaryTextInputLayout"
@@ -36,17 +58,7 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/transactionTypeTextInputLayout"
-            style="@style/primaryTextInputLayout"
-            android:hint="Type"
-            tools:ignore="HardcodedText">
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/primaryTextInputEditText"
-                android:inputType="text"
-                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-
-        </com.google.android.material.textfield.TextInputLayout>
+        
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/productDateTextInputLayout"

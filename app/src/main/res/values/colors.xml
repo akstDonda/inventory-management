@@ -88,4 +88,7 @@
     <color name="third">#000000</color>
     <color name="lightpri2">#C0CAE4</color>
     <color name="menu">#6F82B5</color>
+
+    //seting
+    <color name="bg_color_setting">#e2eaf5</color>
 </resources>

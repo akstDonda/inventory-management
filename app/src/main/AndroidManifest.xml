@@ -21,6 +21,7 @@
             android:exported="false" />
         <activity
             android:name=".common.Settings"
+            android:theme="@style/Base.Theme.InventoryManagement_setting"
             android:exported="false" />
         <activity
             android:name=".admin.AddNewTransaction"

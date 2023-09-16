@@ -31,11 +31,18 @@
     <style name="Base.Theme.InventoryManagement" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/black</item>
+
     </style>
 
     <style name="Base.Theme.InventoryManagement_Tital" parent="Theme.AppCompat">
         <!-- Customize your light theme here. -->
         <item name="colorPrimary">@color/black</item>
+    </style>
+
+    <style name="Base.Theme.InventoryManagement_setting" parent="Theme.AppCompat">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">@color/pri2</item>
+        <item name="android:windowBackground">@color/white</item>
     </style>
 
     <style name="Theme.InventoryManagement" parent="Base.Theme.InventoryManagement" />
