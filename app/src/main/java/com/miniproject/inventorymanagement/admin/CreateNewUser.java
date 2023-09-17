@@ -20,7 +20,7 @@ import com.miniproject.inventorymanagement.R;
 import java.util.Objects;
 
 public class CreateNewUser extends AppCompatActivity {
-    Button addUser;
+    Button addEmployee;
     EditText username;
     EditText password;
     private FirebaseAuth mAuth;
@@ -30,11 +30,11 @@ public class CreateNewUser extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_user);
 
         // get fields
-        addUser = findViewById(R.id.btn_add_user);
+        addEmployee = findViewById(R.id.btn_add_user);
         username = findViewById(R.id.edt_username);
         password = findViewById(R.id.edt_password);
         mAuth = FirebaseAuth.getInstance();
-        addUser.setOnClickListener(new View.OnClickListener() {
+        addEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String uname=username.getText().toString().trim();

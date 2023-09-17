@@ -20,6 +20,7 @@
 
     <LinearLayout
         style="@style/formBackground">
+
         <TextView
             style="@style/formTitle"
             android:text="Register"
@@ -55,7 +56,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_company_admin_reg"
             style="@style/primaryTextInputLayout"
-            android:hint="Company Name"
+            android:hint="Store Name"
             tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
