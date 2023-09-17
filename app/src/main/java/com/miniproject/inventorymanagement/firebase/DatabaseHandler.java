@@ -20,7 +20,6 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -226,14 +225,16 @@ public class DatabaseHandler {
     }
 
     public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) {
-        Transaction newTransaction = new Transaction(productId, timestamp, pricePerUnit, quantity);
-        newTransaction.addTransactionToFirestore();
+        Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
         Product productToChange = products.get(newTransaction.getProductId());
+        if (productToChange == null) {
+            return;
+        }
+        transactions.put(newTransaction.getId(), newTransaction);
+        newTransaction.updateSelfInFirestore();
         productToChange.addTransactionId(newTransaction.getId());
         productToChange.updateSelfInFirestore();
     }
-
-
 
     public int addProductToFirebase(Product product) {
         try {
@@ -279,7 +280,6 @@ public class DatabaseHandler {
         }
     }
 
-
     public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice) {
 
         // TODO: checking product_id duplication NOT WORKING!!
@@ -293,6 +293,8 @@ public class DatabaseHandler {
         products.put(id, newProduct);
         return addProductToFirebase(newProduct);
     }
+
+
     // Getters and Setters
     public FirebaseFirestore getFirebaseFirestore() {
         return firebaseFirestore;
@@ -306,11 +308,18 @@ public class DatabaseHandler {
     public Map<String, Product> getProducts() {
         return products;
     }
+
     public List<Product> getProductList() {
         return new ArrayList<Product>(products.values());
     }
     public List<Transaction> getTransactionList() {
         return new ArrayList<Transaction>(transactions.values());
+    }
+    public List<String> getProductIdList() {
+        return new ArrayList<String>(products.keySet());
+    }
+    public List<String> getTransactionIdList() {
+        return new ArrayList<String>(transactions.keySet());
     }
 
     public DocumentReference getProductsRef() {
