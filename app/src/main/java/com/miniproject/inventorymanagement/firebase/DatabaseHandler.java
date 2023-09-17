@@ -168,7 +168,6 @@ public class DatabaseHandler {
                                 for (Map.Entry<String, Object> rawProdMap: rawProductData.entrySet()) {
                                     String keu2 = rawProdMap.getKey().toString();
                                     Object aluev = rawProdMap.getValue();
-                                    Log.e(TAG, "ALUEV: " + aluev + " KEU2: " + keu2);
                                     switch (keu2) {
                                         case "id":
                                             newProduct.setId((String) aluev);
@@ -180,19 +179,17 @@ public class DatabaseHandler {
                                             newProduct.setDescription((String) aluev);
                                             break;
                                         case "normalBuyPrice":
-                                            newProduct.setNormalBuyPrice((Long) aluev);
+                                            newProduct.setNormalBuyPrice(((Long) aluev).intValue());
                                             break;
                                         case "normalSellPrice":
-                                            newProduct.setNormalSellPrice((Long) aluev);
+                                            newProduct.setNormalSellPrice(((Long) aluev).intValue());
                                             break;
                                     }
 
                                 }
 
                             }
-                            Log.e(TAG, newProduct.getId() + newProduct.getName());
                             products.put(newProduct.getId(), newProduct);
-                            Log.d(TAG, "PRODUCTS: " + products);
                         }
                     } else {
                         Log.d(TAG, "No such document");

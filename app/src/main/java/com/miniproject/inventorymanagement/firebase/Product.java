@@ -2,6 +2,7 @@ package com.miniproject.inventorymanagement.firebase;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Product {
@@ -25,39 +26,36 @@ public class Product {
 
         this.stockIn = 0;
         this.stockOut = 0;
+        this.transactions = new ArrayList<String>();
     }
     public Product() {
         this.stockIn = 0;
         this.stockOut = 0;
+        this.transactions = new ArrayList<String>();
     }
 
 
     public void setDescription(String description) {
         this.description = description;
     }
-
     public void setId(String id) {
         this.id = id;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public void setNormalBuyPrice(int normalBuyPrice) {
         this.normalBuyPrice = normalBuyPrice;
     }
-
     public void setNormalSellPrice(int normalSellPrice) {
         this.normalSellPrice = normalSellPrice;
     }
-    public void setNormalBuyPrice(Long normalBuyPrice) {
-        this.normalBuyPrice = normalBuyPrice.intValue();
-    }
-
-    public void setNormalSellPrice(Long normalSellPrice) {
-        this.normalSellPrice = normalSellPrice.intValue();
-    }
+//    public void setNormalBuyPrice(Long normalBuyPrice) {
+//        this.normalBuyPrice = normalBuyPrice.intValue();
+//    }
+//    public void setNormalSellPrice(Long normalSellPrice) {
+//        this.normalSellPrice = normalSellPrice.intValue();
+//    }
 
     public void addTransaction(@NonNull Transaction transaction){
         transactions.add(transaction.getId());

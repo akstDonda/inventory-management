@@ -17,7 +17,7 @@ import java.util.Map;
 public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.ViewHolder> {
     private List<Transaction> transactionList;
 
-    public TransactionAdapter(Map<Long, Transaction> transactionMap) {
+    public TransactionAdapter(Map<String, Transaction> transactionMap) {
         transactionList = new ArrayList<>(transactionMap.values());
     }
 
