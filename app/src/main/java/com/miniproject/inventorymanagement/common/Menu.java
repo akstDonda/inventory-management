@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement.firebase;
+package com.miniproject.inventorymanagement.common;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,9 +11,8 @@ import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
-import com.miniproject.inventorymanagement.common.LoginActivity;
 
-public class menu extends AppCompatActivity {
+public class Menu extends AppCompatActivity {
 
     TextView txtlout;
 
@@ -30,7 +29,7 @@ public class menu extends AppCompatActivity {
         //logout
         txtlout.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
-            startActivity(new Intent(menu.this, LoginActivity.class));
+            startActivity(new Intent(Menu.this, LoginActivity.class));
             finish();
         });
 
@@ -38,7 +37,7 @@ public class menu extends AppCompatActivity {
         imgback.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(menu.this,Home.class);
+                Intent intent=new Intent(Menu.this,Home.class);
                 startActivity(intent);
             }
         });

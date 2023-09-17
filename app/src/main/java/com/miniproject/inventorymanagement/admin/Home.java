@@ -17,7 +17,7 @@ import com.miniproject.inventorymanagement.common.LowStock;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
-import com.miniproject.inventorymanagement.firebase.menu;
+import com.miniproject.inventorymanagement.common.Menu;
 
 public class Home extends AppCompatActivity {
     Button addremove, add, remove;
@@ -121,7 +121,7 @@ public class Home extends AppCompatActivity {
         hmenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, menu.class);
+                Intent intent = new Intent(Home.this, Menu.class);
                 startActivity(intent);
             }
         });

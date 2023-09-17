@@ -30,7 +30,7 @@
             android:name=".common.Transactions"
             android:exported="false" />
         <activity
-            android:name=".firebase.menu"
+            android:name=".common.Menu"
             android:exported="false" />
         <activity
             android:name=".admin.AddNewProduct"
