@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.miniproject.inventorymanagement.R;
@@ -21,8 +23,8 @@ import java.util.Objects;
 
 public class CreateNewUser extends AppCompatActivity {
     Button addUser;
-    EditText username;
-    EditText password;
+    TextInputLayout username;
+    TextInputLayout password;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,8 +39,8 @@ public class CreateNewUser extends AppCompatActivity {
         addUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uname=username.getText().toString().trim();
-                String pwd=password.getText().toString().trim();
+                String uname = username.getEditText().getText().toString();
+                String pwd = password.getEditText().getText().toString().trim();
 
                 if (TextUtils.isEmpty(uname)){
                     username.setError("Email is Required");
@@ -48,7 +50,7 @@ public class CreateNewUser extends AppCompatActivity {
                     password.setError("password is Required");
                     return;
                 }
-                if (password.length() < 8){
+                if (pwd.length() < 8){
                     password.setError("character More Then 6 Required");
                     return;
                 }
