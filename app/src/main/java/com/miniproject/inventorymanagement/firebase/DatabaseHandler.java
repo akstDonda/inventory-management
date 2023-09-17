@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
@@ -44,7 +45,12 @@ public class DatabaseHandler {
         if  (user != null) {
             fetchCompany();
         }
-        // Initialize other shared data
+        // TODO: fetchCompany Doesn't complete instantly making if condition below unreliable
+        if (company != null) {
+            refreshProducts();
+            refreshTransactions();
+        }
+        // TODO: Initialize other shared data
     }
 
     public static synchronized DatabaseHandler getInstance() {
@@ -55,15 +61,16 @@ public class DatabaseHandler {
     }
 
 
-    public void addTransaction(String id, Date timestamp, int price, int quantity, Product product) {
+    public void addTransaction(String id, Timestamp timestamp, int price, int quantity, String productId
+    ) {
         // add transaction to local memory and firestore
-        Transaction transaction = new Transaction(id, timestamp, price, quantity, product.getId());
+        Transaction transaction = new Transaction(id, timestamp, price, quantity, productId);
         transactions.put(id, transaction);
         addTransactionToFirestore(transaction);
 
         // update product in local memory and firestore
         // product.addTransaction(transaction);
-        updateProductToFirestore(product);
+        updateProductToFirestore(productId);
     }
 
     /*
@@ -112,7 +119,7 @@ public class DatabaseHandler {
                         String productId = (String) transactionData.get("productId");
                         Timestamp timestamp = (Timestamp) transactionData.get("timestamp");
 
-                        Transaction transaction = new Transaction(id, timestamp.toDate(), price, amount, productId);
+                        Transaction transaction = new Transaction(id, timestamp, price, amount, productId);
                         transactions.put(id, transaction);
 
 
@@ -129,7 +136,7 @@ public class DatabaseHandler {
         return 0;
     }
 
-    public int updateProductToFirestore(Product product) {
+    public int updateProductToFirestore(String productId) {
         // TODO: add new product to firestore
         return 0;
     }

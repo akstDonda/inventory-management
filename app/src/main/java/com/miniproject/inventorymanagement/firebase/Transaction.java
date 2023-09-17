@@ -5,21 +5,19 @@ import com.google.firebase.Timestamp;
 import java.util.Date;
 
 public class Transaction {
-    private String id;
-    private Date date;
+    private final String id;
+    private Timestamp timestamp;  // Timestamp is a class from the Firebase SDK
     private int quantity;
     private int price;
-    private String product_id;
+    private String productId;
 
-    public Transaction (String id, Date date, int price, int quantity, String product_id) {
+    public Transaction (String id, Timestamp date, int price, int quantity, String productId) {
         this.id = id;
-        this.date = date;
+        this.timestamp = date;
         this.price = price;
         this.quantity = quantity;
-        this.product_id = product_id;
+        this.productId = productId;
     }
-
-
 
     // Getters
     public String getId() {
@@ -32,9 +30,10 @@ public class Transaction {
         return price;
     }
     public String getProductId() {
-        return product_id;
+        return productId;
     }
-    public Date getDate() {
-        return date;
+    public Timestamp getTimestamp() {
+        return timestamp;
     }
+
 }
