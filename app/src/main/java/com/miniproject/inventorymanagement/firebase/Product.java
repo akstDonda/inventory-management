@@ -68,6 +68,10 @@ public class Product {
         return 0;
     }
 
+    public void updateSelfInFirestore() {
+        DatabaseHandler.getInstance().getProductsRef().update(this.id, this);
+    }
+
     public int addStock(int quantity) {
         if  (quantity > 0) {
             stockIn += quantity;
@@ -78,6 +82,10 @@ public class Product {
             updateFirebaseItem("stockOut", quantity);
         }
         return 0;
+    }
+
+    public void addTransactionId(String transactionId) {
+        transactions.add(transactionId);
     }
 
     // TODO: better approach to update firebase item

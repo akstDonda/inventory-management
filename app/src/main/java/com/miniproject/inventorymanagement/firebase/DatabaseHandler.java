@@ -223,48 +223,15 @@ public class DatabaseHandler {
         return user.refreshUserData(firebaseAuth);
     }
 
-
-
-    // Getters and Setters
-    public FirebaseFirestore getFirebaseFirestore() {
-        return firebaseFirestore;
-    }
-    public FirebaseAuth getFirebaseAuth() {
-        return firebaseAuth;
-    }
-    public Map<String, Transaction> getTransactions() {
-        return transactions;
-    }
-    public Map<String, Product> getProducts() {
-        return products;
-    }
-    public List<Product> getProductList() {
-        return new ArrayList<Product>(products.values());
-    }
-    public List<Transaction> getTransactionList() {
-        return new ArrayList<Transaction>(transactions.values());
+    public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) {
+        Transaction newTransaction = new Transaction(productId, timestamp, pricePerUnit, quantity);
+        newTransaction.addTransactionToFirestore();
+        Product productToChange = products.get(newTransaction.getProductId());
+        productToChange.addTransactionId(newTransaction.getId());
+        productToChange.updateSelfInFirestore();
     }
 
-    public DocumentReference getProductsRef() {
-        return firebaseFirestore.collection("products").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
-//        return firebaseFirestore.collection("products").document(company.getId());
-    }
-    public DocumentReference getTransactionsRef() {
-        // TODO: remove it after testing up to line GETTRAREF1
-        return firebaseFirestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
-        // TODO: GETTRAREF1: remove up to here ----------------
-        // TODO: uncomment code below to get transactions ref for company
-//        return firebaseFirestore.collection("transactions").document(company.getId());
-    }
-    public DocumentReference getUserRef() {
-        // TODO: what if no user?
-        return firebaseFirestore.collection("users").document(user.getId());
-    }
-    public DocumentReference getCompanyRef() {
-        return firebaseFirestore.collection("companies").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
-        // TODO: what if no company?
-        // return firebaseFirestore.collection("companies").document(company.getId());
-    }
+
 
     public int addProductToFirebase(Product product) {
         try {
@@ -324,4 +291,45 @@ public class DatabaseHandler {
         products.put(id, newProduct);
         return addProductToFirebase(newProduct);
     }
+    // Getters and Setters
+    public FirebaseFirestore getFirebaseFirestore() {
+        return firebaseFirestore;
+    }
+    public FirebaseAuth getFirebaseAuth() {
+        return firebaseAuth;
+    }
+    public Map<String, Transaction> getTransactions() {
+        return transactions;
+    }
+    public Map<String, Product> getProducts() {
+        return products;
+    }
+    public List<Product> getProductList() {
+        return new ArrayList<Product>(products.values());
+    }
+    public List<Transaction> getTransactionList() {
+        return new ArrayList<Transaction>(transactions.values());
+    }
+
+    public DocumentReference getProductsRef() {
+        return firebaseFirestore.collection("products").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+//        return firebaseFirestore.collection("products").document(company.getId());
+    }
+    public DocumentReference getTransactionsRef() {
+        // TODO: remove it after testing up to line GETTRAREF1
+        return firebaseFirestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+        // TODO: GETTRAREF1: remove up to here ----------------
+        // TODO: uncomment code below to get transactions ref for company
+//        return firebaseFirestore.collection("transactions").document(company.getId());
+    }
+    public DocumentReference getUserRef() {
+        // TODO: what if no user?
+        return firebaseFirestore.collection("users").document(user.getId());
+    }
+    public DocumentReference getCompanyRef() {
+        return firebaseFirestore.collection("companies").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+        // TODO: what if no company?
+        // return firebaseFirestore.collection("companies").document(company.getId());
+    }
+
 }
