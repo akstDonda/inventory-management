@@ -14,7 +14,7 @@ public class Product {
 
     private int stockIn;
     private int stockOut;
-    public List<Long> transactions;
+    public List<String> transactions;
 
     public Product(String id, String name, String description, int normalBuyPrice, int normalSellPrice) {
         this.id = id;
@@ -65,7 +65,7 @@ public class Product {
         addTransactionIdToFirebase(transaction.getId());
     }
 
-    public int addTransactionIdToFirebase(Long transactionId){
+    public int addTransactionIdToFirebase(String transactionId){
         // TODO: given transactionId, add it to firebase
         return 0;
     }
@@ -128,7 +128,7 @@ public class Product {
     public String getDescription() {
         return description;
     }
-    public List<Long> getTransactions() {
+    public List<String> getTransactions() {
         return transactions;
     }
 }

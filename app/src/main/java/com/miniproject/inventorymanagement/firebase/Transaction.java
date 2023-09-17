@@ -5,13 +5,13 @@ import com.google.firebase.Timestamp;
 import java.util.Date;
 
 public class Transaction {
-    private Long id;
+    private String id;
     private Date date;
     private int quantity;
     private int price;
     private String product_id;
 
-    public Transaction (Long id, Date date, int price, int quantity, String product_id) {
+    public Transaction (String id, Date date, int price, int quantity, String product_id) {
         this.id = id;
         this.date = date;
         this.price = price;
@@ -22,7 +22,7 @@ public class Transaction {
 
 
     // Getters
-    public Long getId() {
+    public String getId() {
         return id;
     }
     public int getQuantity() {

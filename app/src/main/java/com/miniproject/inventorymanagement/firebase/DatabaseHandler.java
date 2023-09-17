@@ -34,7 +34,7 @@ public class DatabaseHandler {
     private FirebaseFirestore firestore;
     private FirebaseAuth  firebaseAuth;
 
-    private Map<Long, Transaction> transactions;
+    private Map<String, Transaction> transactions;
     private Map<String, Product> products;
     private Company company;
     private User user;
@@ -59,7 +59,7 @@ public class DatabaseHandler {
     }
 
 
-    public void addTransaction(Long id, Date timestamp, int price, int quantity, Product product) {
+    public void addTransaction(String id, Date timestamp, int price, int quantity, Product product) {
         // add transaction to local memory and firestore
         Transaction transaction = new Transaction(id, timestamp, price, quantity, product.getId());
         transactions.put(id, transaction);
@@ -112,7 +112,7 @@ public class DatabaseHandler {
                         Map<String, Object> transactionData = (Map<String, Object>) entry.getValue();
 
 
-                        Long id = Long.parseLong(transactionId);
+                        String id = (String) transactionData.get("id");
                         int amount = ((Long) transactionData.get("amount")).intValue();
                         int price = ((Long) transactionData.get("price")).intValue();
                         String productId = (String) transactionData.get("productId");
@@ -227,7 +227,7 @@ public class DatabaseHandler {
     public FirebaseAuth getFirebaseAuth() {
         return firebaseAuth;
     }
-    public Map<Long, Transaction> getTransactions() {
+    public Map<String, Transaction> getTransactions() {
         return transactions;
     }
     public Map<String, Product> getProducts() {
