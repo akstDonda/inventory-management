@@ -17,6 +17,10 @@ public class User {
         email = firebaseAuth.getCurrentUser().getEmail();
         return 0;
     }
+    public void refreshUserData() {
+        FirebaseAuth fbAuth = DatabaseHandler.getInstance().getFirebaseAuth();
+        refreshUserData(fbAuth);
+    }
 
     // Getters
     public String getId() {

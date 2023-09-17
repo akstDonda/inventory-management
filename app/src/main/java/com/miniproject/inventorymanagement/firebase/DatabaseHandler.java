@@ -87,7 +87,7 @@ public class DatabaseHandler {
 
     public void fetchCompany() {
         company = new Company();
-        company.refreshCompanyData(firebaseAuth, firebaseFirestore);
+        company.refreshCompanyData();
     }
 
     public void createDocuments(String userId) {
@@ -216,7 +216,7 @@ public class DatabaseHandler {
     }
 
     public int refreshCompanyData() {
-        return company.refreshCompanyData(firebaseAuth, firebaseFirestore);
+        return company.refreshCompanyData();
     }
 
     public int refreshUserData() {
@@ -238,6 +238,12 @@ public class DatabaseHandler {
     public Map<String, Product> getProducts() {
         return products;
     }
+    public List<Product> getProductList() {
+        return new ArrayList<Product>(products.values());
+    }
+    public List<Transaction> getTransactionList() {
+        return new ArrayList<Transaction>(transactions.values());
+    }
 
     public DocumentReference getProductsRef() {
         return firebaseFirestore.collection("products").document(company.getId());
@@ -247,7 +253,15 @@ public class DatabaseHandler {
         return firebaseFirestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
         // TODO: GETTRAREF1: remove up to here ----------------
         // TODO: uncomment code below to get transactions ref for company
-        // return firestore.collection("transactions").document(company.getId());
+//        return firebaseFirestore.collection("transactions").document(company.getId());
+    }
+    public DocumentReference getUserRef() {
+        // TODO: what if no user?
+        return firebaseFirestore.collection("users").document(user.getId());
+    }
+    public DocumentReference getCompanyRef() {
+        // TODO: what if no company?
+        return firebaseFirestore.collection("companies").document(company.getId());
     }
 
     public int addProductToFirebase(Product product) {
