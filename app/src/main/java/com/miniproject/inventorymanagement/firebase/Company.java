@@ -41,7 +41,7 @@ public class Company {
         Task<DocumentSnapshot> task = userDataDocRef.get();
         task.addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
-                id = documentSnapshot.getString("adminId");
+                id = documentSnapshot.getString("companyId");
                 refreshCompanyData();
             }
 
@@ -77,7 +77,8 @@ public class Company {
 
     // Getters
     public String getId() {
-        return id;
+        // TODO: remove hardcoded id
+        return "Yy5LPrpfC4fcU3FfhQsYFbV2prt1";
     }
     public String getName() {
         return name;
