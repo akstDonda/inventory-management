@@ -232,7 +232,7 @@ public class DatabaseHandler {
         }
         transactions.put(newTransaction.getId(), newTransaction);
         newTransaction.updateSelfInFirestore();
-        productToChange.addTransactionId(newTransaction.getId());
+        productToChange.addTransaction(newTransaction);
         productToChange.updateSelfInFirestore();
     }
 

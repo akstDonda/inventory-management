@@ -57,22 +57,7 @@ public class Product {
 //        this.normalSellPrice = normalSellPrice.intValue();
 //    }
 
-    public void addTransaction(@NonNull Transaction transaction){
-        transactions.add(transaction.getId());
-        addStock(transaction.getQuantity());
-        addTransactionIdToFirebase(transaction.getId());
-    }
-
-    public int addTransactionIdToFirebase(String transactionId){
-        // TODO: given transactionId, add it to firebase
-        return 0;
-    }
-
-    public void updateSelfInFirestore() {
-        DatabaseHandler.getInstance().getProductsRef().update(this.id, this);
-    }
-
-    public int addStock(int quantity) {
+    private void addStock(int quantity) {
         if  (quantity > 0) {
             stockIn += quantity;
             updateFirebaseItem("stockIn", quantity);
@@ -81,11 +66,15 @@ public class Product {
             stockOut -= quantity;
             updateFirebaseItem("stockOut", quantity);
         }
-        return 0;
     }
 
-    public void addTransactionId(String transactionId) {
-        transactions.add(transactionId);
+    public void addTransaction(@NonNull Transaction transaction){
+        transactions.add(transaction.getId());
+        addStock(transaction.getQuantity());
+    }
+
+    public void updateSelfInFirestore() {
+        DatabaseHandler.getInstance().getProductsRef().update(this.id, this);
     }
 
     // TODO: better approach to update firebase item

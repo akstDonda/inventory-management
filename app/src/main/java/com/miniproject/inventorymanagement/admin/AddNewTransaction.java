@@ -1,24 +1,32 @@
 package com.miniproject.inventorymanagement.admin;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 public class AddNewTransaction extends AppCompatActivity {
 
     private TextInputEditText textInputEditTextDate;
-    TextInputEditText transactionIdEditBox,transactionDateEditBox,transactionQtyEditBox,transactionPriceEditBox;
+    TextInputLayout transactionIdEditBox,transactionDateEditBox,transactionQtyEditBox,transactionPriceEditBox;
 
     String transactionId;
     Integer transactionQuantity,transactionPrice;
@@ -37,9 +45,27 @@ public class AddNewTransaction extends AppCompatActivity {
         transactionQtyEditBox=findViewById(R.id.productQtyTextInputLayout);
         transactionPriceEditBox=findViewById(R.id.transactionPriceTextInputLayout);
 
-        transactionId=transactionIdEditBox.getText().toString().trim();
-        transactionQuantity=Integer.parseInt(transactionQtyEditBox.getText().toString().trim());
-        transactionPrice=Integer.parseInt(transactionPriceEditBox.getText().toString().trim());
+        Button submitButton=findViewById(R.id.addTransactionButton);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DatabaseHandler dbhandler=DatabaseHandler.getInstance();
+                transactionId=transactionIdEditBox.getEditText().getText().toString().trim();
+                transactionQuantity=Integer.parseInt(transactionQtyEditBox.getEditText().getText().toString().trim());
+                transactionPrice=Integer.parseInt(transactionPriceEditBox.getEditText().getText().toString().trim());
+                Timestamp timestamp;
+                try {
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);
+                    Date parsedDate = dateFormat.parse(transactionDateEditBox.getEditText().getText().toString());
+                    timestamp = new Timestamp(parsedDate);
+                }
+                catch (ParseException e) {
+                    Log.e(TAG, "Error in parsing date: " + e.getMessage());
+                    return;
+                }
+                dbhandler.createAndAddTransaction(transactionId, timestamp, transactionQuantity,transactionPrice);
+            }
+        });
 
 
 

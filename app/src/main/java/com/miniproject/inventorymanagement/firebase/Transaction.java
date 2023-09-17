@@ -17,7 +17,7 @@ public class Transaction {
         this.productId = productId;
     }
     public Transaction(Timestamp timestamp, Integer quantity, Integer pricePerUnit, String productId) {
-        this.id = productId + timestamp.toString();
+        this.id = timestamp.toDate().getTime() + "";
         this.timestamp = timestamp;
         this.quantity = quantity;
         this.price = pricePerUnit;
