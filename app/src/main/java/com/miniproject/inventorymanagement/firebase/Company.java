@@ -50,6 +50,9 @@ public class Company {
     }
 
     public int refreshCompanyData() {
+        if (1 != 2) {
+            return 1;
+        }
         // TODO: refreshing data takes time but it should return something usable or which can track tasks
         if (id == null) {
             Task<DocumentSnapshot> task = getCompanyIdFromFirestore();
@@ -77,8 +80,7 @@ public class Company {
 
     // Getters
     public String getId() {
-        // TODO: remove hardcoded id
-        return "Yy5LPrpfC4fcU3FfhQsYFbV2prt1";
+        return id;
     }
     public String getName() {
         return name;

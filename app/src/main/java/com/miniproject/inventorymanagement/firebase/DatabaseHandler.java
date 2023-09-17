@@ -42,14 +42,14 @@ public class DatabaseHandler {
         transactions  = new java.util.HashMap<>();
         products = new java.util.HashMap<>();
         fetchUser();
-        if  (user != null) {
-            fetchCompany();
-        }
+//        if  (user != null) {
+//            fetchCompany();
+//        }
         // TODO: fetchCompany Doesn't complete instantly making if condition below unreliable
-        if (company != null) {
-            refreshProducts();
-            refreshTransactions();
-        }
+//        if (company != null) {
+//            refreshProducts();
+//            refreshTransactions();
+//        }
         // TODO: Initialize other shared data
     }
 
@@ -87,7 +87,7 @@ public class DatabaseHandler {
 
     public void fetchCompany() {
         company = new Company();
-        company.refreshCompanyData();
+//        company.refreshCompanyData();
     }
 
     public void createDocuments(String userId) {
@@ -246,7 +246,8 @@ public class DatabaseHandler {
     }
 
     public DocumentReference getProductsRef() {
-        return firebaseFirestore.collection("products").document(company.getId());
+        return firebaseFirestore.collection("products").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+//        return firebaseFirestore.collection("products").document(company.getId());
     }
     public DocumentReference getTransactionsRef() {
         // TODO: remove it after testing up to line GETTRAREF1
@@ -260,8 +261,9 @@ public class DatabaseHandler {
         return firebaseFirestore.collection("users").document(user.getId());
     }
     public DocumentReference getCompanyRef() {
+        return firebaseFirestore.collection("companies").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
         // TODO: what if no company?
-        return firebaseFirestore.collection("companies").document(company.getId());
+        // return firebaseFirestore.collection("companies").document(company.getId());
     }
 
     public int addProductToFirebase(Product product) {
