@@ -47,13 +47,16 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/transactionDateTextInputLayout"
+            android:id="@+id/productDateTextInputLayout"
             style="@style/primaryTextInputLayout"
-            android:hint="Date"
+            android:hint="Select a Date"
             tools:ignore="HardcodedText">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextDate"
                 style="@style/primaryTextInputEditText"
                 android:inputType="date"
+                android:focusable="false"
+                android:clickable="true"
                 tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -61,7 +64,7 @@
         
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/productDateTextInputLayout"
+            android:id="@+id/productQtyTextInputLayout"
             style="@style/primaryTextInputLayout"
             android:hint="Quantity"
             tools:ignore="HardcodedText">

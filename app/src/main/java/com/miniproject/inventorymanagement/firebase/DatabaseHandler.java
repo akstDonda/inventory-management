@@ -144,6 +144,8 @@ public class DatabaseHandler {
     public int refreshTransactions() {
         // TODO: refresh transactions from firestore
         return 0;
+
+
     }
 
     public Task<DocumentSnapshot> refreshProducts() {
