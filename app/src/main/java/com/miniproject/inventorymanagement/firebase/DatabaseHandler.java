@@ -3,7 +3,6 @@ package com.miniproject.inventorymanagement.firebase;
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -15,12 +14,9 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firestore.v1.WriteResult;
-import com.miniproject.inventorymanagement.common.ProductList;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -31,16 +27,16 @@ import java.util.Map;
 public class DatabaseHandler {
     private static DatabaseHandler instance;
 
-    private FirebaseFirestore firestore;
-    private FirebaseAuth  firebaseAuth;
+    final private FirebaseFirestore firebaseFirestore;
+    final private FirebaseAuth  firebaseAuth;
 
-    private Map<String, Transaction> transactions;
-    private Map<String, Product> products;
+    final private Map<String, Transaction> transactions;
+    final private Map<String, Product> products;
     private Company company;
     private User user;
 
     private DatabaseHandler() {
-        firestore = FirebaseFirestore.getInstance();
+        firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         transactions  = new java.util.HashMap<>();
         products = new java.util.HashMap<>();
@@ -66,11 +62,9 @@ public class DatabaseHandler {
         addTransactionToFirestore(transaction);
 
         // update product in local memory and firestore
-      //  product.addTransaction(transaction);
+        // product.addTransaction(transaction);
         updateProductToFirestore(product);
     }
-
-
 
     /*
     TODO: ideas NEEDED.
@@ -86,14 +80,14 @@ public class DatabaseHandler {
 
     public void fetchCompany() {
         company = new Company();
-        company.refreshCompanyData(firebaseAuth, firestore);
+        company.refreshCompanyData(firebaseAuth, firebaseFirestore);
     }
 
     public void createDocuments(String userId) {
         List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users"));
 
         for (String collection: firebaseCollections) {
-            DocumentReference docRef = firestore.collection(collection).document(userId);
+            DocumentReference docRef = firebaseFirestore.collection(collection).document(userId);
             docRef.set(new HashMap<>());
         }
 
@@ -212,7 +206,7 @@ public class DatabaseHandler {
     }
 
     public int refreshCompanyData() {
-        return company.refreshCompanyData(firebaseAuth, firestore);
+        return company.refreshCompanyData(firebaseAuth, firebaseFirestore);
     }
 
     public int refreshUserData() {
@@ -222,8 +216,8 @@ public class DatabaseHandler {
 
 
     // Getters and Setters
-    public FirebaseFirestore getFirestore() {
-        return firestore;
+    public FirebaseFirestore getFirebaseFirestore() {
+        return firebaseFirestore;
     }
     public FirebaseAuth getFirebaseAuth() {
         return firebaseAuth;
@@ -236,11 +230,11 @@ public class DatabaseHandler {
     }
 
     public DocumentReference getProductsRef() {
-        return firestore.collection("products").document(company.getId());
+        return firebaseFirestore.collection("products").document(company.getId());
     }
     public DocumentReference getTransactionsRef() {
         // TODO: remove it after testing up to line GETTRAREF1
-        return firestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+        return firebaseFirestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
         // TODO: GETTRAREF1: remove up to here ----------------
         // TODO: uncomment code below to get transactions ref for company
         // return firestore.collection("transactions").document(company.getId());
@@ -249,7 +243,7 @@ public class DatabaseHandler {
     public int addProductToFirebase(Product product) {
         try {
             // Get a reference to the "products" collection in Firestore
-            CollectionReference productsCollectionRef = firestore.collection("products");
+            CollectionReference productsCollectionRef = firebaseFirestore.collection("products");
 
             // Create a new document with a custom ID (e.g., product ID)
             // You can also use .add() to auto-generate a document ID if needed
