@@ -84,6 +84,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     private ArrayList<Product> getProductListFromMap(Map<String, Product> productsMap, Integer lowStockLimit) {
+        // TODO: handle variable low stock methods
         if (lowStockLimit == -1) {
             return new ArrayList<>(productsMap.values());
         }
