@@ -99,7 +99,13 @@ public class Product {
         return 1;
     }
 
-
+    // Setters
+    public void setStockIn(int stockIn) {
+        this.stockIn = stockIn;
+    }
+    public void setStockOut(int stockOut) {
+        this.stockOut = stockOut;
+    }
 
     // Getters
     public String getId() {
@@ -129,4 +135,5 @@ public class Product {
     public List<String> getTransactions() {
         return transactions;
     }
+
 }

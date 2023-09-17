@@ -184,6 +184,12 @@ public class DatabaseHandler {
                                         case "normalSellPrice":
                                             newProduct.setNormalSellPrice(((Long) aluev).intValue());
                                             break;
+                                        case "stockIn":
+                                            newProduct.setStockIn(((Long) aluev).intValue());
+                                            break;
+                                        case "stockOut":
+                                            newProduct.setStockOut(((Long) aluev).intValue());
+                                            break;
                                     }
 
                                 }

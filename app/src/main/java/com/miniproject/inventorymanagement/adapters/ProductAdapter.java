@@ -1,5 +1,8 @@
 package com.miniproject.inventorymanagement.adapters;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,66 +19,23 @@ import org.checkerframework.checker.nullness.qual.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-//
-//public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
-//
-//    private List<Product> productList;
-//
-//    public ProductAdapter(Map<String, Product> productsMap) {
-//        // Convert the Map values to a List
-//        productList = new ArrayList<>(productsMap.values());
-//    }
-//
-//    public void updateData(Map<String, Product> updatedProductsMap) {
-//        productList.clear();
-//        productList.addAll(updatedProductsMap.values());
-//        notifyDataSetChanged();
-//    }
-//
-//    @NonNull
-//    @Override
-//    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_product, parent, false);
-//        return new ViewHolder(view);
-//    }
-//
-//    @Override
-//    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//        Product product = productList.get(position);
-//        // Bind the product data to the ViewHolder's UI components
-//        holder.bind(product);
-//    }
-//
-//    @Override
-//    public int getItemCount() {
-//        return productList.size();
-//    }
-//
-//    public static class ViewHolder extends RecyclerView.ViewHolder {
-//        // Declare your UI components here and initialize them in the constructor
-//
-//        public ViewHolder(@NonNull View itemView) {
-//            super(itemView);
-//            // Initialize your UI components here
-//        }
-//
-//        public void bind(Product product) {
-//            // Bind the product data to your UI components
-//            // For example:
-//            // productNameTextView.setText(product.getName());
-//            // productDescriptionTextView.setText(product.getDescription());
-//            // ...
-//        }
-//    }
-//}
-//
+
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private List<Product> productList;
+    private Integer lowStockLimit;
+    private Boolean variableLowStock;
 
     public ProductAdapter(Map<String, Product> productsMap) {
         // Convert the Map values to a List
-        productList = new ArrayList<>(productsMap.values());
+        lowStockLimit = -1;
+        productList = getProductListFromMap(productsMap, lowStockLimit);
+    }
+    public ProductAdapter(Map<String, Product> productsMap, Integer lowStockLimit) {
+        // Convert the Map values to a List and add only if stock is low
+        this.lowStockLimit = lowStockLimit;
+        this.productList = getProductListFromMap(productsMap, lowStockLimit);
+        Log.e(TAG, productList + "");
     }
 
     @NonNull
@@ -119,6 +79,20 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
     }
     public void setProductList(Map<String, Product> productsMap) {
-        productList = new ArrayList<>(productsMap.values());
+        // TODO: handle variable low stock methods
+        productList = getProductListFromMap(productsMap, lowStockLimit);
+    }
+
+    private ArrayList<Product> getProductListFromMap(Map<String, Product> productsMap, Integer lowStockLimit) {
+        if (lowStockLimit == -1) {
+            return new ArrayList<>(productsMap.values());
+        }
+        ArrayList<Product> productList = new ArrayList<>();
+        for (Product product : productsMap.values()) {
+            if (product.getCurrentStock() <= lowStockLimit) {
+                productList.add(product);
+            }
+        }
+        return productList;
     }
 }
