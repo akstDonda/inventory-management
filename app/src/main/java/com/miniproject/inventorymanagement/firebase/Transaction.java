@@ -1,6 +1,7 @@
 package com.miniproject.inventorymanagement.firebase;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Date;
 
@@ -11,12 +12,23 @@ public class Transaction {
     private int price;
     private String productId;
 
-    public Transaction (String id, Timestamp date, int price, int quantity, String productId) {
+    public Transaction(String id, Timestamp date, int price, int quantity, String productId) {
         this.id = id;
         this.timestamp = date;
         this.price = price;
         this.quantity = quantity;
         this.productId = productId;
+    }
+    public Transaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) {
+        this.id = productId + timestamp.toString();
+        this.timestamp = timestamp;
+        this.quantity = quantity;
+        this.price = pricePerUnit;
+        this.productId = productId;
+    }
+
+    public void addTransactionToFirestore() {
+        DatabaseHandler.getInstance().getTransactionsRef().update(id, this);
     }
 
     // Getters
