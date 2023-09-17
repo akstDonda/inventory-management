@@ -207,7 +207,8 @@ public class DatabaseHandler {
     }
 
     public boolean isAdmin() {
-        return user.getId() == company.getAdminId();
+        // TODO: what is company is null OR user?
+        return user.getId().compareTo(company.getAdminId()) == 0;
     }
 
     public int refreshCompanyData() {
