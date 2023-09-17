@@ -59,6 +59,7 @@ public class CreateNewUser extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Toast.makeText(CreateNewUser.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(getApplicationContext(), Home.class));
+
                         }else{
                             Toast.makeText(CreateNewUser.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         }
