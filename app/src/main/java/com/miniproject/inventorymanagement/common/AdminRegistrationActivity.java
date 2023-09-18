@@ -1,11 +1,14 @@
 package com.miniproject.inventorymanagement.common;
 
+import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -107,9 +110,11 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
-                            dbHandler.refreshUserData();
-                            dbHandler.refreshCompanyData();
+//                            dbHandler.refreshUserData();
+//                            dbHandler.refreshCompanyData();
                             dbHandler.createDocuments(dbHandler.getFirebaseAuth().getCurrentUser().getUid());
+                            dbHandler.fetchUser();
+                            Log.d(TAG, "Updated User (local): " + dbHandler.getUser().getName() + "(" + dbHandler.getUser().getId() + ")");
                             startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{
                             Toast.makeText(AdminRegistrationActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();

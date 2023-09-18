@@ -9,13 +9,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import java.util.Date;
-
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
-import com.miniproject.inventorymanagement.adapters.ProductAdapter;
 import com.miniproject.inventorymanagement.adapters.TransactionAdapter;
 import com.miniproject.inventorymanagement.admin.AddNewTransaction;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
@@ -42,7 +38,7 @@ public class Transactions extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         task.addOnSuccessListener(documentSnapshot -> {
-            adapter.setList(dbhandler.getTransactionList());
+            adapter.setList(dbhandler.getTransactionsList());
         });
 
         btn = findViewById(R.id.addTransactionButton);

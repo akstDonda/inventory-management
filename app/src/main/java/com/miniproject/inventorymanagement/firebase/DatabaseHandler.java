@@ -32,6 +32,7 @@ public class DatabaseHandler {
 
     final private Map<String, Transaction> transactions;
     final private Map<String, Product> products;
+    final private Map<String, Category> categories;
     private Company company;
     private User user;
 
@@ -40,7 +41,8 @@ public class DatabaseHandler {
         firebaseAuth = FirebaseAuth.getInstance();
         transactions  = new java.util.HashMap<>();
         products = new java.util.HashMap<>();
-        fetchUser();
+        categories = new java.util.HashMap<>();
+//        fetchUser();
 //        if  (user != null) {
 //            fetchCompany();
 //        }
@@ -80,20 +82,23 @@ public class DatabaseHandler {
 
     public void fetchUser() {
         user = new User();
-        user.refreshUserData(firebaseAuth);
+        user.refreshUserData();
     }
 
     public void fetchCompany() {
+        if (user == null)
+            return;
         company = new Company();
-//        company.refreshCompanyData();
+        company.refreshCompanyData();
     }
 
     public void createDocuments(String userId) {
-        List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users"));
+        List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users", "categories"));
 
         for (String collection: firebaseCollections) {
             DocumentReference docRef = firebaseFirestore.collection(collection).document(userId);
             docRef.set(new HashMap<>());
+            Log.d(TAG, "Created Doc (" + collection + ") for user (" + userId + ")");
         }
 
     }
@@ -330,6 +335,14 @@ public class DatabaseHandler {
 
 
     // Getters and Setters
+
+    public User getUser() {
+        return user;
+    }
+    public Company getCompany() {
+        return company;
+    }
+
     public FirebaseFirestore getFirebaseFirestore() {
         return firebaseFirestore;
     }
@@ -343,17 +356,14 @@ public class DatabaseHandler {
         return products;
     }
 
-    public List<Product> getProductList() {
+    public List<Product> getProductsList() {
         return new ArrayList<Product>(products.values());
     }
-    public List<Transaction> getTransactionList() {
+    public List<Transaction> getTransactionsList() {
         return new ArrayList<Transaction>(transactions.values());
     }
-    public List<String> getProductIdList() {
-        return new ArrayList<String>(products.keySet());
-    }
-    public List<String> getTransactionIdList() {
-        return new ArrayList<String>(transactions.keySet());
+    public List<Category> getCategoriesList() {
+        return new ArrayList<Category>(categories.values());
     }
 
     public DocumentReference getProductsRef() {
@@ -375,6 +385,11 @@ public class DatabaseHandler {
         return firebaseFirestore.collection("companies").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
         // TODO: what if no company?
         // return firebaseFirestore.collection("companies").document(company.getId());
+    }
+    public DocumentReference getCategoriesRef() {
+        // TODO: fix hardcoded line below
+        // TODO: what if no Company
+        return firebaseFirestore.collection("categories").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
     }
 
 }
