@@ -9,6 +9,10 @@ public class Transaction {
     private int price;
     private String productId;
 
+    public Transaction(String id) {
+        this.id = id;
+    }
+
     public Transaction(String id, Timestamp date, int price, int quantity, String productId) {
         this.id = id;
         this.timestamp = date;
@@ -26,6 +30,19 @@ public class Transaction {
 
     public void updateSelfInFirestore() {
         DatabaseHandler.getInstance().getTransactionsRef().update(id, this);
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
+    }
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    public void setPrice(int price) {
+        this.price = price;
+    }
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     // Getters

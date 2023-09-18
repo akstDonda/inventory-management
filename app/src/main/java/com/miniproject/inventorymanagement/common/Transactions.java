@@ -11,7 +11,9 @@ import android.widget.Button;
 
 import java.util.Date;
 
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.ProductAdapter;
 import com.miniproject.inventorymanagement.adapters.TransactionAdapter;
@@ -28,8 +30,9 @@ public class Transactions extends AppCompatActivity {
 
         dbhandler=DatabaseHandler.getInstance();
 
-        dbhandler.addTransaction(Integer.toString(1), new Timestamp(new Date(Integer.toUnsignedLong(56657))),25000,10,dbhandler.getProducts().get("a").getId());
-        dbhandler.addTransaction(Integer.toString(2), new Timestamp(new Date(Integer.toUnsignedLong(56657))),23000,10,dbhandler.getProducts().get("b").getId());
+//        dbhandler.addTransaction(Integer.toString(1), new Timestamp(new Date(Integer.toUnsignedLong(56657))),25000,10,dbhandler.getProducts().get("a").getId());
+//        dbhandler.addTransaction(Integer.toString(2), new Timestamp(new Date(Integer.toUnsignedLong(56657))),23000,10,dbhandler.getProducts().get("b").getId());
+        Task<DocumentSnapshot> task = dbhandler.refreshTransactions();
 
 
         RecyclerView recyclerView=findViewById(R.id.all_transaction_recycleview);
@@ -37,6 +40,10 @@ public class Transactions extends AppCompatActivity {
 
         TransactionAdapter adapter = new TransactionAdapter(dbhandler.getTransactions());
         recyclerView.setAdapter(adapter);
+
+        task.addOnSuccessListener(documentSnapshot -> {
+            adapter.setList(dbhandler.getTransactionList());
+        });
 
         btn = findViewById(R.id.addTransactionButton);
 

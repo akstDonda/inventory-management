@@ -56,5 +56,10 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
             priceTextView = itemView.findViewById(R.id.price_textview);
         }
     }
+
+    public void setList(List<Transaction> list) {
+        transactionList = list;
+        notifyDataSetChanged();
+    }
 }
 

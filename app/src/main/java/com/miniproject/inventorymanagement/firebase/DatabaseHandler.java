@@ -60,8 +60,7 @@ public class DatabaseHandler {
     }
 
 
-    public void addTransaction(String id, Timestamp timestamp, int price, int quantity, String productId
-    ) {
+    public void addTransaction(String id, Timestamp timestamp, int price, int quantity, String productId) {
         // add transaction to local memory and firestore
         Transaction transaction = new Transaction(id, timestamp, price, quantity, productId);
         transactions.put(id, transaction);
@@ -140,9 +139,44 @@ public class DatabaseHandler {
         return 0;
     }
 
-    public int refreshTransactions() {
-        // TODO: refresh transactions from firestore
-        return 0;
+    public Task<DocumentSnapshot> refreshTransactions() {
+        DocumentReference  transactionDocRef = getTransactionsRef();
+        Task<DocumentSnapshot> task = transactionDocRef.get();
+        transactions.clear();
+        task.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                Map<String, Object> documentData = documentSnapshot.getData();
+                for (Map.Entry<String, Object> entry : documentData.entrySet()) {
+                    Transaction newTransaction = new Transaction(entry.getKey().toString());
+                    Object obj = entry.getValue();
+                    if (obj instanceof HashMap) {
+                        Map<String, Object> rawTransactionMaap = (Map<String, Object>) obj;
+                        for (Map.Entry<String, Object> rawTransactionMap : rawTransactionMaap.entrySet()) {
+                            String key = rawTransactionMap.getKey().toString();
+                            Object value = rawTransactionMap.getValue();
+                            switch (key) {
+                                case "quantity":
+                                    newTransaction.setQuantity(((Long) value).intValue());
+                                    break;
+                                case "price":
+                                    newTransaction.setPrice(((Long) value).intValue());
+                                    break;
+                                case "productId":
+                                    newTransaction.setProductId((String) value);
+                                    break;
+                                case "timestamp":
+                                    newTransaction.setTimestamp((Timestamp) value);
+                                    break;
+                            }
+                        }
+                        transactions.put(newTransaction.getId(), newTransaction);
+                        Log.d(TAG, transactions.get(newTransaction.getId()) + "");
+                    }
+                }
+            }
+        });
+        return task;
 
 
     }
