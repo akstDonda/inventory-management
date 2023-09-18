@@ -52,8 +52,7 @@ public class ProductList extends AppCompatActivity {
         task.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                adapter.setProductList(dbhandler.getProducts());
-                adapter.notifyDataSetChanged();
+                adapter.setProductList(dbhandler.getProductList());
             }
         });
     }
