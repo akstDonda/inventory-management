@@ -18,14 +18,19 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.WriteBatch;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Objects;
 
 public class AdminRegistrationActivity extends AppCompatActivity {
@@ -89,6 +94,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 String email=mEmail.getText().toString().trim();
                 String password=mPassword.getText().toString().trim();
+                String companyName = mCompanyName.getText().toString().trim();
                 Toast.makeText(AdminRegistrationActivity.this, email + password, Toast.LENGTH_SHORT).show();
 
                 if (TextUtils.isEmpty(email)){
@@ -110,12 +116,36 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
+                            String uid = Objects.requireNonNull(dbHandler.getFirebaseAuth().getCurrentUser()).getUid();
+                            Task<Void> task1 = dbHandler.createDocuments(uid);
+                            task1.addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Log.e(TAG, "Batch creation success!!");
+//                                    dbHandler.getFirebaseFirestore().collection("users").document(uid).update("companyId", uid);
+//                                    dbHandler.getFirebaseFirestore().collection("companies").document(uid).update("adminId", uid);
+//                                    dbHandler.getFirebaseFirestore().collection("companies").document(uid).update("users", new ArrayList<>());
+//                                    dbHandler.getFirebaseFirestore().collection("companies").document(uid).update("name", companyName);
+                                    DocumentReference userRef = dbHandler.getFirebaseFirestore().collection("users").document(uid);
+                                    DocumentReference  companyRef = dbHandler.getFirebaseFirestore().collection("companies").document(uid);
+                                    WriteBatch batch = dbHandler.getFirebaseFirestore().batch();
+                                    batch.update(userRef, "companyId", uid);
+                                    batch.update(companyRef, "adminId", uid);
+                                    batch.update(companyRef, "users", new ArrayList<>());
+                                    batch.update(companyRef, "name", companyName);
+                                    batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void unused) {
+                                            startActivity(new Intent(getApplicationContext(), Home.class));
+                                        }
+                                    });
+                                }
+                            });
 //                            dbHandler.refreshUserData();
 //                            dbHandler.refreshCompanyData();
 //                            dbHandler.createDocuments(dbHandler.getFirebaseAuth().getCurrentUser().getUid());
-                            Log.d(TAG, dbHandler.getUser().getCompanyId());
-                            Log.d(TAG, "Updated User (local): " + dbHandler.getUser().getName() + "(" + dbHandler.getUser().getId() + ")");
-                            startActivity(new Intent(getApplicationContext(), Home.class));
+//                            Log.d(TAG, dbHandler.getUser().getCompanyId());
+//                            Log.d(TAG, "Updated User (local): " + dbHandler.getUser().getName() + "(" + dbHandler.getUser().getId() + ")");
                         }else{
                             Toast.makeText(AdminRegistrationActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                             reg_progressbar.setVisibility(View.GONE);

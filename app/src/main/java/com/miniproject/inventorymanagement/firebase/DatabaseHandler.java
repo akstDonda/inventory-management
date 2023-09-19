@@ -15,6 +15,8 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.WriteBatch;
+import com.google.firestore.v1.Write;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -71,15 +73,15 @@ public class DatabaseHandler {
     }
 
     // Firestore
-    public void createDocuments(String userId) {
+    public Task<Void> createDocuments(String userId) {
         List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users", "categories"));
-
+        WriteBatch batch = getFirebaseFirestore().batch();
         for (String collection : firebaseCollections) {
             DocumentReference docRef = firebaseFirestore.collection(collection).document(userId);
-            docRef.set(new HashMap<>());
+            batch.set(docRef, new HashMap<>());
             Log.d(TAG, "Created Doc (" + collection + ") for user (" + userId + ")");
         }
-
+        return batch.commit();
     }
 
 

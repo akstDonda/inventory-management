@@ -146,7 +146,7 @@ public class Home extends AppCompatActivity {
         Task<DocumentSnapshot> task = DatabaseHandler.getInstance().getUser().refreshAllUserData();
         task.addOnSuccessListener(documentSnapshot -> {
             Toast.makeText(this,"Logged in as " + DatabaseHandler.getInstance().getUser().getName(), Toast.LENGTH_SHORT).show();
-            Task<DocumentSnapshot> task2 = DatabaseHandler.getInstance().getCompany().refreshCompanyData();
+             Task<DocumentSnapshot> task2 = DatabaseHandler.getInstance().getCompany().refreshCompanyData();
             task2.addOnSuccessListener(documentSnapshot2 -> {
                 Toast.makeText(this, DatabaseHandler.getInstance().getCompany().getName() + " is your company", Toast.LENGTH_SHORT).show();
             });
