@@ -30,6 +30,7 @@ import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Objects;
 
@@ -86,7 +87,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Home.class));
+            startActivity(new Intent(getApplicationContext(), Loading.class));
             finish();
         }
         rbtn.setOnClickListener(new View.OnClickListener() {
@@ -131,7 +132,9 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                                     WriteBatch batch = dbHandler.getFirebaseFirestore().batch();
                                     batch.update(userRef, "companyId", uid);
                                     batch.update(companyRef, "adminId", uid);
-                                    batch.update(companyRef, "users", new ArrayList<>());
+                                    ArrayList<String> users = new ArrayList<String>();
+                                    users.add(uid);
+                                    batch.update(companyRef, "users", users);
                                     batch.update(companyRef, "name", companyName);
                                     batch.commit().addOnSuccessListener(new OnSuccessListener<Void>() {
                                         @Override

@@ -29,7 +29,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
-import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.Map;
@@ -89,7 +88,7 @@ public class LoginActivity extends AppCompatActivity {
 
         //user is already create so throw direct mainActivity
         if(mAuth.getCurrentUser() != null){
-            startActivity(new Intent(getApplicationContext(), Home.class));
+            startActivity(new Intent(getApplicationContext(), Loading.class));
             finish();
         }
 
@@ -128,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
                             DocumentReference docRef = db.collection("users").document(currentUser.getUid());
 //                            Toast.makeText(AdminLogin.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), Home.class));
+                            startActivity(new Intent(getApplicationContext(), Loading.class));
                         }else{
                             Toast.makeText(LoginActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                             lprogresbar.setVisibility(View.GONE);
