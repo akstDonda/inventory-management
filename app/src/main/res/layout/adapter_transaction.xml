@@ -2,13 +2,14 @@
 <!-- transaction_item_layout.xml -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="5dp"
     android:elevation="4dp"
     android:padding="16dp"
-    android:backgroundTint="@color/sec"
+    android:backgroundTint="@color/lightpri2"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -21,28 +22,38 @@
             android:id="@+id/product_id_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Product ID: " />
+            android:text="Product ID : "
+            android:textSize="15dp"
+            android:textColor="@color/pri2"
+            android:textStyle="bold"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/date_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/product_id_textview"
-            android:text="Date: " />
+            android:text="Date : "
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/quantity_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/date_textview"
-            android:text="Quantity: " />
+            android:text="Quantity : "
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
 
         <TextView
             android:id="@+id/price_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/quantity_textview"
-            android:text="Price: " />
+            android:text="Price : "
+            android:textSize="15dp"
+            tools:ignore="TextSizeCheck" />
 
     </RelativeLayout>
 

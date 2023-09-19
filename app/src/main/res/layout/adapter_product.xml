@@ -7,7 +7,7 @@
     app:cardCornerRadius="5dp"
     android:elevation="4dp"
     android:padding="16dp"
-    android:backgroundTint="@color/sec"
+    android:backgroundTint="@color/lightpri2"
     app:cardUseCompatPadding="true">
 
     <RelativeLayout
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="@color/black"
+            android:textColor="@color/pri2"
             android:text="Product Name" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/productNameTextView"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="@color/black"
             android:text="Current stock: 100" />
 
     </RelativeLayout>
