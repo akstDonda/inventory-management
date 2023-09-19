@@ -49,6 +49,28 @@ public class AddNewTransaction extends AppCompatActivity {
         transactionQtyEditBox=findViewById(R.id.productQtyTextInputLayout);
         transactionPriceEditBox=findViewById(R.id.transactionPriceTextInputLayout);
 
+        Button buyButton = findViewById(R.id.buyButton);
+        Button sellButton = findViewById(R.id.sellButton);
+
+        final Boolean[] isBuy = {null};
+
+        buyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isBuy[0] = true;
+                buyButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
+                sellButton.setBackgroundColor(getColor(R.color.background));
+            }
+        });
+        sellButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                isBuy[0] = false;
+                buyButton.setBackgroundColor(getColor(R.color.background));
+                sellButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
+            }
+        });
+
 
         btnhome=findViewById(R.id.backbtnhomeat);
 
@@ -69,6 +91,9 @@ public class AddNewTransaction extends AppCompatActivity {
                 transactionId=transactionIdEditBox.getEditText().getText().toString().trim();
                 transactionQuantity=Integer.parseInt(transactionQtyEditBox.getEditText().getText().toString().trim());
                 transactionPrice=Integer.parseInt(transactionPriceEditBox.getEditText().getText().toString().trim());
+                if (!isBuy[0]) {
+                    transactionQuantity *= -1;
+                }
                 Timestamp timestamp;
                 try {
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.US);

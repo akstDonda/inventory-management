@@ -28,18 +28,18 @@
             android:layout_height="wrap_content">
             <Button
                 style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/button1"
+                android:id="@+id/buyButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button 1"
+                android:text="Buy"
                 />
 
             <Button
                 style="?attr/materialButtonOutlinedStyle"
-                android:id="@+id/button3"
+                android:id="@+id/sellButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Button 3"
+                android:text="Sell"
                 />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
