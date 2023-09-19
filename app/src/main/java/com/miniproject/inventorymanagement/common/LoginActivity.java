@@ -39,7 +39,7 @@ public class LoginActivity extends AppCompatActivity {
     Button login_btn;
     ImageButton lg_back_btn;
     TextInputLayout email, password;
-    TextView txt_create_account,reggt;
+    TextView reggt;
     EditText lemail,lpassword;
     FirebaseAuth mAuth;
     ProgressBar lprogresbar;

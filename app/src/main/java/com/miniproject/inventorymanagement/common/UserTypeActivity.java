@@ -31,7 +31,7 @@ public class UserTypeActivity extends AppCompatActivity {
         btnuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserTypeActivity.this, UserRegistrationActivity.class);
+                Intent intent = new Intent(UserTypeActivity.this, UserLogin.class);
                 startActivity(intent);
             }
         });

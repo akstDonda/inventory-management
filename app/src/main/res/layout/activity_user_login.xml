@@ -9,7 +9,7 @@
 
 
     <ImageButton
-        android:id="@+id/login_back_btn"
+        android:id="@+id/elogin_back_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -76,7 +76,7 @@
                 tools:ignore="HardcodedText,DuplicateSpeakableTextCheck,VisualLintButtonSize" />
 
             <TextView
-                android:id="@+id/openreg"
+                android:id="@+id/eopenreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/btn_user_login"
