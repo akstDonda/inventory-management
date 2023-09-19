@@ -84,12 +84,71 @@ public class DatabaseHandler {
 
 
     // Products
+    public Task<DocumentSnapshot> refreshProducts() {
+        // TODO: better code required
+        DocumentReference productRef = getProductsRef();
+        Map<String, Product> newProducts;
+        Task<DocumentSnapshot> task = productRef.get();
+        task.addOnSuccessListener(documentSnapshot -> {
+            if (documentSnapshot.exists()) {
+                Log.d(TAG, "DocumentSnapshot data: " + documentSnapshot.getData());
+                Map<String, Object> documentData = documentSnapshot.getData();
+                assert documentData != null;
+                for (Map.Entry<String, Object> entry : documentData.entrySet()) {
+                    String key = entry.getKey();
+                    Object value = entry.getValue();
+                    Product newProduct = new Product(key);
+                    if (value instanceof HashMap) {
+                        Map<String, Object> rawProductData = (Map<String, Object>) value;
+
+                        for (Map.Entry<String, Object> rawProdMap : rawProductData.entrySet()) {
+                            String prodMapKey = rawProdMap.getKey();
+                            Object prodMapValue = rawProdMap.getValue();
+                            switch (prodMapKey) {
+                                case "id":
+                                    newProduct.setId((String) prodMapValue);
+                                    break;
+                                case "name":
+                                    newProduct.setName((String) prodMapValue);
+                                    break;
+                                case "description":
+                                    newProduct.setDescription((String) prodMapValue);
+                                    break;
+                                case "normalBuyPrice":
+                                    newProduct.setNormalBuyPrice(((Long) prodMapValue).intValue());
+                                    break;
+                                case "normalSellPrice":
+                                    newProduct.setNormalSellPrice(((Long) prodMapValue).intValue());
+                                    break;
+                                case "stockIn":
+                                    newProduct.setStockIn(((Long) prodMapValue).intValue());
+                                    break;
+                                case "stockOut":
+                                    newProduct.setStockOut(((Long) prodMapValue).intValue());
+                                    break;
+                                case "categoryId":
+                                    newProduct.setCategoryId((String) prodMapValue);
+                                    break;
+                            }
+
+                        }
+
+                    }
+                    products.put(newProduct.getId(), newProduct);
+                }
+            }
+        });
+        return task;
+    }
 
     // Transactions
-    public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) {
+    public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) throws IllegalArgumentException{
         /*
         Add Transaction to local and Firestore, also adds transaction id in product.
         */
+
+        /* TODO: what if transaction with id exists: transaction is overwritten
+            in stockIn, stockOut in Products fix it */
         Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
         Product productToChange = getProducts().get(newTransaction.getProductId());
         if (productToChange == null) {
@@ -99,71 +158,21 @@ public class DatabaseHandler {
         newTransaction.updateSelfInFirestore();
         productToChange.addTransaction(newTransaction);
     }
-
-    // Categories
-    public Task<Void> createAndAddCategory(String id, String name, String colorHex) {
-        Category newCategory = new Category(id, name, colorHex);
-        categories.put(newCategory.getId(), newCategory);
-        return newCategory.updateSelfInFirestore();
-    }
-
-    // Users
-
-
-    public void fetchTransactions() {
-        DocumentReference transactionDocRef = getTransactionsRef();
-
-        transactionDocRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                Log.d(TAG, "got task!!");
-                DocumentSnapshot document = task.getResult();
-                if (document.exists()) {
-                    Map<String, Object> transactionMap = document.getData();
-                    for (Map.Entry<String, Object> entry : transactionMap.entrySet()) {
-                        String transactionId = entry.getKey();
-                        Map<String, Object> transactionData = (Map<String, Object>) entry.getValue();
-
-
-                        String id = (String) transactionData.get("id");
-                        int amount = ((Long) transactionData.get("amount")).intValue();
-                        int price = ((Long) transactionData.get("price")).intValue();
-                        String productId = (String) transactionData.get("productId");
-                        Timestamp timestamp = (Timestamp) transactionData.get("timestamp");
-
-                        Transaction transaction = new Transaction(id, timestamp, price, amount, productId);
-                        transactions.put(id, transaction);
-                        Log.i(TAG, transactionId);
-                    }
-                }
-            }
-        });
-    }
-
-
-    public int addTransactionToFirestore(Transaction transaction) {
-        // TODO: add new transaction to firestore
-        return 0;
-    }
-
-    public int updateProductToFirestore(String productId) {
-        // TODO: add new product to firestore
-        return 0;
-    }
-
     public Task<DocumentSnapshot> refreshTransactions() {
         DocumentReference transactionDocRef = getTransactionsRef();
         Task<DocumentSnapshot> task = transactionDocRef.get();
-        transactions.clear();
         task.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
+                transactions.clear();
                 Map<String, Object> documentData = documentSnapshot.getData();
+                assert documentData != null;
                 for (Map.Entry<String, Object> entry : documentData.entrySet()) {
                     Transaction newTransaction = new Transaction(entry.getKey());
                     Object obj = entry.getValue();
                     if (obj instanceof HashMap) {
-                        Map<String, Object> rawTransactionMaap = (Map<String, Object>) obj;
-                        for (Map.Entry<String, Object> rawTransactionMap : rawTransactionMaap.entrySet()) {
+                        Map<String, Object> mapObj = (Map<String, Object>) obj;
+                        for (Map.Entry<String, Object> rawTransactionMap : mapObj.entrySet()) {
                             String key = rawTransactionMap.getKey();
                             Object value = rawTransactionMap.getValue();
                             switch (key) {
@@ -192,73 +201,25 @@ public class DatabaseHandler {
 
     }
 
-    public Task<DocumentSnapshot> refreshProducts() {
-        DocumentReference productRef = getProductsRef();
-        Map<String, Product> newProducts;
-        Task<DocumentSnapshot> task = productRef.get();
-        task.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-                        Log.d(TAG, "DocumentSnapshot data: " + document.getData());
-                        Map<String, Object> documentData = document.getData();
-                        for (Map.Entry<String, Object> entry : documentData.entrySet()) {
-                            String key = entry.getKey();
-                            Object value = entry.getValue();
-                            Product newProduct = new Product(key);
-                            if (value instanceof HashMap) {
-                                Map<String, Object> rawProductData = (Map<String, Object>) value;
-
-                                for (Map.Entry<String, Object> rawProdMap : rawProductData.entrySet()) {
-                                    String keu2 = rawProdMap.getKey();
-                                    Object aluev = rawProdMap.getValue();
-                                    switch (keu2) {
-                                        case "id":
-                                            newProduct.setId((String) aluev);
-                                            break;
-                                        case "name":
-                                            newProduct.setName((String) aluev);
-                                            break;
-                                        case "description":
-                                            newProduct.setDescription((String) aluev);
-                                            break;
-                                        case "normalBuyPrice":
-                                            newProduct.setNormalBuyPrice(((Long) aluev).intValue());
-                                            break;
-                                        case "normalSellPrice":
-                                            newProduct.setNormalSellPrice(((Long) aluev).intValue());
-                                            break;
-                                        case "stockIn":
-                                            newProduct.setStockIn(((Long) aluev).intValue());
-                                            break;
-                                        case "stockOut":
-                                            newProduct.setStockOut(((Long) aluev).intValue());
-                                            break;
-                                    }
-
-                                }
-
-                            }
-                            products.put(newProduct.getId(), newProduct);
-                        }
-                    } else {
-                        Log.d(TAG, "No such document");
-                    }
-                } else {
-                    Log.d(TAG, "get failed with ", task.getException());
-                }
-            }
-        });
-
-        // TODO:  refresh products from firestore
-        return task;
+    // Categories
+    public Task<Void> createAndAddCategory(String id, String name, String colorHex) {
+        Category newCategory = new Category(id, name, colorHex);
+        categories.put(newCategory.getId(), newCategory);
+        return newCategory.updateSelfInFirestore();
     }
 
+    // Users
+
+
+
+
+
+
+    @Deprecated
     public boolean isAdmin() {
-        // TODO: what is company is null OR user?
-        return user.getId().compareTo(company.getAdminId()) == 0;
+        // what is company is null OR user?
+        // return user.getId().compareTo(company.getAdminId()) == 0;
+        return user.isAdmin();
     }
 
 
@@ -313,12 +274,11 @@ public class DatabaseHandler {
 
         // TODO: checking product_id duplication NOT WORKING!!
         // TODO: fix code below!!
-        for (Product p : products.values()) {
-            if (p.getId() == id) {
-                return 101;
-            }
+        if (products.containsKey(id)) {
+            return 101;
         }
         Product newProduct = new Product(id, name, description, normalBuyPrice, normalSellPrice);
+        newProduct.updateSelfInFirestore();
         products.put(id, newProduct);
         return addProductToFirebase(newProduct);
     }
@@ -370,16 +330,12 @@ public class DatabaseHandler {
     }
 
     public DocumentReference getProductsRef() {
-        return firebaseFirestore.collection("products").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+        return firebaseFirestore.collection("products").document(getUser().getCompanyId());
 //        return firebaseFirestore.collection("products").document(company.getId());
     }
 
     public DocumentReference getTransactionsRef() {
-        // TODO: remove it after testing up to line GETTRAREF1
-        return firebaseFirestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
-        // TODO: GETTRAREF1: remove up to here ----------------
-        // TODO: uncomment code below to get transactions ref for company
-//        return firebaseFirestore.collection("transactions").document(company.getId());
+        return firebaseFirestore.collection("transactions").document(getUser().getCompanyId());
     }
 
     public DocumentReference getUserRef() {
@@ -388,7 +344,9 @@ public class DatabaseHandler {
     }
 
     public DocumentReference getCompanyRef() {
-        return firebaseFirestore.collection("companies").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+        System.out.println(getUser().getCompanyId());
+        System.out.println(getUser().getCompanyId() == null);
+        return firebaseFirestore.collection("companies").document(getUser().getCompanyId());
         // TODO: what if no company?
         // return firebaseFirestore.collection("companies").document(company.getId());
     }
@@ -396,7 +354,7 @@ public class DatabaseHandler {
     public DocumentReference getCategoriesRef() {
         // TODO: fix hardcoded line below
         // TODO: what if no Company
-        return firebaseFirestore.collection("categories").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
+        return firebaseFirestore.collection("categories").document(getUser().getCompanyId());
     }
 
 }

@@ -6,10 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.Dashboard;
 import com.miniproject.inventorymanagement.common.LoginActivity;
@@ -18,6 +21,7 @@ import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.common.Menu;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Home extends AppCompatActivity {
     Button addremove, add, remove;
@@ -30,6 +34,8 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+        syncAllData();
+
 
         addremove = findViewById(R.id.btn_add_remove);
         add = findViewById(R.id.btn_add_transaction);
@@ -133,6 +139,17 @@ public class Home extends AppCompatActivity {
                 Intent intent = new Intent(Home.this, LoginActivity.class);
                 startActivity(intent);
             }
+        });
+    }
+
+    private void syncAllData() {
+        Task<DocumentSnapshot> task = DatabaseHandler.getInstance().getUser().refreshAllUserData();
+        task.addOnSuccessListener(documentSnapshot -> {
+            Toast.makeText(this,"Logged in as " + DatabaseHandler.getInstance().getUser().getName(), Toast.LENGTH_SHORT).show();
+            Task<DocumentSnapshot> task2 = DatabaseHandler.getInstance().getCompany().refreshCompanyData();
+            task2.addOnSuccessListener(documentSnapshot2 -> {
+                Toast.makeText(this, DatabaseHandler.getInstance().getCompany().getName() + " is your company", Toast.LENGTH_SHORT).show();
+            });
         });
     }
 }

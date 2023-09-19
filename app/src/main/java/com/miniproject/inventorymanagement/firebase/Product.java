@@ -49,11 +49,26 @@ public class Product {
             stockOut -= quantity;
         }
     }
+    private void hardClearTranslationsAndStocks() {
+        transactions.clear();
+        stockIn = 0;
+        stockOut = 0;
+    }
 
     // Public methods (these methods update local obj AND in firestore)
     public void addTransaction(@NonNull Transaction transaction) {
         transactions.add(transaction.getId());
         addStock(transaction.getQuantity());
+        updateSelfInFirestore();
+    }
+    public void verifyTransactions() {
+        List<Transaction> transactions = DatabaseHandler.getInstance().getTransactionsList();
+        hardClearTranslationsAndStocks();
+        for (Transaction transaction : transactions) {
+            if (transaction.getProductId().equals(id)) {
+                addTransaction(transaction);
+            }
+        }
         updateSelfInFirestore();
     }
 

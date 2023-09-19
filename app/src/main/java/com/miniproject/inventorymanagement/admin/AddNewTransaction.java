@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -52,7 +53,9 @@ public class AddNewTransaction extends AppCompatActivity {
         Button buyButton = findViewById(R.id.buyButton);
         Button sellButton = findViewById(R.id.sellButton);
 
-        final Boolean[] isBuy = {null};
+        Boolean[] isBuy = {true};
+        buyButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
+        sellButton.setBackgroundColor(getColor(R.color.background));
 
         buyButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +91,8 @@ public class AddNewTransaction extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseHandler dbhandler=DatabaseHandler.getInstance();
+                dbhandler.refreshProducts();
+                dbhandler.refreshTransactions();
                 transactionId=transactionIdEditBox.getEditText().getText().toString().trim();
                 transactionQuantity=Integer.parseInt(transactionQtyEditBox.getEditText().getText().toString().trim());
                 transactionPrice=Integer.parseInt(transactionPriceEditBox.getEditText().getText().toString().trim());
@@ -104,7 +109,14 @@ public class AddNewTransaction extends AppCompatActivity {
                     Log.e(TAG, "Error in parsing date: " + e.getMessage());
                     return;
                 }
-                dbhandler.createAndAddTransaction(transactionId, timestamp, transactionQuantity,transactionPrice);
+                Log.e(TAG, dbhandler.getUser().getCompanyId());
+                try {
+                    dbhandler.createAndAddTransaction(transactionId, timestamp, transactionQuantity, transactionPrice);
+                }
+                catch (IllegalArgumentException e) {
+                    Log.e(TAG, "Error in creating and adding transaction: " + e.getMessage());
+                    Toast.makeText(AddNewTransaction.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
             }
         });
 

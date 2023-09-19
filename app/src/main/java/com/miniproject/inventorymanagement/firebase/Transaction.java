@@ -22,7 +22,7 @@ public class Transaction {
     }
 
     public Transaction(Timestamp timestamp, Integer quantity, Integer pricePerUnit, String productId) {
-        this.id = timestamp.toDate().getTime() + "";
+        this.id = String.valueOf(System.currentTimeMillis());
         this.timestamp = timestamp;
         this.quantity = quantity;
         this.price = pricePerUnit;
