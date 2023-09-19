@@ -12,6 +12,7 @@ import android.widget.Button;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
@@ -20,7 +21,7 @@ import com.miniproject.inventorymanagement.admin.AddNewProduct;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class ProductList extends AppCompatActivity {
-    Button add;
+    FloatingActionButton add;
     DatabaseHandler dbhandler;
     FirebaseFirestore db;
     @Override
@@ -29,7 +30,7 @@ public class ProductList extends AppCompatActivity {
         setContentView(R.layout.activity_product);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-        add=findViewById(R.id.some1);
+        add=findViewById(R.id.addNewProductButton);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

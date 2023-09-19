@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.TransactionAdapter;
@@ -18,7 +19,7 @@ import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Transactions extends AppCompatActivity {
     DatabaseHandler dbhandler;
-    Button btn;
+    FloatingActionButton btn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
