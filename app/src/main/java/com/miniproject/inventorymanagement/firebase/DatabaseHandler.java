@@ -10,6 +10,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
@@ -25,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 
 public class DatabaseHandler {
+    // Attributes
     private static DatabaseHandler instance;
 
     final private FirebaseFirestore firebaseFirestore;
@@ -33,27 +35,21 @@ public class DatabaseHandler {
     final private Map<String, Transaction> transactions;
     final private Map<String, Product> products;
     final private Map<String, Category> categories;
-    private Company company;
-    private User user;
+    final private Company company;
+    final private User user;
 
+    // Constructor
     private DatabaseHandler() {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
         transactions  = new java.util.HashMap<>();
         products = new java.util.HashMap<>();
         categories = new java.util.HashMap<>();
-//        fetchUser();
-//        if  (user != null) {
-//            fetchCompany();
-//        }
+        user = new User();
+        company = new Company();
         // TODO: fetchCompany Doesn't complete instantly making if condition below unreliable
-//        if (company != null) {
-//            refreshProducts();
-//            refreshTransactions();
-//        }
         // TODO: Initialize other shared data
     }
-
     public static synchronized DatabaseHandler getInstance() {
         if (instance == null) {
             instance = new DatabaseHandler();
@@ -62,36 +58,19 @@ public class DatabaseHandler {
     }
 
 
-    public void addTransaction(String id, Timestamp timestamp, int price, int quantity, String productId) {
-        // add transaction to local memory and firestore
-        Transaction transaction = new Transaction(id, timestamp, price, quantity, productId);
-        transactions.put(id, transaction);
-        addTransactionToFirestore(transaction);
-
-        // update product in local memory and firestore
-        // product.addTransaction(transaction);
-        updateProductToFirestore(productId);
+    // Firebase Auth
+    public Task<AuthResult> signInWithEmailAndPassword(@NonNull String email,@NonNull String password) {
+        Task<AuthResult> task = firebaseAuth.signInWithEmailAndPassword(email, password);
+        task.addOnSuccessListener(authResult -> {
+            Task<DocumentSnapshot> task2 = getUser().refreshAllUserData();
+            task2.addOnSuccessListener(documentSnapshot -> {
+                getCompany().refreshCompanyData();
+            });
+        });
+        return task;
     }
 
-    /*
-    TODO: ideas NEEDED.
-    currently, we can only fetch user data when user is logged in.
-    and only using firebase auth. it gives security that no fake user object is created.
-    but is it good way to do it?
-     */
-
-    public void fetchUser() {
-        user = new User();
-        user.refreshUserData();
-    }
-
-    public void fetchCompany() {
-        if (user == null)
-            return;
-        company = new Company();
-        company.refreshCompanyData();
-    }
-
+    // Firestore
     public void createDocuments(String userId) {
         List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users", "categories"));
 
@@ -102,6 +81,29 @@ public class DatabaseHandler {
         }
 
     }
+
+
+    // Products
+
+    // Transactions
+    public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) {
+        /*
+        Add Transaction to local and Firestore, also adds transaction id in product.
+        */
+        Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
+        Product productToChange = getProducts().get(newTransaction.getProductId());
+        if (productToChange == null) {
+            throw new IllegalArgumentException("Product with id (" + productId + ") not found");
+        }
+        transactions.put(newTransaction.getId(), newTransaction);
+        newTransaction.updateSelfInFirestore();
+        productToChange.addTransaction(newTransaction);
+    }
+
+    // Users
+
+
+
     public void fetchTransactions() {
         DocumentReference transactionDocRef = getTransactionsRef();
 
@@ -124,8 +126,6 @@ public class DatabaseHandler {
 
                         Transaction transaction = new Transaction(id, timestamp, price, amount, productId);
                         transactions.put(id, transaction);
-
-
                         Log.i(TAG, transactionId);
                     }
                 }
@@ -255,25 +255,11 @@ public class DatabaseHandler {
         return user.getId().compareTo(company.getAdminId()) == 0;
     }
 
-    public int refreshCompanyData() {
-        return company.refreshCompanyData();
-    }
 
     public int refreshUserData() {
-        return user.refreshUserData(firebaseAuth);
+        return user.refreshBasicUserData(firebaseAuth);
     }
 
-    public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) {
-        Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
-        Product productToChange = products.get(newTransaction.getProductId());
-        if (productToChange == null) {
-            return;
-        }
-        transactions.put(newTransaction.getId(), newTransaction);
-        newTransaction.updateSelfInFirestore();
-        productToChange.addTransaction(newTransaction);
-        productToChange.updateSelfInFirestore();
-    }
 
     public int addProductToFirebase(Product product) {
         try {
@@ -282,9 +268,7 @@ public class DatabaseHandler {
 
             // Create a new document with a custom ID (e.g., product ID)
             // You can also use .add() to auto-generate a document ID if needed
-            if (company == null) {
-                fetchCompany();
-            }
+            getCompany();
             DocumentReference productDocRef = productsCollectionRef.document(company.getId());
 
             // Create a map for the product data
@@ -334,12 +318,15 @@ public class DatabaseHandler {
     }
 
 
-    // Getters and Setters
-
+    // Getters
     public User getUser() {
+        if (user == null)
+            return new User();
         return user;
     }
     public Company getCompany() {
+        if (company == null)
+            return new Company();
         return company;
     }
 

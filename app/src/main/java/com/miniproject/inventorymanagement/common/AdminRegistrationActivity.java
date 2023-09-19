@@ -112,8 +112,8 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
 //                            dbHandler.refreshUserData();
 //                            dbHandler.refreshCompanyData();
-                            dbHandler.createDocuments(dbHandler.getFirebaseAuth().getCurrentUser().getUid());
-                            dbHandler.fetchUser();
+//                            dbHandler.createDocuments(dbHandler.getFirebaseAuth().getCurrentUser().getUid());
+                            Log.d(TAG, dbHandler.getUser().getCompanyId());
                             Log.d(TAG, "Updated User (local): " + dbHandler.getUser().getName() + "(" + dbHandler.getUser().getId() + ")");
                             startActivity(new Intent(getApplicationContext(), Home.class));
                         }else{

@@ -30,6 +30,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.Map;
 import java.util.Objects;
@@ -112,10 +113,14 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 lprogresbar.setVisibility(View.VISIBLE);
 
-                mAuth.signInWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                DatabaseHandler dbHandler = DatabaseHandler.getInstance();
+                Task<AuthResult> task = dbHandler.signInWithEmailAndPassword(email, password);
+
+                task.addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this, dbHandler.getCompany().getName() + "(name of company)", Toast.LENGTH_SHORT).show();
                             FirebaseUser currentUser = mAuth.getCurrentUser();
                             System.out.println(currentUser);
 //                            Toast.makeText(AdminLogin.this, currentUser.getUid(), Toast.LENGTH_LONG).show();
