@@ -1,25 +1,40 @@
 package com.miniproject.inventorymanagement.firebase;
 
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 
 public class Category {
     final private String id;
     private String name;
+    private final String colorHex;
 
-    public Category(String id, String name) {
+    // Constructors
+    public Category(String id, String name, String colorHex) {
         this.id = id;
         this.name = name;
+        this.colorHex = colorHex;
     }
+
+    public Category(String id, String name) {
+        this(id, name, null);
+    }
+
     public Category(String id) {
-        this.id = id;
+        this(id, null, null);
     }
+
 
     // Firestore methods
-    public void updateSelfInFirestore() {
-        DatabaseHandler.getInstance().getCategoriesRef().update(id, this);
+    public Task<Void> updateSelfInFirestore() {
+        return DatabaseHandler.getInstance().getCategoriesRef().update(id, this);
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
 
     // Setters and Getters
     public void setName(String name) {
@@ -27,10 +42,7 @@ public class Category {
         updateSelfInFirestore();
     }
 
-    public String getId() {
-        return id;
-    }
-    public String getName() {
-        return name;
+    public String getColorHex() {
+        return colorHex;
     }
 }

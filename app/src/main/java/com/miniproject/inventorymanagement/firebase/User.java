@@ -5,7 +5,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 
-import java.util.Calendar;
 import java.util.Map;
 import java.util.Objects;
 
@@ -25,6 +24,7 @@ public class User {
         email = firebaseAuth.getCurrentUser().getEmail();
         return 0;
     }
+
     public Task<DocumentSnapshot> refreshCompanyId() {
         DocumentReference userRef = DatabaseHandler.getInstance().getUserRef();
         Task<DocumentSnapshot> task = userRef.get();
@@ -36,6 +36,7 @@ public class User {
         return task;
 
     }
+
     public Task<DocumentSnapshot> refreshAllUserData() {
         FirebaseAuth fbAuth = DatabaseHandler.getInstance().getFirebaseAuth();
         refreshBasicUserData(fbAuth);
@@ -59,6 +60,7 @@ public class User {
             throw new IllegalStateException("User id not set");
         return id;
     }
+
     public String getName() {
         if (name == null)
             refreshAllUserData();
@@ -66,6 +68,7 @@ public class User {
             throw new IllegalStateException("User name not set");
         return name;
     }
+
     public String getEmail() {
         if (email == null)
             refreshAllUserData();
@@ -73,6 +76,7 @@ public class User {
             throw new IllegalStateException("User email not set");
         return email;
     }
+
     public String getCompanyId() {
         return companyId;
     }

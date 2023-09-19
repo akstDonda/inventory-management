@@ -8,7 +8,6 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,7 +29,7 @@ public class DatabaseHandler {
     private static DatabaseHandler instance;
 
     final private FirebaseFirestore firebaseFirestore;
-    final private FirebaseAuth  firebaseAuth;
+    final private FirebaseAuth firebaseAuth;
 
     final private Map<String, Transaction> transactions;
     final private Map<String, Product> products;
@@ -42,7 +41,7 @@ public class DatabaseHandler {
     private DatabaseHandler() {
         firebaseFirestore = FirebaseFirestore.getInstance();
         firebaseAuth = FirebaseAuth.getInstance();
-        transactions  = new java.util.HashMap<>();
+        transactions = new java.util.HashMap<>();
         products = new java.util.HashMap<>();
         categories = new java.util.HashMap<>();
         user = new User();
@@ -50,6 +49,7 @@ public class DatabaseHandler {
         // TODO: fetchCompany Doesn't complete instantly making if condition below unreliable
         // TODO: Initialize other shared data
     }
+
     public static synchronized DatabaseHandler getInstance() {
         if (instance == null) {
             instance = new DatabaseHandler();
@@ -59,7 +59,7 @@ public class DatabaseHandler {
 
 
     // Firebase Auth
-    public Task<AuthResult> signInWithEmailAndPassword(@NonNull String email,@NonNull String password) {
+    public Task<AuthResult> signInWithEmailAndPassword(@NonNull String email, @NonNull String password) {
         Task<AuthResult> task = firebaseAuth.signInWithEmailAndPassword(email, password);
         task.addOnSuccessListener(authResult -> {
             Task<DocumentSnapshot> task2 = getUser().refreshAllUserData();
@@ -74,7 +74,7 @@ public class DatabaseHandler {
     public void createDocuments(String userId) {
         List<String> firebaseCollections = new ArrayList<>(Arrays.asList("companies", "products", "transactions", "users", "categories"));
 
-        for (String collection: firebaseCollections) {
+        for (String collection : firebaseCollections) {
             DocumentReference docRef = firebaseFirestore.collection(collection).document(userId);
             docRef.set(new HashMap<>());
             Log.d(TAG, "Created Doc (" + collection + ") for user (" + userId + ")");
@@ -100,8 +100,14 @@ public class DatabaseHandler {
         productToChange.addTransaction(newTransaction);
     }
 
-    // Users
+    // Categories
+    public Task<Void> createAndAddCategory(String id, String name, String colorHex) {
+        Category newCategory = new Category(id, name, colorHex);
+        categories.put(newCategory.getId(), newCategory);
+        return newCategory.updateSelfInFirestore();
+    }
 
+    // Users
 
 
     public void fetchTransactions() {
@@ -145,7 +151,7 @@ public class DatabaseHandler {
     }
 
     public Task<DocumentSnapshot> refreshTransactions() {
-        DocumentReference  transactionDocRef = getTransactionsRef();
+        DocumentReference transactionDocRef = getTransactionsRef();
         Task<DocumentSnapshot> task = transactionDocRef.get();
         transactions.clear();
         task.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
@@ -153,12 +159,12 @@ public class DatabaseHandler {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Map<String, Object> documentData = documentSnapshot.getData();
                 for (Map.Entry<String, Object> entry : documentData.entrySet()) {
-                    Transaction newTransaction = new Transaction(entry.getKey().toString());
+                    Transaction newTransaction = new Transaction(entry.getKey());
                     Object obj = entry.getValue();
                     if (obj instanceof HashMap) {
                         Map<String, Object> rawTransactionMaap = (Map<String, Object>) obj;
                         for (Map.Entry<String, Object> rawTransactionMap : rawTransactionMaap.entrySet()) {
-                            String key = rawTransactionMap.getKey().toString();
+                            String key = rawTransactionMap.getKey();
                             Object value = rawTransactionMap.getValue();
                             switch (key) {
                                 case "quantity":
@@ -201,12 +207,12 @@ public class DatabaseHandler {
                         for (Map.Entry<String, Object> entry : documentData.entrySet()) {
                             String key = entry.getKey();
                             Object value = entry.getValue();
-                            Product newProduct = new Product();
+                            Product newProduct = new Product(key);
                             if (value instanceof HashMap) {
                                 Map<String, Object> rawProductData = (Map<String, Object>) value;
 
-                                for (Map.Entry<String, Object> rawProdMap: rawProductData.entrySet()) {
-                                    String keu2 = rawProdMap.getKey().toString();
+                                for (Map.Entry<String, Object> rawProdMap : rawProductData.entrySet()) {
+                                    String keu2 = rawProdMap.getKey();
                                     Object aluev = rawProdMap.getValue();
                                     switch (keu2) {
                                         case "id":
@@ -307,7 +313,7 @@ public class DatabaseHandler {
 
         // TODO: checking product_id duplication NOT WORKING!!
         // TODO: fix code below!!
-        for (Product p: products.values()) {
+        for (Product p : products.values()) {
             if (p.getId() == id) {
                 return 101;
             }
@@ -324,6 +330,7 @@ public class DatabaseHandler {
             return new User();
         return user;
     }
+
     public Company getCompany() {
         if (company == null)
             return new Company();
@@ -333,22 +340,31 @@ public class DatabaseHandler {
     public FirebaseFirestore getFirebaseFirestore() {
         return firebaseFirestore;
     }
+
     public FirebaseAuth getFirebaseAuth() {
         return firebaseAuth;
     }
+
     public Map<String, Transaction> getTransactions() {
         return transactions;
     }
+
     public Map<String, Product> getProducts() {
         return products;
+    }
+
+    public Map<String, Category> getCategories() {
+        return categories;
     }
 
     public List<Product> getProductsList() {
         return new ArrayList<Product>(products.values());
     }
+
     public List<Transaction> getTransactionsList() {
         return new ArrayList<Transaction>(transactions.values());
     }
+
     public List<Category> getCategoriesList() {
         return new ArrayList<Category>(categories.values());
     }
@@ -357,6 +373,7 @@ public class DatabaseHandler {
         return firebaseFirestore.collection("products").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
 //        return firebaseFirestore.collection("products").document(company.getId());
     }
+
     public DocumentReference getTransactionsRef() {
         // TODO: remove it after testing up to line GETTRAREF1
         return firebaseFirestore.collection("transactions").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
@@ -364,15 +381,18 @@ public class DatabaseHandler {
         // TODO: uncomment code below to get transactions ref for company
 //        return firebaseFirestore.collection("transactions").document(company.getId());
     }
+
     public DocumentReference getUserRef() {
         // TODO: what if no user?
         return firebaseFirestore.collection("users").document(user.getId());
     }
+
     public DocumentReference getCompanyRef() {
         return firebaseFirestore.collection("companies").document("Yy5LPrpfC4fcU3FfhQsYFbV2prt1");
         // TODO: what if no company?
         // return firebaseFirestore.collection("companies").document(company.getId());
     }
+
     public DocumentReference getCategoriesRef() {
         // TODO: fix hardcoded line below
         // TODO: what if no Company

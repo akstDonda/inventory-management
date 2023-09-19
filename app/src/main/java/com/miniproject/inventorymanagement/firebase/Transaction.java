@@ -20,6 +20,7 @@ public class Transaction {
         this.quantity = quantity;
         this.productId = productId;
     }
+
     public Transaction(Timestamp timestamp, Integer quantity, Integer pricePerUnit, String productId) {
         this.id = timestamp.toDate().getTime() + "";
         this.timestamp = timestamp;
@@ -32,34 +33,41 @@ public class Transaction {
         DatabaseHandler.getInstance().getTransactionsRef().update(id, this);
     }
 
-    public void setTimestamp(Timestamp timestamp) {
-        this.timestamp = timestamp;
-    }
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
-    }
-    public void setPrice(int price) {
-        this.price = price;
-    }
-    public void setProductId(String productId) {
-        this.productId = productId;
-    }
-
     // Getters
     public String getId() {
         return id;
     }
+
     public int getQuantity() {
         return quantity;
     }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public int getPrice() {
         return price;
     }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public String getProductId() {
         return productId;
     }
+
+    public void setProductId(String productId) {
+        this.productId = productId;
+    }
+
     public Timestamp getTimestamp() {
         return timestamp;
+    }
+
+    public void setTimestamp(Timestamp timestamp) {
+        this.timestamp = timestamp;
     }
 
 }
