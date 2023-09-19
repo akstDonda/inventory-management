@@ -31,7 +31,7 @@ public class CreateNewUser extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_emp);
 
         // get fields
-        addEmp = findViewById(R.id.btn_add_user);
+        /*addEmp = findViewById(R.id.btn_add_user);
         username=findViewById(R.id.adduseremail);
         password = findViewById(R.id.adduserpass);
         mAuth = FirebaseAuth.getInstance();
@@ -68,6 +68,6 @@ public class CreateNewUser extends AppCompatActivity {
                 });
 
             }
-        });
+        });*/
     }
 }
