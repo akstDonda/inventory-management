@@ -4,10 +4,12 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.google.android.material.datepicker.CalendarConstraints;
 import com.google.android.material.datepicker.MaterialDatePicker;
@@ -30,6 +32,8 @@ public class AddNewTransaction extends AppCompatActivity {
 
     String transactionId;
     Integer transactionQuantity,transactionPrice;
+
+    ImageView btnhome;
     Timestamp transactionDate;
 
 
@@ -44,6 +48,18 @@ public class AddNewTransaction extends AppCompatActivity {
         transactionDateEditBox=findViewById(R.id.productDateTextInputLayout);
         transactionQtyEditBox=findViewById(R.id.productQtyTextInputLayout);
         transactionPriceEditBox=findViewById(R.id.transactionPriceTextInputLayout);
+
+
+        btnhome=findViewById(R.id.backbtnhomeat);
+
+        //back home
+        btnhome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(AddNewTransaction.this, Home.class);
+                startActivity(intent);
+            }
+        });
 
         Button submitButton=findViewById(R.id.addTransactionButton);
         submitButton.setOnClickListener(new View.OnClickListener() {

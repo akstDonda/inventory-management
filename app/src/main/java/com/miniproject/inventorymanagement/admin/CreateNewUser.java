@@ -22,9 +22,8 @@ import com.miniproject.inventorymanagement.R;
 import java.util.Objects;
 
 public class CreateNewUser extends AppCompatActivity {
-    Button addUser;
-    TextInputLayout username;
-    TextInputLayout password;
+    Button addEmp;
+    EditText username,password;
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +31,15 @@ public class CreateNewUser extends AppCompatActivity {
         setContentView(R.layout.activity_admin_add_emp);
 
         // get fields
-        addUser = findViewById(R.id.adduser);
-        username = findViewById(R.id.adduseremail);
+        addEmp = findViewById(R.id.btn_add_user);
+        username=findViewById(R.id.adduseremail);
         password = findViewById(R.id.adduserpass);
         mAuth = FirebaseAuth.getInstance();
-        addUser.setOnClickListener(new View.OnClickListener() {
+        addEmp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String uname = username.getEditText().getText().toString();
-                String pwd = password.getEditText().getText().toString().trim();
+                String uname = username.getText().toString();
+                String pwd = password.getText().toString().trim();
 
                 if (TextUtils.isEmpty(uname)){
                     username.setError("Email is Required");
