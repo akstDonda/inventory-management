@@ -86,9 +86,11 @@ public class CreateNewUser extends AppCompatActivity {
                             for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult())
                             {
                                 String empuid = queryDocumentSnapshot.getString("StoreUID");
-                                if(empuid.equals(User_id))
+                                String emp_auth = queryDocumentSnapshot.getString("UserAuth");
+                                if(empuid.equals(User_id) && !emp_auth.equals("True"))
                                 {
-                                    employeelist employeelist = new employeelist(queryDocumentSnapshot.getString("UserEMail").toString());
+                                    String cat_id = queryDocumentSnapshot.getId().toString();
+                                    employeelist employeelist = new employeelist(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id);
                                     empArrayList.add(employeelist);
                                     empAdapter.notifyDataSetChanged();
                                 }

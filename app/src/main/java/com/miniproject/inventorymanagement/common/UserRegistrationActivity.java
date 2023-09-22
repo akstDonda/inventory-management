@@ -100,7 +100,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             emp.put("UserEMail",Useremail);
                             emp.put("UserPassword",Userpwd);
                             emp.put("StoreUID",Usersui);
-                            emp.put("UserAuth","Flase");
+                            emp.put("UserAuth","False");
 
                             db.collection("employeeDetails")
                                     .add(emp)
