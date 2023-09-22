@@ -53,7 +53,7 @@
             android:name=".common.ProductList"
             android:exported="false" />
         <activity
-            android:name=".admin.CreateNewUser"
+            android:name=".adapters.CreateNewUser"
             android:exported="false"
             android:parentActivityName=".admin.Home" />
         <activity

@@ -100,7 +100,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
             android:paddingLeft="10dp"
-            android:text="Comapany ID"
+            android:text="Store UID"
             android:textColor="@color/pri2"
             android:textSize="17sp"
             tools:ignore="HardcodedText" />
@@ -108,7 +108,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
             android:id="@+id/addempcompanyid"
-            android:hint="Enter Comapany Id (Unique)"
+            android:hint="Enter Store UID (Unique)"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             tools:ignore="HardcodedText">

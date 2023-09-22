@@ -14,6 +14,7 @@ import androidx.cardview.widget.CardView;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.adapters.CreateNewUser;
 import com.miniproject.inventorymanagement.common.Dashboard;
 import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.common.LowStock;
@@ -73,9 +74,9 @@ public class Home extends AppCompatActivity {
         addEmployeeCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // startActivity(new Intent(getApplicationContext(), CreateNewUser.class));
-                Intent intent = new Intent(Home.this,CreateNewUser.class);
-                startActivity(intent);
+               Intent intent=new Intent(Home.this, CreateNewUser.class);
+               startActivity(intent);
+
             }
         });
         settingsCardView.setOnClickListener(new View.OnClickListener() {

@@ -34,9 +34,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
     TextInputLayout useremail;
     TextInputLayout userpassword;
-    TextInputLayout usercomanyid;
+    TextInputLayout userstoreuid;
 
-    EditText ue,upass,uci;
+    EditText ue,upass,usui;
     Button btnadduser;
     ImageView btnbh;
     ProgressBar pb;
@@ -56,7 +56,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         btnbh=findViewById(R.id.back_btnn);
         useremail=findViewById(R.id.addempemail);
         userpassword=findViewById(R.id.addemppass);
-        usercomanyid=findViewById(R.id.addempcompanyid);
+        userstoreuid=findViewById(R.id.addempcompanyid);
         btnadduser=findViewById(R.id.btn_add_emp);
         pb=findViewById(R.id.erProgressBar);
 
@@ -66,7 +66,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         //convert into edittext
         ue = useremail.getEditText();
         upass = userpassword.getEditText();
-        uci = usercomanyid.getEditText();
+        usui = userstoreuid.getEditText();
 
 
         //data authentication and insert
@@ -76,7 +76,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                 // convert into string
                 String Useremail = ue.getText().toString();
                 String Userpwd = upass.getText().toString();
-                String Usercid = uci.getText().toString();
+                String Usersui = usui.getText().toString();
 
                 if (TextUtils.isEmpty(Useremail)){
                     ue.setError("Email is Required");
@@ -99,7 +99,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             Map<String,Object> emp = new HashMap<>();
                             emp.put("UserEMail",Useremail);
                             emp.put("UserPassword",Userpwd);
-                            emp.put("UserComapnyId",Usercid);
+                            emp.put("StoreUID",Usersui);
                             emp.put("UserAuth","Flase");
 
                             db.collection("employeeDetails")
@@ -108,7 +108,8 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                         @Override
                                         public void onSuccess(DocumentReference documentReference) {
                                             Toast.makeText(UserRegistrationActivity.this, "SucessFully insert Employee data", Toast.LENGTH_SHORT).show();
-                                            Intent intent=new Intent(UserRegistrationActivity.this, UserHome.class);
+                                            Toast.makeText(UserRegistrationActivity.this, "Wait until your owner accept your Employee Request", Toast.LENGTH_LONG).show();
+                                            Intent intent=new Intent(UserRegistrationActivity.this, UserTypeActivity.class);
                                             startActivity(intent);
                                         }
                                     })
