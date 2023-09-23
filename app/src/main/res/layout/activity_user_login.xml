@@ -38,7 +38,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
-            android:id="@+id/useremail"
+            android:id="@+id/empemail"
             android:hint="Email"
             tools:ignore="HardcodedText">
 
@@ -53,7 +53,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
-            android:id="@+id/userpass"
+            android:id="@+id/emppass"
             android:hint="Password"
             tools:ignore="HardcodedText">
 
@@ -70,7 +70,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/btn_user_login"
+                android:id="@+id/btn_emp_login"
                 style="@style/formBtn"
                 android:text="Login"
                 tools:ignore="HardcodedText,DuplicateSpeakableTextCheck,VisualLintButtonSize" />
@@ -79,7 +79,7 @@
                 android:id="@+id/eopenreg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/btn_user_login"
+                android:layout_below="@id/btn_emp_login"
                 android:layout_marginTop="5dp"
                 android:clickable="true"
                 android:text="Don't Have Account"
