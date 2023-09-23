@@ -9,6 +9,7 @@ import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.user.UserLogin;
 
 public class UserTypeActivity extends AppCompatActivity {
     FloatingActionButton btnadmin,btnuser;

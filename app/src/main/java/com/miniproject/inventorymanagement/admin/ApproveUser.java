@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement.adapters;
+package com.miniproject.inventorymanagement.admin;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -17,11 +17,13 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.adapters.EmpAdapter;
+import com.miniproject.inventorymanagement.adapters.employeelist;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.ArrayList;
 
-public class CreateNewUser extends AppCompatActivity {
+public class ApproveUser extends AppCompatActivity {
 
     TextView textviewuid;
     RecyclerView recyclerView;
@@ -45,7 +47,7 @@ public class CreateNewUser extends AppCompatActivity {
 
         db=FirebaseFirestore.getInstance();
         empArrayList=new ArrayList<employeelist>();
-        empAdapter=new EmpAdapter(CreateNewUser.this,empArrayList);
+        empAdapter=new EmpAdapter(ApproveUser.this,empArrayList);
 
         recyclerView.setAdapter(empAdapter);
 

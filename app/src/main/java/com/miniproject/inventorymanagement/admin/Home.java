@@ -6,15 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
-import com.miniproject.inventorymanagement.adapters.CreateNewUser;
 import com.miniproject.inventorymanagement.common.Dashboard;
 import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.common.LowStock;
@@ -22,7 +18,6 @@ import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.common.Menu;
-import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Home extends AppCompatActivity {
     Button addremove, add, remove;
@@ -74,7 +69,7 @@ public class Home extends AppCompatActivity {
         addEmployeeCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent=new Intent(Home.this, CreateNewUser.class);
+               Intent intent=new Intent(Home.this, ApproveUser.class);
                startActivity(intent);
 
             }

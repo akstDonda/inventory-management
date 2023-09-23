@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement.common;
+package com.miniproject.inventorymanagement.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,6 +14,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.UserTypeActivity;
 
 public class UserLogin extends AppCompatActivity {
 
@@ -53,14 +54,14 @@ public class UserLogin extends AppCompatActivity {
         elg_back_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserLogin.this,UserTypeActivity.class);
+                Intent i=new Intent(UserLogin.this, UserTypeActivity.class);
                 startActivity(i);
             }
         });
         elg_reggt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserLogin.this,UserRegistrationActivity.class);
+                Intent i=new Intent(UserLogin.this, UserRegistrationActivity.class);
                 startActivity(i);
             }
         });

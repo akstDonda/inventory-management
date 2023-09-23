@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement.common;
+package com.miniproject.inventorymanagement.user;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,7 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
-import com.miniproject.inventorymanagement.admin.Home;
+import com.miniproject.inventorymanagement.common.UserTypeActivity;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.HashMap;
@@ -135,7 +135,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         btnbh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserRegistrationActivity.this,UserLogin.class);
+                Intent i=new Intent(UserRegistrationActivity.this, UserLogin.class);
                 startActivity(i);
             }
         });
