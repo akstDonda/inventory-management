@@ -50,12 +50,13 @@ public class AddNewProduct extends AppCompatActivity {
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 productName = productNameText.getEditText().getText().toString();
                 productId = productIdText.getEditText().getText().toString();
                 productDescription = productDescriptionText.getEditText().getText().toString();
                 normalProductBuyingPrice = Integer.parseInt(normalBuyPriceText.getEditText().getText().toString());
                 normalProductSellingPrice = Integer.parseInt(normalSellPriceText.getEditText().getText().toString());
-                
+                //createAndAddCategory
                 dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice);
                 Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
 

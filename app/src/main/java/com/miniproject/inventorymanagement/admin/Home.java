@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import com.miniproject.inventorymanagement.common.Category;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.Dashboard;
 import com.miniproject.inventorymanagement.common.LoginActivity;
@@ -21,7 +22,7 @@ import com.miniproject.inventorymanagement.common.Menu;
 
 public class Home extends AppCompatActivity {
     Button addremove, add, remove;
-    CardView productsCardView, transactionsCardView, settingsCardView, dashboardCardView, lowStockCardView, addEmployeeCardView;
+    CardView productsCardView, transactionsCardView, settingsCardView, dashboardCardView, lowStockCardView, addEmployeeCardView,categoryCardView;
 
     ImageView hmenu, hback;
 
@@ -46,6 +47,7 @@ public class Home extends AppCompatActivity {
         dashboardCardView = findViewById(R.id.card_dashboard);
         lowStockCardView = findViewById(R.id.card_lowstock);
         addEmployeeCardView = findViewById(R.id.card_add_employee);
+        categoryCardView=findViewById(R.id.card_addcategory);
 
         // Click Handlers
         productsCardView.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +86,12 @@ public class Home extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), Transactions.class));
+            }
+        });
+        categoryCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), Category.class));
             }
         });
 

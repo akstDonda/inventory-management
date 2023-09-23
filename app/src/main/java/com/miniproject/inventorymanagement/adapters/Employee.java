@@ -1,11 +1,11 @@
 package com.miniproject.inventorymanagement.adapters;
 
-public class employeelist {
+public class Employee {
     String UserEMail,cat_id;
 
-    public employeelist(){}
+    public Employee(){}
 
-    public employeelist(String UserEMail,String cat_id) {
+    public Employee(String UserEMail, String cat_id) {
         this.UserEMail = UserEMail;
         this.cat_id=cat_id;
     }

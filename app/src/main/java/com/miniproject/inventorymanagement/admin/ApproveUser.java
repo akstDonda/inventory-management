@@ -18,7 +18,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.EmpAdapter;
-import com.miniproject.inventorymanagement.adapters.employeelist;
+import com.miniproject.inventorymanagement.adapters.Employee;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public class ApproveUser extends AppCompatActivity {
 
     TextView textviewuid;
     RecyclerView recyclerView;
-    ArrayList<employeelist> empArrayList;
+    ArrayList<Employee> empArrayList;
     EmpAdapter empAdapter;
     FirebaseFirestore db;
     FirebaseAuth mauth;
@@ -46,7 +46,7 @@ public class ApproveUser extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         db=FirebaseFirestore.getInstance();
-        empArrayList=new ArrayList<employeelist>();
+        empArrayList=new ArrayList<Employee>();
         empAdapter=new EmpAdapter(ApproveUser.this,empArrayList);
 
         recyclerView.setAdapter(empAdapter);
@@ -78,7 +78,7 @@ public class ApproveUser extends AppCompatActivity {
                                 if(empuid.equals(User_id) && !emp_auth.equals("True"))
                                 {
                                     String cat_id = queryDocumentSnapshot.getId().toString();
-                                    employeelist employeelist = new employeelist(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id);
+                                    Employee employeelist = new Employee(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id);
                                     empArrayList.add(employeelist);
                                     empAdapter.notifyDataSetChanged();
                                 }

@@ -60,6 +60,7 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
     public void setList(List<Transaction> list) {
         transactionList = list;
         notifyDataSetChanged();
+
     }
 }
 
