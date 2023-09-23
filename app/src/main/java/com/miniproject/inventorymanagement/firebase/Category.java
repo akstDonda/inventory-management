@@ -5,7 +5,7 @@ import com.google.android.gms.tasks.Task;
 public class Category {
     final private String id;
     private String name;
-    private final String colorHex;
+    private String colorHex;
 
     // Constructors
     public Category(String id, String name, String colorHex) {
@@ -39,6 +39,11 @@ public class Category {
     // Setters and Getters
     public void setName(String name) {
         this.name = name;
+        updateSelfInFirestore();
+    }
+    public void setColorHex(String colorHex) {
+        // TODO: check for valid hex code
+        this.colorHex = colorHex;
         updateSelfInFirestore();
     }
 

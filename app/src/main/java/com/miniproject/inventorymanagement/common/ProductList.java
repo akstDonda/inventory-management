@@ -37,6 +37,7 @@ public class ProductList extends AppCompatActivity {
                 startActivity(new Intent(getApplicationContext(), AddNewProduct.class));
             }
         });
+
         dbhandler=DatabaseHandler.getInstance();
         Task<DocumentSnapshot> task = dbhandler.refreshProducts();
 

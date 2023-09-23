@@ -199,8 +199,6 @@ public class DatabaseHandler {
             }
         });
         return task;
-
-
     }
 
     // Categories
@@ -208,6 +206,39 @@ public class DatabaseHandler {
         Category newCategory = new Category(id, name, colorHex);
         categories.put(newCategory.getId(), newCategory);
         return newCategory.updateSelfInFirestore();
+    }
+    public Task<DocumentSnapshot> refreshCategories() {
+        DocumentReference categoriesRef = getCategoriesRef();
+        Task<DocumentSnapshot> task = categoriesRef.get();
+        task.addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                categories.clear();
+                Map<String, Object> documentData = documentSnapshot.getData();
+                for (Map.Entry<String, Object> entry : documentData.entrySet()) {
+                    Category newCategory = new Category(entry.getKey());
+                    Object obj = entry.getValue();
+                    if (obj instanceof HashMap) {
+                        Map<String, Object> mapObj = (Map<String, Object>) obj;
+                        for (Map.Entry<String, Object> rawCategoryMap : mapObj.entrySet()) {
+                            String key = rawCategoryMap.getKey();
+                            Object value = rawCategoryMap.getValue();
+                            switch (key) {
+                                case "name":
+                                    newCategory.setName((String) value);
+                                    break;
+                                case "colorHex":
+                                    newCategory.setColorHex((String) value);
+                                    break;
+                            }
+                        }
+                        }
+                        categories.put(newCategory.getId(), newCategory);
+                    }
+                }
+            }
+        );
+        return task;
     }
 
     // Users

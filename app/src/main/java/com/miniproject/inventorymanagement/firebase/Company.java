@@ -28,6 +28,7 @@ public class Company {
                 name = Objects.requireNonNull(companyData.get("name")).toString();
                 adminId = Objects.requireNonNull(companyData.get("adminId")).toString();
                 users = (List<String>) companyData.get("users");
+                userRequests = (List<String>) companyData.get("requestUsers");
             }
         });
         return task;
