@@ -12,6 +12,7 @@ public class Company {
     private String id;
     private String adminId;
     private List<String> users;
+    private List<String> userRequests;
 
 
     // Firestore methods
@@ -52,6 +53,23 @@ public class Company {
 
     public String getName() {
         return name;
+    }
+
+    public List<String> getUserRequests() {
+        return userRequests;
+    }
+
+    public void authorizeUser(String userId) {
+        DatabaseHandler dbHandler  = DatabaseHandler.getInstance();
+        if (!dbHandler.getUser().isAdmin()) {
+            return;
+        }
+        int index = userRequests.indexOf(userId);
+        if (index == -1) {
+            return;
+        }
+        users.add(userRequests.remove(index));
+        updateSelfInFirestore();
     }
 
     // Setters

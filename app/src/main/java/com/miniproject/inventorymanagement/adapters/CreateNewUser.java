@@ -17,6 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,7 @@ public class CreateNewUser extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_emp);
+        DatabaseHandler dbHandler = DatabaseHandler.getInstance();
 
         textviewuid=findViewById(R.id.tvuid);
 

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.miniproject.inventorymanagement.R;
 
 public class MainSplash extends AppCompatActivity {
@@ -22,9 +23,17 @@ public class MainSplash extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent=new Intent(MainSplash.this,UserTypeActivity.class);
-                startActivity(intent);
-                finish();
+                //user is already create so throw direct mainActivity
+                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                if(mAuth.getCurrentUser() != null){
+                    startActivity(new Intent(getApplicationContext(), Loading.class));
+                    finish();
+                }
+                else {
+                    Intent intent = new Intent(MainSplash.this, UserTypeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
             }
         },400);
     }
