@@ -1,4 +1,4 @@
-package com.miniproject.inventorymanagement.common;
+package com.miniproject.inventorymanagement.user;
 
 import androidx.appcompat.app.AppCompatActivity;
 

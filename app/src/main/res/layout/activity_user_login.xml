@@ -90,7 +90,7 @@
                 tools:ignore="HardcodedText,TextSizeCheck,TouchTargetSizeCheck" />
 
             <ProgressBar
-                android:id="@+id/elProgressBar"
+                android:id="@+id/empProgressBar"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="140dp"

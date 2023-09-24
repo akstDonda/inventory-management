@@ -7,28 +7,43 @@
     android:background="@color/background"
     tools:context=".admin.Home">
 
+    <include layout="@layout/toolbar"/>
+
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="60dp">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar"/>
+
+
+    <TextView
+        android:id="@+id/lblhome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Home"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:layout_marginTop="10dp"
+        />
 
     <GridLayout
         android:id="@+id/grid_layout"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="40dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:columnCount="2"
-        android:rowCount="3"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp">
+        android:rowCount="3">
 
         <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_dashboard"
-        style="@style/homeCardView">
+        style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="22dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -57,6 +72,8 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_add_employee"
             style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="22dp"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -69,6 +86,7 @@
                 <ImageView
                     android:id="@+id/img_cardview_adduser"
                     style="@style/homeCardViewImage"
+                    android:layout_marginTop="20dp"
                     android:contentDescription="TODO"
                     android:src="@drawable/group_add_24px"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
@@ -83,7 +101,9 @@
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_lowstock"
-            style="@style/homeCardView">
+            style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="22dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -112,6 +132,8 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_transaction"
             style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="22dp"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -138,7 +160,9 @@
         </com.google.android.material.card.MaterialCardView>
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_addproduct"
-            style="@style/homeCardView">
+            style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="22dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -166,7 +190,10 @@
 
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_addcategory"
-            style="@style/homeCardView">
+            style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="22dp"
+            android:layout_gravity="end">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -197,6 +224,8 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_settings"
             style="@style/homeCardView"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="22dp"
             android:layout_gravity="end">
 
             <LinearLayout
@@ -224,48 +253,54 @@
     </GridLayout>
 
 
-
-
-    <Button
-        android:id="@+id/btn_add_remove"
-        style="@style/floatbtn"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="15dp"
-        android:drawableTop="@drawable/baseline_storefront_24"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/btn_add_transaction"
-        style="@style/floatbtnaddremove"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="100dp"
-        android:text="Add Transaction"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        tools:ignore="HardcodedText,TextSizeCheck,TextSizeCheck" />
-
-    <Button
-        android:id="@+id/btn_add_product"
-        style="@style/floatbtnaddremove"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginEnd="15dp"
-        android:layout_marginBottom="160dp"
-        android:text="Add Product"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        tools:ignore="HardcodedText,TextSizeCheck" />
-
     </RelativeLayout>
     </ScrollView>
+
+    <FrameLayout
+        android:id="@+id/flbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_add_remove"
+            style="@style/floatbtn"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="15dp"
+            android:drawableTop="@drawable/baseline_storefront_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btn_add_transaction"
+            style="@style/floatbtnaddremove"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="100dp"
+            android:text="Add Transaction"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:ignore="HardcodedText,TextSizeCheck,TextSizeCheck" />
+
+        <Button
+            android:id="@+id/btn_add_product"
+            style="@style/floatbtnaddremove"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="160dp"
+            android:text="Add Product"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:visibility="gone"
+            tools:ignore="HardcodedText,TextSizeCheck" />
+
+
+    </FrameLayout>
 
 
 </RelativeLayout>

@@ -22,7 +22,7 @@
             android:name=".common.Loading"
             android:exported="false" />
         <activity
-            android:name=".common.UserHome"
+            android:name=".user.UserHome"
             android:exported="false" />
         <activity
             android:name=".user.UserLogin"
