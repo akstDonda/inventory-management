@@ -102,7 +102,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_lowstock"
             style="@style/homeCardView"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="22dp">
 
             <LinearLayout
@@ -132,7 +132,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_transaction"
             style="@style/homeCardView"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="22dp"
             android:layout_gravity="end">
 
@@ -161,7 +161,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_addproduct"
             style="@style/homeCardView"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="22dp">
 
             <LinearLayout
@@ -191,7 +191,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_addcategory"
             style="@style/homeCardView"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginRight="22dp"
             android:layout_gravity="end">
 
@@ -224,7 +224,7 @@
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/card_settings"
             style="@style/homeCardView"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="40dp"
             android:layout_marginLeft="22dp"
             android:layout_gravity="end">
 
@@ -271,34 +271,43 @@
             android:drawableTop="@drawable/baseline_storefront_24"
             tools:ignore="SpeakableTextPresentCheck" />
 
-        <Button
-            android:id="@+id/btn_add_transaction"
-            style="@style/floatbtnaddremove"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:layout_marginEnd="15dp"
-            android:layout_marginBottom="100dp"
-            android:text="Add Transaction"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:visibility="gone"
-            tools:ignore="HardcodedText,TextSizeCheck,TextSizeCheck" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true">
+
 
         <Button
             android:id="@+id/btn_add_product"
             style="@style/floatbtnaddremove"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="160dp"
             android:text="Add Product"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:visibility="gone"
-            tools:ignore="HardcodedText,TextSizeCheck" />
+            android:visibility="gone"/>
 
+    </FrameLayout>
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/btn_add_transaction"
+            style="@style/floatbtnaddremove"
+            android:layout_marginEnd="15dp"
+            android:layout_marginBottom="100dp"
+            android:text="Add Transaction"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:visibility="gone"/>
 
     </FrameLayout>
 
