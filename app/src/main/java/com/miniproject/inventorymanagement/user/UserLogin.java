@@ -35,6 +35,7 @@ public class UserLogin extends AppCompatActivity {
     Button btnemplogin;
     FirebaseAuth mauth;
     FirebaseFirestore db;
+    public int c =0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,12 +54,13 @@ public class UserLogin extends AppCompatActivity {
         mauth=FirebaseAuth.getInstance();
         db=FirebaseFirestore.getInstance();
 
+
         btnemplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String em=empe.getText().toString().trim();
-                String pw=empp.getText().toString().trim();
+                String em=empe.getText().toString();
+                String pw=empp.getText().toString();
 
                 if (TextUtils.isEmpty(em)){
                     empe.setError("Email is Required");
@@ -75,7 +77,8 @@ public class UserLogin extends AppCompatActivity {
                 pb.setVisibility(View.VISIBLE);
 
                 //not working
-                /*db.collection("employeeDetails")
+                db.collection("employeeDetails")
+                        .whereEqualTo("UserEMail",em)
                         .get()
                         .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
@@ -91,8 +94,11 @@ public class UserLogin extends AppCompatActivity {
                                             startActivity(i);
                                         }
                                         else{
-                                            Toast.makeText(UserLogin.this, "Employee doesn't Authorized from admin", Toast.LENGTH_SHORT).show();
+                                            c=1;
                                         }
+                                    }
+                                    if (c==1){
+                                        Toast.makeText(UserLogin.this, "unauthorized user", Toast.LENGTH_SHORT).show();
                                     }
                                 }
 
@@ -103,7 +109,7 @@ public class UserLogin extends AppCompatActivity {
                             public void onFailure(@NonNull Exception e) {
                                 Toast.makeText(UserLogin.this, "Data not fetch from database", Toast.LENGTH_SHORT).show();
                             }
-                        });*/
+                        });
 
             }
         });
