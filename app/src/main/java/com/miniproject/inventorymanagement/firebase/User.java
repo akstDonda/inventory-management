@@ -64,8 +64,6 @@ public class User {
     public String getName() {
         if (name == null)
             refreshAllUserData();
-        if (name == null)
-            throw new IllegalStateException("User name not set");
         return name;
     }
 

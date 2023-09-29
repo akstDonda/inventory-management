@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -19,26 +20,40 @@ import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.common.Menu;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+import com.miniproject.inventorymanagement.firebase.User;
 
 public class Home extends AppCompatActivity {
     Button addremove, add, remove;
     CardView productsCardView, transactionsCardView, settingsCardView, dashboardCardView, lowStockCardView, addEmployeeCardView,categoryCardView;
 
     ImageView hmenu, hback;
+    TextView greet;
 
-    @SuppressLint("MissingInflatedId")
+    @SuppressLint({"MissingInflatedId", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_home);
+        
+        
+        greet = findViewById(R.id.lblhome);
+        User u = DatabaseHandler.getInstance().getUser();
+        if (u != null) {
+            if (u.isAdmin()) {
+                greet.setText("Welcome " + u.getName() + " (Admin)");
+            }
+            else {
+            greet.setText("Welcome " + u.getName());}
+        }
 
 
         addremove = findViewById(R.id.btn_add_remove);
         add = findViewById(R.id.btn_add_transaction);
         remove = findViewById(R.id.btn_add_product);
         
-        hmenu = findViewById(R.id.homemenu);
-        hback = findViewById(R.id.homeback);
+//        hmenu = findViewById(R.id.homemenu);
+//        hback = findViewById(R.id.homeback);
 
         // Card Views
         productsCardView = findViewById(R.id.card_addproduct);
@@ -126,23 +141,23 @@ public class Home extends AppCompatActivity {
             }
         });
 
-        // menu open
-        hmenu.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Home.this, Menu.class);
-                startActivity(intent);
-            }
-        });
-
-        // back to login
-        hback.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Home.this, LoginActivity.class);
-                startActivity(intent);
-            }
-        });
+//        // menu open
+//        hmenu.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Home.this, Menu.class);
+//                startActivity(intent);
+//            }
+//        });
+//
+//        // back to login
+//        hback.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(Home.this, LoginActivity.class);
+//                startActivity(intent);
+//            }
+//        });
     }
 
 }
