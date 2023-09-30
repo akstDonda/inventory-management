@@ -62,6 +62,20 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
+            android:id="@+id/CategoryName"
+            android:hint="Category Name"
+            tools:ignore="HardcodedText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:textColorHint="#546E7A"
+                tools:ignore="RtlHardcoded,TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/primaryTextInputLayout"
             android:id="@+id/addProductDescription"
             android:hint="Product Description"
             tools:ignore="HardcodedText">
@@ -104,7 +118,7 @@
             android:layout_alignParentBottom="true"
             android:background="@drawable/round_corner"
             android:backgroundTint="@color/sec"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_marginBottom="20dp"
