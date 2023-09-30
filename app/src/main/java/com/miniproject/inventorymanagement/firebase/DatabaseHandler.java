@@ -147,7 +147,7 @@ public class DatabaseHandler {
     }
 
     // Transactions
-    public int createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) throws IllegalArgumentException{
+    public int createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) throws IllegalArgumentException {
         /*
         Add Transaction to local and Firestore, also adds transaction id in product.
         */
@@ -315,14 +315,17 @@ public class DatabaseHandler {
         }
     }
 
-    public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice) {
+    public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice, String categoryId) {
 
         // TODO: checking product_id duplication NOT WORKING!!
         // TODO: fix code below!!
         if (products.containsKey(id)) {
             return 101;
         }
-        Product newProduct = new Product(id, name, description, normalBuyPrice, normalSellPrice);
+        if (categoryId == null || !categories.containsKey(categoryId)) {
+            return 102;
+        }
+        Product newProduct = new Product(id, name, description, normalBuyPrice, normalSellPrice, categoryId);
         newProduct.updateSelfInFirestore();
         products.put(id, newProduct);
         return addProductToFirebase(newProduct);
