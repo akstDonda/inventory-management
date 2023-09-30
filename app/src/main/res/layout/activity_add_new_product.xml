@@ -62,7 +62,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
-            android:id="@+id/CategoryName"
+            android:id="@+id/categoryName"
             android:hint="Category Name"
             tools:ignore="HardcodedText">
 

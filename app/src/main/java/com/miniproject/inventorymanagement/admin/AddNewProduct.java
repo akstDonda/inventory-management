@@ -27,8 +27,8 @@ public class AddNewProduct extends AppCompatActivity {
     ImageView imgbtnback;
     DatabaseHandler dbHandler;
 
-    String productName, productId, productDescription;
-    TextInputLayout productNameText, productIdText, productDescriptionText, normalBuyPriceText, normalSellPriceText;
+    String productName, productId, productDescription, categoryName;
+    TextInputLayout productNameText, categoryNameText ,productIdText, productDescriptionText, normalBuyPriceText, normalSellPriceText;
     int normalProductSellingPrice, normalProductBuyingPrice;
     Button addProductButton;
 
@@ -43,6 +43,7 @@ public class AddNewProduct extends AppCompatActivity {
         dbHandler=DatabaseHandler.getInstance();
 
         productNameText = findViewById(R.id.addProductName);
+        categoryNameText=findViewById(R.id.categoryName);
         productDescriptionText = findViewById(R.id.addProductDescription);
         productIdText = findViewById(R.id.addProductId);
         normalBuyPriceText = findViewById(R.id.addProductNormalBuyPrice);
@@ -55,26 +56,26 @@ public class AddNewProduct extends AppCompatActivity {
             public void onClick(View view) {
 
 
-                try {
+//                try {
                     productName = productNameText.getEditText().getText().toString();
                     productId = productIdText.getEditText().getText().toString();
                     productDescription = productDescriptionText.getEditText().getText().toString();
-
                     normalProductBuyingPrice = Integer.parseInt(normalBuyPriceText.getEditText().getText().toString());
                     normalProductSellingPrice = Integer.parseInt(normalSellPriceText.getEditText().getText().toString());
+                    categoryName=categoryNameText.getEditText().getText().toString();
 
                     //createAndAddCategory
-                    dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice);
+                    dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice,categoryName);
                     Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
 
 
                     Intent intent = new Intent(AddNewProduct.this, ProductList.class);
                     startActivity(intent);
                     finish();
-                }
-                catch (Exception e) {
+//                }
+//                catch (Exception e) {
                     Toast.makeText(AddNewProduct.this, "Fill Buying, Selling Price", Toast.LENGTH_SHORT).show();
-                }
+//                }
 
 
             }
