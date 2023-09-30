@@ -145,7 +145,7 @@ public class DatabaseHandler {
     }
 
     // Transactions
-    public void createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) throws IllegalArgumentException{
+    public int createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) throws IllegalArgumentException{
         /*
         Add Transaction to local and Firestore, also adds transaction id in product.
         */
@@ -153,7 +153,7 @@ public class DatabaseHandler {
         /* TODO: what if transaction with id exists: transaction is overwritten
             in stockIn, stockOut in Products fix it */
         if (quantity < 0 && quantity * -1 > Objects.requireNonNull(products.get(productId)).getCurrentStock()) {
-            return;
+            return 1;
         }
         Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
         Product productToChange = getProducts().get(newTransaction.getProductId());
@@ -163,6 +163,7 @@ public class DatabaseHandler {
         transactions.put(newTransaction.getId(), newTransaction);
         newTransaction.updateSelfInFirestore();
         productToChange.addTransaction(newTransaction);
+        return 0;
     }
     public Task<DocumentSnapshot> refreshTransactions() {
         DocumentReference transactionDocRef = getTransactionsRef();
