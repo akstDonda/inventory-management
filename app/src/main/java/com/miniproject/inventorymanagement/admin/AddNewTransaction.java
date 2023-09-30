@@ -25,7 +25,9 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class AddNewTransaction extends AppCompatActivity {
 
@@ -44,6 +46,13 @@ public class AddNewTransaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_transaction);
+
+        // TODO: testing
+        Map<String, Transaction> transactions = DatabaseHandler.getInstance().getTransactions();
+        for (Transaction transaction : transactions.values()) {
+            DatabaseHandler.getInstance().deleteTransaction(transaction.getId());
+            break;
+        }
 
         textInputEditTextDate = findViewById(R.id.textInputEditTextDate);
         transactionIdEditBox = findViewById(R.id.transactionProductIdTextInputLayout);

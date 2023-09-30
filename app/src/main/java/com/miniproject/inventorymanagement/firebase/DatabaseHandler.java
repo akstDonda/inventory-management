@@ -151,9 +151,11 @@ public class DatabaseHandler {
             throw new IllegalArgumentException("Product with id (" + productId + ") not found");
         }
         for (String transactionId : productToDelete.getTransactions()) {
-            deleteTransaction(transactionId);
+            transactions.remove(transactionId;
         }
-        Task<Void> task = getProductsRef().set(products);
+
+        getProductsRef().set(products);
+        getTransactionsRef().set(transactions);
     }
 
     // Transactions
@@ -217,14 +219,15 @@ public class DatabaseHandler {
         });
         return task;
     }
+
     public Task<Void> deleteTransaction(String transactionId) {
+        // TODO: reverting transaction in product
         Transaction transactionToDelete = getTransactions().get(transactionId);
         if (transactionToDelete == null) {
             throw new IllegalArgumentException("Transaction with id (" + transactionId + ") not found");
         }
         transactions.remove(transactionToDelete.getId());
-        return getProductsRef().set(transactions);
-        // TODO: update firebase
+        return getTransactionsRef().set(transactions);
     }
 
     // Categories
