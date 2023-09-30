@@ -17,6 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
 import com.google.firestore.v1.Write;
+import com.miniproject.inventorymanagement.adapters.ProductAdapter;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -39,6 +40,8 @@ public class DatabaseHandler {
     final private Map<String, Category> categories;
     final private Company company;
     final private User user;
+
+    private ProductAdapter productAdapter;
 
     // Constructor
     private DatabaseHandler() {

@@ -2,6 +2,7 @@ package com.miniproject.inventorymanagement.adapters;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
+import android.annotation.SuppressLint;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Product;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
@@ -26,16 +28,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private Integer lowStockLimit;
     private Boolean variableLowStock;
 
-    public ProductAdapter(Map<String, Product> productsMap) {
-        // Convert the Map values to a List
-        lowStockLimit = -1;
-        productList = getProductListFromMap(productsMap, lowStockLimit);
-    }
     public ProductAdapter(Map<String, Product> productsMap, Integer lowStockLimit) {
         // Convert the Map values to a List and add only if stock is low
         this.lowStockLimit = lowStockLimit;
         this.productList = getProductListFromMap(productsMap, lowStockLimit);
         Log.e(TAG, productList + "");
+    }
+    public ProductAdapter(Map<String, Product> productsMap) {
+        // Convert the Map values to a List
+        this(productsMap, -1);
     }
 
     @NonNull
@@ -78,15 +79,32 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
 
     }
+
+    // Queries
+    @SuppressLint("NotifyDataSetChanged")
+    public void setQuery(String query) {
+        productList.clear();
+        for (Product product : DatabaseHandler.getInstance().getProductsList()) {
+            if (product.getName().toLowerCase().contains(query.toLowerCase()) ||
+                    product.getDescription().toLowerCase().contains(query.toLowerCase())) {
+                productList.add(product);
+            }
+        }
+        notifyDataSetChanged();
+    }
+
+    // Setters
     public void setProductList(Map<String, Product> productsMap) {
         // TODO: handle variable low stock methods
         productList = getProductListFromMap(productsMap, lowStockLimit);
     }
+    @SuppressLint("NotifyDataSetChanged")
     public void setProductList(List<Product> productList) {
         this.productList = productList;
         notifyDataSetChanged();
     }
 
+    // Getters
     private ArrayList<Product> getProductListFromMap(Map<String, Product> productsMap, Integer lowStockLimit) {
         // TODO: handle variable low stock methods
         if (lowStockLimit == -1) {
@@ -100,4 +118,5 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
         return productList;
     }
+
 }
