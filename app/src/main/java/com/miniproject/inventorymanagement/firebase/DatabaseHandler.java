@@ -92,7 +92,7 @@ public class DatabaseHandler {
     public Task<DocumentSnapshot> refreshProducts() {
         // TODO: better code required
         DocumentReference productRef = getProductsRef();
-        Map<String, Product> newProducts;
+        products.clear();
         Task<DocumentSnapshot> task = productRef.get();
         task.addOnSuccessListener(documentSnapshot -> {
             if (documentSnapshot.exists()) {
