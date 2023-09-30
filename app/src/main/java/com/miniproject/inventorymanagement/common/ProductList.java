@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.SearchView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -23,12 +24,14 @@ import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 public class ProductList extends AppCompatActivity {
     FloatingActionButton add;
     DatabaseHandler dbhandler;
+    SearchView productSearch;
     FirebaseFirestore db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
         FirebaseFirestore db = FirebaseFirestore.getInstance();
+        productSearch=findViewById(R.id.productSearchView);
 
         add=findViewById(R.id.addNewProductButton);
         add.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +56,22 @@ public class ProductList extends AppCompatActivity {
                 adapter.setProductList(dbhandler.getProductsList());
             }
         });
+
+        productSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.setQuery(s);
+                return true;
+            }
+        });
+
+
+        
     }
 
 }

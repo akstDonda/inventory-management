@@ -2,6 +2,8 @@ package com.miniproject.inventorymanagement.admin;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.AdminRegistrationActivity;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
@@ -51,17 +54,29 @@ public class AddNewProduct extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                productName = productNameText.getEditText().getText().toString();
-                productId = productIdText.getEditText().getText().toString();
-                productDescription = productDescriptionText.getEditText().getText().toString();
-                normalProductBuyingPrice = Integer.parseInt(normalBuyPriceText.getEditText().getText().toString());
-                normalProductSellingPrice = Integer.parseInt(normalSellPriceText.getEditText().getText().toString());
-                //createAndAddCategory
-                dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice);
-                Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
 
-                Intent intent = new Intent(AddNewProduct.this, ProductList.class);
-                startActivity(intent);
+                try {
+                    productName = productNameText.getEditText().getText().toString();
+                    productId = productIdText.getEditText().getText().toString();
+                    productDescription = productDescriptionText.getEditText().getText().toString();
+
+                    normalProductBuyingPrice = Integer.parseInt(normalBuyPriceText.getEditText().getText().toString());
+                    normalProductSellingPrice = Integer.parseInt(normalSellPriceText.getEditText().getText().toString());
+
+                    //createAndAddCategory
+                    dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice);
+                    Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
+
+
+                    Intent intent = new Intent(AddNewProduct.this, ProductList.class);
+                    startActivity(intent);
+                    finish();
+                }
+                catch (Exception e) {
+                    Toast.makeText(AddNewProduct.this, "Fill Buying, Selling Price", Toast.LENGTH_SHORT).show();
+                }
+
+
             }
         });
 

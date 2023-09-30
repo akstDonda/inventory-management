@@ -6,9 +6,20 @@
     android:layout_height="match_parent"
     tools:context=".common.ProductList">
 
+    <SearchView
+        android:id="@+id/lowStockSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Low stock Here"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:iconifiedByDefault="false"
+        android:background="@color/md_theme_light_primaryContainer" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@+id/lowStockSearchView"
         android:id="@+id/lowStockRecyclerView"/>
 
 </RelativeLayout>

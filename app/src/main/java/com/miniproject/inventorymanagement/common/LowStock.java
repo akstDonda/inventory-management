@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.widget.SearchView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -17,11 +18,17 @@ import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class LowStock extends AppCompatActivity {
     DatabaseHandler dbHandler;
+    SearchView searchLowStock;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_common_low_stock);
+
+        searchLowStock=findViewById(R.id.lowStockSearchView);
+
+
+
 
         dbHandler = DatabaseHandler.getInstance();
         Task<DocumentSnapshot> task = dbHandler.refreshProducts();
@@ -36,6 +43,19 @@ public class LowStock extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 adapter.setProductList(dbHandler.getProducts());
                 adapter.notifyDataSetChanged();
+            }
+        });
+
+        searchLowStock.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.setQuery(s);
+                return true;
             }
         });
     }

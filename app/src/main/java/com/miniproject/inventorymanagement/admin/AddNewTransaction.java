@@ -19,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+import com.miniproject.inventorymanagement.firebase.Transaction;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -111,7 +112,17 @@ public class AddNewTransaction extends AppCompatActivity {
                 }
                 Log.e(TAG, dbhandler.getUser().getCompanyId());
                 try {
-                    dbhandler.createAndAddTransaction(transactionId, timestamp, transactionQuantity, transactionPrice);
+
+                    if(dbhandler.createAndAddTransaction(transactionId, timestamp, transactionQuantity, transactionPrice)==0){
+                        Toast.makeText(AddNewTransaction.this, "Transaction SucessFull", Toast.LENGTH_SHORT).show();
+                        Intent intent=new Intent(AddNewTransaction.this, Transaction.class);
+                        startActivity(intent);
+
+                    }else{
+                        Toast.makeText(AddNewTransaction.this, "Transaction Canceled", Toast.LENGTH_SHORT).show();
+                    }
+
+
                 }
                 catch (IllegalArgumentException e) {
                     Log.e(TAG, "Error in creating and adding transaction: " + e.getMessage());

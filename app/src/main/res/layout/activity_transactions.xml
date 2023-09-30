@@ -5,10 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".common.Transactions">
+
+    <SearchView
+        android:id="@+id/transactionSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Transaction Here"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="10dp"
+        android:iconifiedByDefault="false"
+        android:background="@color/md_theme_light_primaryContainer" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/all_transaction_recycleview"
+        android:layout_below="@id/transactionSearchView"
         />
 
 <!--    <Button-->
