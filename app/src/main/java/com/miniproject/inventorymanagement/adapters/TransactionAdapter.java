@@ -1,5 +1,6 @@
 package com.miniproject.inventorymanagement.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+import com.miniproject.inventorymanagement.firebase.Product;
 import com.miniproject.inventorymanagement.firebase.Transaction;
 
 import java.util.ArrayList;
@@ -61,6 +64,20 @@ public class TransactionAdapter extends RecyclerView.Adapter<TransactionAdapter.
         transactionList = list;
         notifyDataSetChanged();
 
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    public void setQuery(String query) {
+        transactionList.clear();
+        Map<String, Product> productList = DatabaseHandler.getInstance().getProducts();
+        for (Transaction transaction : DatabaseHandler.getInstance().getTransactionsList()) {
+            Product p = productList.get(transaction.getProductId());
+            assert p != null;
+            if (p.getId().contains(query) || p.getName().contains(query) || p.getDescription().contains(query)){
+                transactionList.add(transaction);
+            }
+        }
+        notifyDataSetChanged();
     }
 }
 

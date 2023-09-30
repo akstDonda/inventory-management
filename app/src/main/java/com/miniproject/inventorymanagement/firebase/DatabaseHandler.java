@@ -41,7 +41,6 @@ public class DatabaseHandler {
     final private Company company;
     final private User user;
 
-    private ProductAdapter productAdapter;
 
     // Constructor
     private DatabaseHandler() {
@@ -270,6 +269,11 @@ public class DatabaseHandler {
 
 
     public int addProductToFirebase(Product product) {
+        for (String productIds: products.keySet()) {
+            if (productIds.compareTo(product.getId()) == 0) {
+                return -1;
+            }
+        }
         try {
             // Get a reference to the "products" collection in Firestore
             CollectionReference productsCollectionRef = firebaseFirestore.collection("products");
