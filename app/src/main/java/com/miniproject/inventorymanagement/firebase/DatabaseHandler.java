@@ -145,6 +145,16 @@ public class DatabaseHandler {
         });
         return task;
     }
+    public void deleteProductAndItsTransactions(String productId) {
+        Product productToDelete = getProducts().get(productId);
+        if (productToDelete == null) {
+            throw new IllegalArgumentException("Product with id (" + productId + ") not found");
+        }
+        for (String transactionId : productToDelete.getTransactions()) {
+            deleteTransaction(transactionId);
+        }
+        Task<Void> task = getProductsRef().set(products);
+    }
 
     // Transactions
     public int createAndAddTransaction(String productId, Timestamp timestamp, Integer quantity, Integer pricePerUnit) throws IllegalArgumentException {
@@ -206,6 +216,15 @@ public class DatabaseHandler {
             }
         });
         return task;
+    }
+    public Task<Void> deleteTransaction(String transactionId) {
+        Transaction transactionToDelete = getTransactions().get(transactionId);
+        if (transactionToDelete == null) {
+            throw new IllegalArgumentException("Transaction with id (" + transactionId + ") not found");
+        }
+        transactions.remove(transactionToDelete.getId());
+        return getProductsRef().set(transactions);
+        // TODO: update firebase
     }
 
     // Categories
