@@ -25,6 +25,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class DatabaseHandler {
     // Attributes
@@ -151,6 +152,9 @@ public class DatabaseHandler {
 
         /* TODO: what if transaction with id exists: transaction is overwritten
             in stockIn, stockOut in Products fix it */
+        if (quantity < 0 && quantity * -1 > Objects.requireNonNull(products.get(productId)).getCurrentStock()) {
+            return;
+        }
         Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
         Product productToChange = getProducts().get(newTransaction.getProductId());
         if (productToChange == null) {
