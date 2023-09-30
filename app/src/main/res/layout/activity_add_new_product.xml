@@ -54,6 +54,7 @@
             tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextProductName"
                 style="@style/primaryTextInputEditText"
                 android:textColorHint="#546E7A"
                 tools:ignore="RtlHardcoded,TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />

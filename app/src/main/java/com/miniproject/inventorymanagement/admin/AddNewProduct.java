@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.AdminRegistrationActivity;
@@ -26,7 +27,7 @@ public class AddNewProduct extends AppCompatActivity {
 
     ImageView imgbtnback;
     DatabaseHandler dbHandler;
-
+//    TextInputEditText textInputEditTextProductName;
     String productName, productId, productDescription, categoryName;
     TextInputLayout productNameText, categoryNameText ,productIdText, productDescriptionText, normalBuyPriceText, normalSellPriceText;
     int normalProductSellingPrice, normalProductBuyingPrice;
@@ -41,15 +42,25 @@ public class AddNewProduct extends AppCompatActivity {
         imgbtnback=findViewById(R.id.backbtnhome);
 
         dbHandler=DatabaseHandler.getInstance();
-
+//        textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
         productNameText = findViewById(R.id.addProductName);
         categoryNameText=findViewById(R.id.categoryName);
         productDescriptionText = findViewById(R.id.addProductDescription);
         productIdText = findViewById(R.id.addProductId);
         normalBuyPriceText = findViewById(R.id.addProductNormalBuyPrice);
         normalSellPriceText = findViewById(R.id.addProductNormalSellPrice);
+        EditText editText=productNameText.getEditText();
 
         addProductButton = findViewById(R.id.btn_sbmt);
+
+        productNameText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddNewProduct.this, "hello", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
 
         addProductButton.setOnClickListener(new View.OnClickListener() {
             @Override
