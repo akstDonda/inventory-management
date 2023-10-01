@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/layout/item_layout.xml -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardUseCompatPadding="true">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:id="@+id/categoryNameTextView"
+        android:textSize="30sp"
+        android:fontFamily="@font/youngserif_regular"
+        tools:ignore="RtlSymmetry"
+        android:outlineAmbientShadowColor="@color/black"/>
+
+</com.google.android.material.card.MaterialCardView>

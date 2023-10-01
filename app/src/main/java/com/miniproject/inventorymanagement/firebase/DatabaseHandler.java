@@ -400,6 +400,8 @@ public class DatabaseHandler {
     }
 
     public DocumentReference getProductsRef() {
+        System.out.println(getUser());
+        System.out.println(getUser().getCompanyId());
         return firebaseFirestore.collection("products").document(getUser().getCompanyId());
 //        return firebaseFirestore.collection("products").document(company.getId());
     }

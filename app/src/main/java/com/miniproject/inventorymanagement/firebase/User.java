@@ -34,6 +34,7 @@ public class User {
             companyId = Objects.requireNonNull(documentData.get("companyId")).toString();
             if (documentData.containsKey("displayName"))
                 displayName = Objects.requireNonNull(documentData.get("displayName")).toString();
+            System.out.println("Fetched CompanyId: " + companyId);
         });
         return task;
     }

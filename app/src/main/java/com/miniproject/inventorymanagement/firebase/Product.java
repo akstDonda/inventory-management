@@ -156,6 +156,6 @@ public class Product {
             this.categoryId = categoryId;
             return;
         }
-        throw new IllegalArgumentException("Category ID not found in categories");
+//        throw new IllegalArgumentException("Category ID not found in categories");
     }
 }

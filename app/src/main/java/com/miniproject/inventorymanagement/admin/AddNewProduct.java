@@ -17,6 +17,7 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.AdminRegistrationActivity;
+import com.miniproject.inventorymanagement.common.CategorySelect;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
@@ -24,6 +25,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AddNewProduct extends AppCompatActivity {
+    private final int CATEGORY_SELECT_REQUEST_CODE = 1;
 
     ImageView imgbtnback;
     DatabaseHandler dbHandler;
@@ -40,17 +42,25 @@ public class AddNewProduct extends AppCompatActivity {
         this.setTitle("Product Add");
 
         imgbtnback=findViewById(R.id.backbtnhome);
+        String categoryId = null;
+        if (getIntent().getExtras() != null) {
+            categoryId = getIntent().getExtras().getString("selectedCategory");
+            Toast.makeText(this, categoryId, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "hehe :)", Toast.LENGTH_SHORT).show();
+        }
 
         dbHandler=DatabaseHandler.getInstance();
         textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
         textInputEditTextCategoryName=findViewById(R.id.textInputEditTextCategoryName);
+        textInputEditTextCategoryName.setText(categoryId);
         textInputEditTextCategoryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(AddNewProduct.this, "Select Category", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(AddNewProduct.this, onClickCategory.class);
-                startActivity(intent);
-
+                Intent intent = new Intent(AddNewProduct.this, CategorySelect.class);
+                startActivityForResult(intent, CATEGORY_SELECT_REQUEST_CODE);
             }
         });
 //        textInputEditTextProductName.setOnClickListener(new View.OnClickListener() {
@@ -130,5 +140,17 @@ public class AddNewProduct extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == CATEGORY_SELECT_REQUEST_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
+                String selectedCategory = data.getStringExtra("selectedCategory");
+                // Update the category text field with the selected category
+                textInputEditTextCategoryName.setText(selectedCategory);
+            }
+        }
     }
 }
