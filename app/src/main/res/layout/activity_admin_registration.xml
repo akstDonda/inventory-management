@@ -33,6 +33,19 @@
             style="@style/formTitle"
             android:text="Register"
             tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/display_name"
+            style="@style/primaryTextInputLayout"
+            android:hint="Display Name"
+            tools:ignore="HardcodedText">
+
+            <com.google.android.material.textfield.TextInputEditText
+                style="@style/primaryTextInputEditText"
+                android:inputType="text"
+                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
+
+        </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edt_email_admin_reg"
             style="@style/primaryTextInputLayout"
@@ -75,20 +88,6 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/edt_mn_admin_reg"
-            style="@style/primaryTextInputLayout"
-            android:hint="Contact No"
-            tools:ignore="HardcodedText">
-
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/primaryTextInputEditText"
-                android:drawableStart="@drawable/baseline_local_phone_24"
-                android:inputType="number"
-                android:maxLength="10"
-                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-
-        </com.google.android.material.textfield.TextInputLayout>
 
 
         <RelativeLayout

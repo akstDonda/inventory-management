@@ -2,6 +2,7 @@ package com.miniproject.inventorymanagement.admin;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,16 +11,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.res.ResourcesCompat;
 
 import com.miniproject.inventorymanagement.common.Category;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.Dashboard;
-import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.common.LowStock;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.Settings;
 import com.miniproject.inventorymanagement.common.Transactions;
-import com.miniproject.inventorymanagement.common.Menu;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.User;
 
@@ -41,11 +41,13 @@ public class Home extends AppCompatActivity {
         User u = DatabaseHandler.getInstance().getUser();
         if (u != null) {
             if (u.isAdmin()) {
-                greet.setText("Welcome " + u.getName() + " (Admin)");
+                greet.setText("Welcome, " + u.getDisplayName() + " (admin)!");
             }
             else {
-            greet.setText("Welcome " + u.getName());}
+            greet.setText("Welcome, " + u.getDisplayName() + "!");}
         }
+        greet.setTypeface(Typeface.create("sans-serif", Typeface.BOLD));
+        greet.setTypeface(ResourcesCompat.getFont(this, R.font.youngserif_regular));
 
 
         addremove = findViewById(R.id.btn_add_remove);

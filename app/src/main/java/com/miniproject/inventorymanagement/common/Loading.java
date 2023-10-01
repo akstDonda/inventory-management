@@ -6,11 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Loading extends AppCompatActivity {
 
@@ -21,13 +26,34 @@ public class Loading extends AppCompatActivity {
 
         Task<DocumentSnapshot> task = DatabaseHandler.getInstance().getUser().refreshAllUserData();
         task.addOnSuccessListener(documentSnapshot -> {
-            Toast.makeText(this,"Logged in as " + DatabaseHandler.getInstance().getUser().getName(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,"Logged in as " + DatabaseHandler.getInstance().getUser().getDisplayName(), Toast.LENGTH_SHORT).show();
             Task<DocumentSnapshot> task2 = DatabaseHandler.getInstance().getCompany().refreshCompanyData();
             task2.addOnSuccessListener(documentSnapshot2 -> {
-                Toast.makeText(this, DatabaseHandler.getInstance().getCompany().getName() + " is your company", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(getApplicationContext(), Home.class));
+                DatabaseHandler dbHandler = DatabaseHandler.getInstance();
+                Task<DocumentSnapshot> refreshUserTask = dbHandler.getUser().refreshAllUserData();
+                Task<DocumentSnapshot> refreshCompanyTask = dbHandler.getCompany().refreshCompanyData();
+                Task<DocumentSnapshot> refreshProductTask = dbHandler.refreshProducts();
+                Task<DocumentSnapshot> refreshTransactionTask = dbHandler.refreshTransactions();
+                Task<DocumentSnapshot> refreshCategoriesTask = dbHandler.refreshCategories();
+
+                Tasks.whenAllSuccess(refreshUserTask, refreshCompanyTask, refreshProductTask, refreshTransactionTask, refreshCategoriesTask )
+                        .addOnSuccessListener(new OnSuccessListener<List<Object>>() {
+                            @Override
+                            public void onSuccess(List<Object> objects) {
+                                if (dbHandler.getUser().isAuthorized()) {
+                                    startActivity(new Intent(getApplicationContext(), Home.class));
+                                }
+                                Toast.makeText(Loading.this, "Unauthorized!", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+//                if (DatabaseHandler.getInstance().getUser().isAuthorized()) {
+//                    startActivity(new Intent(getApplicationContext(), Home.class));
+//                }
+//                Toast.makeText(this, DatabaseHandler.getInstance().getCompany().getName() + " is your company", Toast.LENGTH_SHORT).show();
+//                startActivity(new Intent(getApplicationContext(), Home.class));
             });
         });
+
 
     }
 }

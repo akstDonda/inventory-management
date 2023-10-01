@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Objects;
 
 public class User {
-    private String name;
+    private String displayName;
     private String id;
     private String email;
     private String companyId;
@@ -20,27 +20,29 @@ public class User {
         }
 
         id = firebaseAuth.getCurrentUser().getUid();
-        name = firebaseAuth.getCurrentUser().getDisplayName();
+        displayName = firebaseAuth.getCurrentUser().getDisplayName();
         email = firebaseAuth.getCurrentUser().getEmail();
         return 0;
     }
 
-    public Task<DocumentSnapshot> refreshCompanyId() {
+    public Task<DocumentSnapshot> refreshFirestoreData() {
         DocumentReference userRef = DatabaseHandler.getInstance().getUserRef();
         Task<DocumentSnapshot> task = userRef.get();
         task.addOnSuccessListener(documentSnapshot -> {
             Map<String, Object> documentData = documentSnapshot.getData();
             assert documentData != null;
             companyId = Objects.requireNonNull(documentData.get("companyId")).toString();
+            if (documentData.containsKey("displayName"))
+                displayName = Objects.requireNonNull(documentData.get("displayName")).toString();
         });
         return task;
-
     }
+
 
     public Task<DocumentSnapshot> refreshAllUserData() {
         FirebaseAuth fbAuth = DatabaseHandler.getInstance().getFirebaseAuth();
         refreshBasicUserData(fbAuth);
-        return refreshCompanyId();
+        return refreshFirestoreData();
     }
 
     // Tag 1
@@ -52,6 +54,15 @@ public class User {
         return id.equals(DatabaseHandler.getInstance().getCompany().getAdminId());
     }
 
+    public Boolean isAuthorized() {
+        return DatabaseHandler.getInstance().getCompany().getUsers().contains(getId());
+    }
+
+    // Setters
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+        DatabaseHandler.getInstance().getUserRef().update("displayName", displayName);
+    }
     // Getters
     public String getId() {
         if (id == null)
@@ -61,10 +72,10 @@ public class User {
         return id;
     }
 
-    public String getName() {
-        if (name == null)
+    public String getDisplayName() {
+        if (displayName == null)
             refreshAllUserData();
-        return name;
+        return displayName;
     }
 
     public String getEmail() {

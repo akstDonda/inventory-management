@@ -28,15 +28,14 @@ import com.google.firebase.firestore.WriteBatch;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+import com.miniproject.inventorymanagement.firebase.User;
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
 import java.util.Objects;
 
 public class AdminRegistrationActivity extends AppCompatActivity {
-    EditText mCompanyName, mEmail, mPassword;
-    TextInputLayout email, passwdd, commpy;
+    EditText mCompanyName, mEmail, mPassword, displayNameEditText;
+    TextInputLayout email, passwdd, commpy, displayNameTextInput;
     Button rbtn;
     TextView login_btn,lggt;
     ProgressBar reg_progressbar;
@@ -54,11 +53,13 @@ public class AdminRegistrationActivity extends AppCompatActivity {
         commpy = findViewById(R.id.edt_company_admin_reg);
         email = findViewById(R.id.edt_email_admin_reg);
         passwdd = findViewById(R.id.edt_password_admin_reg);
+        displayNameTextInput = findViewById(R.id.display_name);
         lggt=findViewById(R.id.openlog);
 
         mCompanyName = commpy.getEditText();
         mEmail = email.getEditText();
         mPassword = passwdd.getEditText();
+        displayNameEditText = displayNameTextInput.getEditText();
 
         rbtn = findViewById(R.id.btn_admin_signin);
         reg_progressbar = findViewById(R.id.rProgressBar);
@@ -116,6 +117,8 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
+                            User user = DatabaseHandler.getInstance().getUser();
+                            user.setDisplayName(displayNameEditText.getText().toString());
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
                             String uid = Objects.requireNonNull(dbHandler.getFirebaseAuth().getCurrentUser()).getUid();
                             Task<Void> task1 = dbHandler.createDocuments(uid);

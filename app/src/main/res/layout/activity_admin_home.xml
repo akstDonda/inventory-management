@@ -12,12 +12,12 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="40dp">
+        android:layout_below="@+id/lblhome">
 
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
 
         <GridLayout
@@ -304,11 +304,13 @@
         android:id="@+id/lblhome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="0dp"
-        android:gravity="center_horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:padding="10dp"
         android:text="Home"
         android:textColor="@color/black"
-        android:textSize="30sp"
+        android:textSize="25sp"
+        android:textAlignment="viewStart"
         android:textStyle="bold"
         tools:ignore="HardcodedText" />
 
