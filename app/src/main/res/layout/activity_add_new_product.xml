@@ -52,8 +52,8 @@
             android:id="@+id/addProductName"
             android:hint="Product Name"
             android:inputType="date"
-            android:focusable="false"
-            android:clickable="true"
+            android:focusable="true"
+            android:clickable="false"
             tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -61,8 +61,8 @@
                 style="@style/primaryTextInputEditText"
                 android:textColorHint="#546E7A"
                 android:inputType="date"
-                android:focusable="false"
-                android:clickable="true"
+                android:focusable="true"
+                android:clickable="false"
                 tools:ignore="RtlHardcoded,TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
 
