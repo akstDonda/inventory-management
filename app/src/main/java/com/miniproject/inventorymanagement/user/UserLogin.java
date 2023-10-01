@@ -35,12 +35,14 @@ public class UserLogin extends AppCompatActivity {
     Button btnemplogin;
     FirebaseAuth mauth;
     FirebaseFirestore db;
-    public int c =0;
+    public int c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
+
+        c=0;
 
         elg_back_btn=findViewById(R.id.elogin_back_btn);
         elg_reggt=findViewById(R.id.eopenreg);
@@ -56,7 +58,7 @@ public class UserLogin extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
 
 
-        btnemplogin.setOnClickListener(new View.OnClickListener() {
+        /*btnemplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -113,7 +115,7 @@ public class UserLogin extends AppCompatActivity {
                         });
 
             }
-        });
+        });*/
 
 
         // back to login and go to registration of employee

@@ -3,6 +3,7 @@ package com.miniproject.inventorymanagement.admin;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,6 +33,11 @@ public class ApproveUser extends AppCompatActivity {
     FirebaseFirestore db;
     FirebaseAuth mauth;
     FirebaseUser cuser;
+
+    String empu_id;
+    String emp_auth;
+
+    String User_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +61,7 @@ public class ApproveUser extends AppCompatActivity {
 
         mauth = FirebaseAuth.getInstance();
         cuser = mauth.getCurrentUser();
-        String User_id = cuser.getUid().toString();
+        User_id = cuser.getUid().toString();
 
         //print current admin uid
         textviewuid.setText(User_id);
@@ -73,9 +79,9 @@ public class ApproveUser extends AppCompatActivity {
                         {
                             for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult())
                             {
-                                String empuid = queryDocumentSnapshot.getString("StoreUID");
-                                String emp_auth = queryDocumentSnapshot.getString("UserAuth");
-                                if(empuid.equals(User_id) && !emp_auth.equals("True"))
+                                empu_id = queryDocumentSnapshot.getString("StoreUID");
+                                emp_auth =queryDocumentSnapshot.getString("UserAuth");
+                                if(!emp_auth.equals("True") && User_id.equals(empu_id))
                                 {
                                     String cat_id = queryDocumentSnapshot.getId().toString();
                                     Employee employeelist = new Employee(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id);
