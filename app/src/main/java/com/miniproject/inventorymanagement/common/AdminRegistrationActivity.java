@@ -97,6 +97,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                 String email=mEmail.getText().toString().trim();
                 String password=mPassword.getText().toString().trim();
                 String companyName = mCompanyName.getText().toString().trim();
+                String displayName = displayNameEditText.getText().toString().trim();
                 Toast.makeText(AdminRegistrationActivity.this, email + password, Toast.LENGTH_SHORT).show();
 
                 if (TextUtils.isEmpty(email)){
@@ -117,8 +118,6 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()){
-                            User user = DatabaseHandler.getInstance().getUser();
-                            user.setDisplayName(displayNameEditText.getText().toString());
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
                             String uid = Objects.requireNonNull(dbHandler.getFirebaseAuth().getCurrentUser()).getUid();
                             Task<Void> task1 = dbHandler.createDocuments(uid);
@@ -134,6 +133,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                                     DocumentReference  companyRef = dbHandler.getFirebaseFirestore().collection("companies").document(uid);
                                     WriteBatch batch = dbHandler.getFirebaseFirestore().batch();
                                     batch.update(userRef, "companyId", uid);
+                                    batch.update(userRef, "displayName", displayName);
                                     batch.update(companyRef, "adminId", uid);
                                     ArrayList<String> users = new ArrayList<String>();
                                     users.add(uid);

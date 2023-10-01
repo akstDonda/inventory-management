@@ -40,7 +40,7 @@ public class Loading extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<List<Object>>() {
                             @Override
                             public void onSuccess(List<Object> objects) {
-                                if (dbHandler.getUser().isAuthorized()) {
+                                if (dbHandler.getUser().isAuthorized() || dbHandler.getUser().isAdmin()) {
                                     startActivity(new Intent(getApplicationContext(), Home.class));
                                 }
                                 Toast.makeText(Loading.this, "Unauthorized!", Toast.LENGTH_SHORT).show();
