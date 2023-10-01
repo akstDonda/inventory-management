@@ -195,7 +195,7 @@
                     android:id="@+id/img_cardview_addcategory"
                     style="@style/homeCardViewImage"
                     android:contentDescription="TODO"
-                    android:src="@drawable/inventory_2_24px"
+                    android:src="@drawable/outline_create_new_folder_24"
                     tools:ignore="ContentDescription,HardcodedText,ImageContrastCheck" />
 
                 <TextView

@@ -44,12 +44,15 @@ public class AddNewProduct extends AppCompatActivity {
         dbHandler=DatabaseHandler.getInstance();
         textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
         textInputEditTextCategoryName=findViewById(R.id.textInputEditTextCategoryName);
-//        textInputEditTextCategoryName.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Toast.makeText(AddNewProduct.this, "Select Category", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+        textInputEditTextCategoryName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddNewProduct.this, "Select Category", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddNewProduct.this, onClickCategory.class);
+                startActivity(intent);
+
+            }
+        });
 //        textInputEditTextProductName.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
