@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.common.UserTypeActivity;
 
 public class UserLogin extends AppCompatActivity {
@@ -58,7 +59,7 @@ public class UserLogin extends AppCompatActivity {
         db=FirebaseFirestore.getInstance();
 
 
-        /*btnemplogin.setOnClickListener(new View.OnClickListener() {
+        btnemplogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -93,7 +94,7 @@ public class UserLogin extends AppCompatActivity {
                                         String chat=queryDocumentSnapshot.getString("UserAuth");
                                         String chuid=queryDocumentSnapshot.getString("StoreUID");
                                         if (chem.equals(em) && chps.equals(pw) && chat.equals("True") && !chuid.equals(null)){
-                                            Intent i=new Intent(UserLogin.this,UserHome.class);
+                                            Intent i=new Intent(UserLogin.this, UserHome.class);
                                             startActivity(i);
                                         }
                                         else{
@@ -113,9 +114,8 @@ public class UserLogin extends AppCompatActivity {
                                 Toast.makeText(UserLogin.this, "Data not fetch from database", Toast.LENGTH_SHORT).show();
                             }
                         });
-
             }
-        });*/
+        });
 
 
         // back to login and go to registration of employee

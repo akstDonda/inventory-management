@@ -60,7 +60,7 @@
                 android:id="@+id/textInputEditTextProductName"
                 style="@style/primaryTextInputEditText"
                 android:textColorHint="#546E7A"
-                android:inputType="date"
+                android:inputType="text"
                 android:focusable="true"
                 android:clickable="false"
                 tools:ignore="RtlHardcoded,TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
