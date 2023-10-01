@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
-    private List<Category> categoryList;
+    protected List<Category> categoryList;
 
     public CategoryAdapter(Map<String, Category> transactionMap) {
         categoryList = new ArrayList<>(transactionMap.values());

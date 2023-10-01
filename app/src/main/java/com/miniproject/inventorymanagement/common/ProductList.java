@@ -50,6 +50,12 @@ public class ProductList extends AppCompatActivity {
 
         ProductAdapter adapter = new ProductAdapter(dbhandler.getProducts());
         recyclerView.setAdapter(adapter);
+
+        if (getIntent().hasExtra("filterCategory")) {
+            String filterCategory = getIntent().getStringExtra("filterCategory");
+            adapter.setCategoryFilter(filterCategory);
+        }
+
         task.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {

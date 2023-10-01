@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.textfield.TextInputEditText;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.firebase.Category;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Product;
 
@@ -27,6 +28,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     private List<Product> productList;
     private Integer lowStockLimit;
     private Boolean variableLowStock;
+    private List<String> categoryList;
 
     public ProductAdapter(Map<String, Product> productsMap, Integer lowStockLimit) {
         // Convert the Map values to a List and add only if stock is low
@@ -100,8 +102,26 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
     @SuppressLint("NotifyDataSetChanged")
     public void setProductList(List<Product> productList) {
-        this.productList = productList;
+        this.productList.clear();
+        for (Product product : productList) {
+            if (categoryList == null)
+                this.productList.add(product);
+            else
+                for (String cId: categoryList) {
+                    if (cId.equals(product.getCategoryId()))
+                        this.productList.add(product);
+                }
+        }
         notifyDataSetChanged();
+    }
+
+    public void setCategoryFilter(String categoryId) {
+        if (categoryList == null)
+            categoryList = new ArrayList<>();
+        if (categoryList.contains(categoryId))
+            categoryList.remove(categoryId);
+        else if (categoryId != null && !categoryId.equals(""))
+            categoryList.add(categoryId);
     }
 
     // Getters
