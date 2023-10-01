@@ -27,7 +27,7 @@ public class AddNewProduct extends AppCompatActivity {
 
     ImageView imgbtnback;
     DatabaseHandler dbHandler;
-//    TextInputEditText textInputEditTextProductName;
+    TextInputEditText textInputEditTextProductName;
     String productName, productId, productDescription, categoryName;
     TextInputLayout productNameText, categoryNameText ,productIdText, productDescriptionText, normalBuyPriceText, normalSellPriceText;
     int normalProductSellingPrice, normalProductBuyingPrice;
@@ -42,23 +42,26 @@ public class AddNewProduct extends AppCompatActivity {
         imgbtnback=findViewById(R.id.backbtnhome);
 
         dbHandler=DatabaseHandler.getInstance();
-//        textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
+        textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
+        textInputEditTextProductName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddNewProduct.this, "Select Product", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddNewProduct.this, onClickProduct.class);
+                startActivity(intent);
+            }
+        });
         productNameText = findViewById(R.id.addProductName);
         categoryNameText=findViewById(R.id.categoryName);
         productDescriptionText = findViewById(R.id.addProductDescription);
         productIdText = findViewById(R.id.addProductId);
         normalBuyPriceText = findViewById(R.id.addProductNormalBuyPrice);
         normalSellPriceText = findViewById(R.id.addProductNormalSellPrice);
-        EditText editText=productNameText.getEditText();
+//        EditText editText=productNameText.getEditText();
 
         addProductButton = findViewById(R.id.btn_sbmt);
 
-        productNameText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(AddNewProduct.this, "hello", Toast.LENGTH_SHORT).show();
-            }
-        });
+
 
 
 

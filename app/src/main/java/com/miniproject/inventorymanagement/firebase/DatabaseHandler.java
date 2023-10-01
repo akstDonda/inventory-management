@@ -151,7 +151,7 @@ public class DatabaseHandler {
             throw new IllegalArgumentException("Product with id (" + productId + ") not found");
         }
         for (String transactionId : productToDelete.getTransactions()) {
-            transactions.remove(transactionId;
+            transactions.remove(transactionId);
         }
 
         getProductsRef().set(products);

@@ -33,27 +33,16 @@ public class onClickProduct extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.product_list_recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ProductAdapter adapter = new ProductAdapter2(dbhandler.getProducts());
-        recyclerView.setAdapter(adapter);
+        ProductAdapter adapter2 = new ProductAdapter2(dbhandler.getProducts());
+        recyclerView.setAdapter(adapter2);
         task.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                adapter.setProductList(dbhandler.getProductsList());
+                adapter2.setProductList(dbhandler.getProductsList());
             }
         });
 
-        productSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String s) {
-                return false;
-            }
 
-            @Override
-            public boolean onQueryTextChange(String s) {
-                adapter.setQuery(s);
-                return true;
-            }
-        });
 
 
     }
