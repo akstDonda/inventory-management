@@ -52,19 +52,26 @@ public class EmpAdapter extends RecyclerView.Adapter<EmpAdapter.MyViewHolder> {
                  dbHandler.getCompany().addUser(userId);
                  Map<String, Object> hashMap = new HashMap<>();
                  hashMap.put("companyId", dbHandler.getUser().getCompanyId());
-                 dbHandler.getFirebaseFirestore().collection("users").document(userId).set(hashMap);
-                 FirebaseFirestore db = FirebaseFirestore.getInstance();
-                 Map<String,Object> map = new HashMap<>();
-                 map.put("UserAuth","True");
-                 db.collection("employeeDetails").document(cat_id).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
-                     @Override
-                     public void onSuccess(Void unused) {
-                         Toast.makeText(context, "Emplyee Request Accepted", Toast.LENGTH_SHORT).show();
-                         Integer index = userArrayList.indexOf(emp);
-                         userArrayList.remove(emp);
-                         notifyItemRemoved(index);
-                     }
-                 });
+                 dbHandler.getFirebaseFirestore().collection("users").document(userId).set(hashMap).addOnSuccessListener(
+                         new OnSuccessListener<Void>() {
+                             @Override
+                             public void onSuccess(Void unused) {
+                                 FirebaseFirestore db = FirebaseFirestore.getInstance();
+                                 Map<String,Object> map = new HashMap<>();
+                                 map.put("UserAuth","True");
+                                 db.collection("employeeDetails").document(cat_id).update(map).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                     @Override
+                                     public void onSuccess(Void unused) {
+                                         Toast.makeText(context, "Emplyee Request Accepted", Toast.LENGTH_SHORT).show();
+                                         Integer index = userArrayList.indexOf(emp);
+                                         userArrayList.remove(emp);
+                                         notifyItemRemoved(index);
+                                     }
+                                 });
+                             }
+                         }
+                 );
+
              }
          });
 
