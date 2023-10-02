@@ -23,6 +23,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.LoginActivity;
 import com.miniproject.inventorymanagement.common.UserTypeActivity;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
@@ -138,7 +139,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         btnbh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserRegistrationActivity.this, UserLogin.class);
+                Intent i=new Intent(UserRegistrationActivity.this, LoginActivity.class);
                 startActivity(i);
             }
         });
