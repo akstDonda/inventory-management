@@ -101,8 +101,6 @@ public class AddNewTransaction extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatabaseHandler dbhandler=DatabaseHandler.getInstance();
-                dbhandler.refreshProducts();
-                dbhandler.refreshTransactions();
                 transactionId=transactionIdEditBox.getEditText().getText().toString().trim();
                 transactionQuantity=Integer.parseInt(transactionQtyEditBox.getEditText().getText().toString().trim());
                 transactionPrice=Integer.parseInt(transactionPriceEditBox.getEditText().getText().toString().trim());
