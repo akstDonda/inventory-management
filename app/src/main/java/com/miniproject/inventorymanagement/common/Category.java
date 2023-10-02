@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -21,6 +22,7 @@ import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Category extends AppCompatActivity {
 
+    SearchView categorySearchView;
     FloatingActionButton addNewCategory;
     DatabaseHandler dbhandler;
     @Override
@@ -29,11 +31,13 @@ public class Category extends AppCompatActivity {
         setContentView(R.layout.activity_category);
 
         addNewCategory=findViewById(R.id.addNewCategoryButton);
+        categorySearchView=findViewById(R.id.categorySearchView);
 
         addNewCategory.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AddNewCategory.class));
+                finish();
             }
         });
 
@@ -54,6 +58,20 @@ public class Category extends AppCompatActivity {
                 //TODO:
                //adapter.setCategory(dbhandler.getCategoriesList());
 
+            }
+        });
+
+        //query
+        categorySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.setQuery(s);
+                return true;
             }
         });
     }

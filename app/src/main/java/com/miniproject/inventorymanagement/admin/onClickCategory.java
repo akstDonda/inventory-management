@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -29,7 +32,17 @@ public class onClickCategory extends AppCompatActivity {
         RecyclerView recyclerView=findViewById(R.id.Category_list_recycleView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        CategoryAdapter adapter2 = new CategoryAdapter2(dbhandler.getCategories());
+
+        CategoryAdapter adapter2 = new CategoryAdapter2(dbhandler.getCategories(), new CategoryAdapter2.OnItemClickListener() {
+            @Override
+            public void onItemClick(String categoryId) {
+                Intent intent= new Intent(onClickCategory.this,AddNewProduct.class);
+                intent.putExtra("categoryId",categoryId);
+                startActivity(intent);
+
+
+            }
+        });
 
         recyclerView.setAdapter(adapter2);
         task.addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {

@@ -123,6 +123,7 @@ public class AddNewProduct extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(AddNewProduct.this,Home.class);
                 startActivity(intent);
+                finish();
                 //dbHandler.addProduct();
             }
         });

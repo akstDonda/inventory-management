@@ -1,5 +1,6 @@
 package com.miniproject.inventorymanagement.adapters;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.firebase.Category;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Product;
 import com.miniproject.inventorymanagement.firebase.Transaction;
 
@@ -66,9 +68,26 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 
 
 
+    // Queries
+    @SuppressLint("NotifyDataSetChanged")
+    public void setQuery(String query) {
+        categoryList.clear();
+        for (Category category : DatabaseHandler.getInstance().getCategoriesList()) {
+            if (category.getName().toLowerCase().contains(query.toLowerCase()) ) {
+                categoryList.add(category);
+            }
+        }
+        notifyDataSetChanged();
+    }
     public void setList(List<Category> list) {
         categoryList = list;
         notifyDataSetChanged();
+    }
+
+
+
+    public List<Category> getList() {
+        return categoryList;
     }
 
 

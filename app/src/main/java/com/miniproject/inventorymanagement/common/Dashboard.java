@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.CategoryAdapter;
@@ -15,6 +16,7 @@ import com.miniproject.inventorymanagement.firebase.Category;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Dashboard extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,22 @@ public class Dashboard extends AppCompatActivity {
 
             }
         });
+
+        //query
+        SearchView categorySearchView_dash= findViewById(R.id.categorySearchView_dash);
+        categorySearchView_dash.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.setQuery(s);
+                return true;
+            }
+        });
+
 
     }
 }

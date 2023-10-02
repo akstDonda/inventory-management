@@ -6,8 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".common.Category">
 
+    <SearchView
+        android:id="@+id/categorySearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:queryHint="Search Category Here"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:iconifiedByDefault="false"
+        android:background="@color/md_theme_light_primaryContainer" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:layout_below="@id/categorySearchView"
         android:layout_height="match_parent"
         android:id="@+id/Category_list_recycleView"
         />

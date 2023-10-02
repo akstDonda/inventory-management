@@ -49,8 +49,11 @@
             android:hint="Product Id"
             tools:ignore="HardcodedText">
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/textInputEditTextProductName"
                 style="@style/primaryTextInputEditText"
                 android:inputType="text"
+                android:focusable="false"
+                android:clickable="true"
                 tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>

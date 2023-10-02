@@ -32,15 +32,17 @@ public class AddNewCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_category);
 
-        this.setTitle("Product Add");
+        this.setTitle("Category Add");
 
         imgbtnback=findViewById(R.id.backbtnhomeat);
+
 
         dbHandler=DatabaseHandler.getInstance();
 
         categoryIdText = findViewById(R.id.addCategoryId);
         categoryNameText = findViewById(R.id.addCategoryName);
         addCategoryButton = findViewById(R.id.addCategoryButton);
+
 
         addCategoryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,6 +57,8 @@ public class AddNewCategory extends AppCompatActivity {
 
                 Intent intent = new Intent(AddNewCategory.this, Category.class);
                 startActivity(intent);
+                finish();
+
             }
         });
 
@@ -63,6 +67,7 @@ public class AddNewCategory extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(AddNewCategory.this,Home.class);
                 startActivity(intent);
+                finish();
 
             }
         });

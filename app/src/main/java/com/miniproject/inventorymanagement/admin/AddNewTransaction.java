@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.CategorySelect;
+import com.miniproject.inventorymanagement.common.ProductSelect;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Transaction;
 
@@ -39,6 +41,8 @@ public class AddNewTransaction extends AppCompatActivity {
 
     ImageView btnhome;
     Timestamp transactionDate;
+    TextInputEditText textInputEditTextProductName;
+    private final int PRODUCT_SELECT_REQUEST_CODE = 1;
 
 
 
@@ -46,6 +50,16 @@ public class AddNewTransaction extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_new_transaction);
+
+        String productId = null;
+        if (getIntent().getExtras() != null) {
+            productId = getIntent().getExtras().getString("selectedProduct");
+            Toast.makeText(this, productId, Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "something Error", Toast.LENGTH_SHORT).show();
+            //startActivityForResult(intent, CATEGORY_SELECT_REQUEST_CODE);
+        }
 
         // TODO: testing
         Map<String, Transaction> transactions = DatabaseHandler.getInstance().getTransactions();
@@ -59,6 +73,16 @@ public class AddNewTransaction extends AppCompatActivity {
         transactionDateEditBox=findViewById(R.id.productDateTextInputLayout);
         transactionQtyEditBox=findViewById(R.id.productQtyTextInputLayout);
         transactionPriceEditBox=findViewById(R.id.transactionPriceTextInputLayout);
+        textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
+
+        textInputEditTextProductName.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(AddNewTransaction.this, "Select Product", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(AddNewTransaction.this, ProductSelect.class);
+                startActivityForResult(intent, PRODUCT_SELECT_REQUEST_CODE);
+            }
+        });
 
         Button buyButton = findViewById(R.id.buyButton);
         Button sellButton = findViewById(R.id.sellButton);
@@ -119,8 +143,10 @@ public class AddNewTransaction extends AppCompatActivity {
                 }
                 Log.e(TAG, dbhandler.getUser().getCompanyId());
                 try {
+                    String productId = textInputEditTextProductName.getText().toString().trim();
+                    Toast.makeText(AddNewTransaction.this, productId, Toast.LENGTH_SHORT).show();
 
-                    if(dbhandler.createAndAddTransaction(transactionId, timestamp, transactionQuantity, transactionPrice)==0){
+                    if(dbhandler.createAndAddTransaction(productId, timestamp, transactionQuantity, transactionPrice)==0){
                         Toast.makeText(AddNewTransaction.this, "Transaction SucessFull", Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(AddNewTransaction.this, Transaction.class);
                         startActivity(intent);
@@ -132,6 +158,7 @@ public class AddNewTransaction extends AppCompatActivity {
 
                 }
                 catch (IllegalArgumentException e) {
+
                     Log.e(TAG, "Error in creating and adding transaction: " + e.getMessage());
                     Toast.makeText(AddNewTransaction.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                 }
@@ -182,5 +209,18 @@ public class AddNewTransaction extends AppCompatActivity {
         constraintsBuilder.setEnd(today.getTimeInMillis());
 
         return constraintsBuilder.build();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PRODUCT_SELECT_REQUEST_CODE && resultCode == RESULT_OK) {
+            if (data != null) {
+                String selectedProduct = data.getStringExtra("selectedProduct");
+                // Update the category text field with the selected
+                textInputEditTextProductName.setText(selectedProduct);
+            }
+        }
     }
 }
