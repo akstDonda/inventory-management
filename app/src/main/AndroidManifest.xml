@@ -13,6 +13,9 @@
         android:theme="@style/AppTheme"
         tools:targetApi="31">
         <activity
+            android:name=".admin.DialogCrud"
+            android:exported="false" />
+        <activity
             android:name=".common.ProductSelect"
             android:exported="false" />
         <activity
