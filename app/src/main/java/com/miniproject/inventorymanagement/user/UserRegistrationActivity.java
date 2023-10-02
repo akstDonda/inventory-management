@@ -139,7 +139,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         btnbh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i=new Intent(UserRegistrationActivity.this, LoginActivity.class);
+                Intent i=new Intent(UserRegistrationActivity.this, UserLogin.class);
                 startActivity(i);
             }
         });
