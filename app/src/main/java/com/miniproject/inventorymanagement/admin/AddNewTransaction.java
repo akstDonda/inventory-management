@@ -62,12 +62,6 @@ public class AddNewTransaction extends AppCompatActivity {
             //startActivityForResult(intent, CATEGORY_SELECT_REQUEST_CODE);
         }
 
-        // TODO: testing
-        Map<String, Transaction> transactions = DatabaseHandler.getInstance().getTransactions();
-        for (Transaction transaction : transactions.values()) {
-            DatabaseHandler.getInstance().deleteTransaction(transaction.getId());
-            break;
-        }
 
         textInputEditTextDate = findViewById(R.id.textInputEditTextDate);
         transactionIdEditBox = findViewById(R.id.transactionProductIdTextInputLayout);
