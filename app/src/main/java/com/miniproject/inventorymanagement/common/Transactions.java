@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 public class Transactions extends AppCompatActivity {
     DatabaseHandler dbhandler;
     FloatingActionButton btn;
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +42,7 @@ public class Transactions extends AppCompatActivity {
 
         task.addOnSuccessListener(documentSnapshot -> {
             adapter.setList(dbhandler.getTransactionsList());
+            adapter.notifyDataSetChanged();
         });
 
         btn = findViewById(R.id.addTransactionButton);

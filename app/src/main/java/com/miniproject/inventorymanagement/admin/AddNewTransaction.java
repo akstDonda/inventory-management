@@ -20,6 +20,7 @@ import com.google.firebase.Timestamp;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.CategorySelect;
 import com.miniproject.inventorymanagement.common.ProductSelect;
+import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Transaction;
 
@@ -148,7 +149,7 @@ public class AddNewTransaction extends AppCompatActivity {
 
                     if(dbhandler.createAndAddTransaction(productId, timestamp, transactionQuantity, transactionPrice)==0){
                         Toast.makeText(AddNewTransaction.this, "Transaction SucessFull", Toast.LENGTH_SHORT).show();
-                        Intent intent=new Intent(AddNewTransaction.this, Transaction.class);
+                        Intent intent=new Intent(AddNewTransaction.this, Transactions.class);
                         startActivity(intent);
 
                     }else{

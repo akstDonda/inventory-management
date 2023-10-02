@@ -195,7 +195,10 @@ public class DatabaseHandler {
         if (quantity < 0 && quantity * -1 > Objects.requireNonNull(products.get(productId)).getCurrentStock()) {
             return 1;
         }
-        Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
+        String id = String.valueOf(System.currentTimeMillis());
+        if (transactions.keySet().contains(id))
+            id = String.valueOf(System.currentTimeMillis() + 120);
+        Transaction newTransaction = new Transaction(id, timestamp, pricePerUnit, quantity,  productId);
         Product productToChange = getProducts().get(newTransaction.getProductId());
         if (productToChange == null) {
             throw new IllegalArgumentException("Product with id (" + productId + ") not found");
