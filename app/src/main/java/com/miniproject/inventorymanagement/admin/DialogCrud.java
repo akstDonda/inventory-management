@@ -6,13 +6,18 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.TimedText;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.ProductList;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import org.w3c.dom.Text;
 
 public class DialogCrud extends AppCompatActivity {
+    DatabaseHandler dbhandler;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -45,6 +50,20 @@ public class DialogCrud extends AppCompatActivity {
         details_description.setText(String.format("Product Description :  %s", product_description));
         detail_buyPrice.setText(String.format("Product BuyPrice :  %s", product_buyPrice));
         detail_sellPrice.setText(String.format("Product sellPrice :  %s", product_sellPrice));
+
+        dbhandler = DatabaseHandler.getInstance();
+        Button product_crud_delete=findViewById(R.id.product_crud_delete);
+        product_crud_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dbhandler.deleteProductAndItsTransactions(product_id);
+                Intent intent = new Intent(DialogCrud.this, ProductList.class);
+                startActivity(intent);
+                finish();
+
+            }
+        });
+
 
 
     }
