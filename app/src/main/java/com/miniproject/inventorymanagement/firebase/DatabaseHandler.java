@@ -4,10 +4,10 @@ import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
 import android.util.Log;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.gms.tasks.Tasks;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -16,6 +16,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.WriteBatch;
+import com.google.firestore.v1.Write;
+import com.miniproject.inventorymanagement.adapters.ProductAdapter;
 
 import org.checkerframework.checker.nullness.qual.NonNull;
 
@@ -151,37 +153,10 @@ public class DatabaseHandler {
         for (String transactionId : productToDelete.getTransactions()) {
             transactions.remove(transactionId);
         }
+        products.remove(productId);
 
         getProductsRef().set(products);
         getTransactionsRef().set(transactions);
-    }
-    public Task<Void> updateProduct(String productId, String name, String description, Integer quantity, List<String> transactions, String categoryId, Integer normalBuyPrice, Integer normalSellPrice) {
-        Product productToUpdate = products.get(productId);
-        if (productToUpdate == null)
-            return null;
-        if (name != null)
-            productToUpdate.setName(name);
-        if (description != null)
-            productToUpdate.setDescription(description);
-        if (normalBuyPrice != null)
-            productToUpdate.setNormalBuyPrice(normalBuyPrice);
-        if (normalSellPrice != null)
-            productToUpdate.setNormalSellPrice(normalSellPrice);
-        if (transactions != null)
-            productToUpdate.setTransactions(transactions);
-        if (quantity != null) {
-            if (quantity < 0) {
-                productToUpdate.setStockOut(productToUpdate.getStockOut() + quantity);
-            } else {
-                productToUpdate.setStockIn(productToUpdate.getStockIn() + quantity);
-            }
-        }
-        return getProductsRef().update(productId, productToUpdate);
-    }
-    public Task<Void> updateProduct(String productId, Integer quantity) {
-        if (products.containsKey(productId))
-            return updateProduct(productId, null, null, quantity, null, null, null, null);
-        return null;
     }
 
     // Transactions
@@ -195,10 +170,7 @@ public class DatabaseHandler {
         if (quantity < 0 && quantity * -1 > Objects.requireNonNull(products.get(productId)).getCurrentStock()) {
             return 1;
         }
-        String id = String.valueOf(System.currentTimeMillis());
-        if (transactions.keySet().contains(id))
-            id = String.valueOf(System.currentTimeMillis() + 120);
-        Transaction newTransaction = new Transaction(id, timestamp, pricePerUnit, quantity,  productId);
+        Transaction newTransaction = new Transaction(timestamp, quantity, pricePerUnit, productId);
         Product productToChange = getProducts().get(newTransaction.getProductId());
         if (productToChange == null) {
             throw new IllegalArgumentException("Product with id (" + productId + ") not found");
@@ -255,10 +227,8 @@ public class DatabaseHandler {
         if (transactionToDelete == null) {
             throw new IllegalArgumentException("Transaction with id (" + transactionId + ") not found");
         }
-        Task<Void> t = updateProduct(transactionToDelete.getProductId(), transactionToDelete.getQuantity());
         transactions.remove(transactionToDelete.getId());
-        Task<Void> t2 = getTransactionsRef().set(transactions);
-        return t2;
+        return getTransactionsRef().set(transactions);
     }
 
     // Categories
@@ -302,6 +272,8 @@ public class DatabaseHandler {
     }
 
     // Users
+
+
 
 
 
