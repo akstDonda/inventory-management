@@ -52,6 +52,7 @@ public class Transactions extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(Transactions.this, AddNewTransaction.class);
                 startActivity(intent);
+                finish();
             }
         });
     }

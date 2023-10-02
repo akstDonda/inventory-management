@@ -112,6 +112,7 @@ public class AddNewTransaction extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent=new Intent(AddNewTransaction.this, Home.class);
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -145,6 +146,7 @@ public class AddNewTransaction extends AppCompatActivity {
                         Toast.makeText(AddNewTransaction.this, "Transaction SucessFull", Toast.LENGTH_SHORT).show();
                         Intent intent=new Intent(AddNewTransaction.this, Transactions.class);
                         startActivity(intent);
+                        finish();
 
                     }else{
                         Toast.makeText(AddNewTransaction.this, "Transaction Canceled", Toast.LENGTH_SHORT).show();

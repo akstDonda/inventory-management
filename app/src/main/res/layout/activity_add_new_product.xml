@@ -103,6 +103,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/primaryTextInputEditText"
+                android:inputType="number"
                 android:textColorHint="#546E7A"
                 tools:ignore="RtlHardcoded,TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -116,6 +117,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 style="@style/primaryTextInputEditText"
+                android:inputType="number"
                 android:textColorHint="#546E7A"
                 tools:ignore="RtlHardcoded,TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize,TouchTargetSizeCheck" />
         </com.google.android.material.textfield.TextInputLayout>
