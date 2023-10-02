@@ -64,6 +64,16 @@ public class DialogCrud extends AppCompatActivity {
             }
         });
 
+        Button productUpdate = findViewById(R.id.updateProduct);
+        productUpdate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(DialogCrud.this, AddNewProduct.class);
+                intent.putExtra("productId", product_id);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

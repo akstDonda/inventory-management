@@ -338,13 +338,10 @@ public class DatabaseHandler {
         }
     }
 
-    public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice, String categoryId) {
+    private int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice, String categoryId) {
 
         // TODO: checking product_id duplication NOT WORKING!!
         // TODO: fix code below!!
-        if (products.containsKey(id)) {
-            return 101;
-        }
         if (categoryId == null || !categories.containsKey(categoryId)) {
             return 102;
         }
@@ -354,6 +351,12 @@ public class DatabaseHandler {
         return addProductToFirebase(newProduct);
     }
 
+    public int addProduct(String id, String name, String description, int normalBuyPrice, int normalSellPrice, String categoryId, Boolean overwrite) {
+        if (!overwrite && products.containsKey(id)) {
+            return 101;
+        }
+        return addProduct(id, name, description, normalBuyPrice, normalSellPrice, categoryId);
+    }
 
     // Getters
     public User getUser() {
@@ -361,7 +364,6 @@ public class DatabaseHandler {
             return new User();
         return user;
     }
-
     public Company getCompany() {
         if (company == null)
             return new Company();

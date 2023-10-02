@@ -1,5 +1,6 @@
 package com.miniproject.inventorymanagement.admin;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -20,6 +21,7 @@ import com.miniproject.inventorymanagement.common.AdminRegistrationActivity;
 import com.miniproject.inventorymanagement.common.CategorySelect;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+import com.miniproject.inventorymanagement.firebase.Product;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -35,6 +37,7 @@ public class AddNewProduct extends AppCompatActivity {
     int normalProductSellingPrice, normalProductBuyingPrice;
     Button addProductButton;
 
+    @SuppressLint("SetTextI18n")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,19 +45,16 @@ public class AddNewProduct extends AppCompatActivity {
         this.setTitle("Product Add");
 
         imgbtnback=findViewById(R.id.backbtnhome);
-        String categoryId = null;
-        if (getIntent().getExtras() != null) {
-            categoryId = getIntent().getExtras().getString("selectedCategory");
-            Toast.makeText(this, categoryId, Toast.LENGTH_SHORT).show();
-        }
-        else {
-            Toast.makeText(this, "hehe :)", Toast.LENGTH_SHORT).show();
-        }
+        String productId = null;
+        if (getIntent().getExtras() != null && getIntent().getExtras().get("productId") != null)
+            productId = getIntent().getExtras().get("productId").toString();
 
         dbHandler=DatabaseHandler.getInstance();
-        textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
+
+        Product product = dbHandler.getProducts().get(productId);
+//        textInputEditTextProductName=findViewById(R.id.textInputEditTextProductName);
         textInputEditTextCategoryName=findViewById(R.id.textInputEditTextCategoryName);
-        textInputEditTextCategoryName.setText(categoryId);
+//        textInputEditTextCategoryName.setText(categoryId);
         textInputEditTextCategoryName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -94,14 +94,14 @@ public class AddNewProduct extends AppCompatActivity {
 
 //                try {
                     productName = productNameText.getEditText().getText().toString();
-                    productId = productIdText.getEditText().getText().toString();
+                    String productId = productIdText.getEditText().getText().toString();
                     productDescription = productDescriptionText.getEditText().getText().toString();
                     normalProductBuyingPrice = Integer.parseInt(normalBuyPriceText.getEditText().getText().toString());
                     normalProductSellingPrice = Integer.parseInt(normalSellPriceText.getEditText().getText().toString());
                     categoryName=categoryNameText.getEditText().getText().toString();
 
                     //createAndAddCategory
-                    dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice,categoryName);
+                    dbHandler.addProduct(productId, productName, productDescription, normalProductBuyingPrice, normalProductSellingPrice,categoryName, !(product == null));
                     Toast.makeText(AddNewProduct.this, dbHandler.getProducts().get(productId).getName(), Toast.LENGTH_SHORT).show();
 
 
@@ -128,7 +128,17 @@ public class AddNewProduct extends AppCompatActivity {
             }
         });
 
+        if (product != null) {
+            productIdText.getEditText().setText(product.getId());
+            productIdText.getEditText().setEnabled(false);
+            productNameText.getEditText().setText(product.getName());
+            productDescriptionText.getEditText().setText(product.getDescription());
+            normalBuyPriceText.getEditText().setText(String.valueOf(product.getNormalBuyPrice()));
+            normalSellPriceText.getEditText().setText(String.valueOf(product.getNormalSellPrice()));
+            categoryNameText.getEditText().setText(product.getCategoryId());
+            addProductButton.setText("Update");
 
+        }
 
 
     }
