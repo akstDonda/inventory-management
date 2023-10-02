@@ -1,9 +1,11 @@
 package com.miniproject.inventorymanagement.admin;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,7 +36,7 @@ public class ApproveUser extends AppCompatActivity {
     FirebaseAuth mauth;
     FirebaseUser cuser;
 
-    String empu_id;
+    String storeId;
     String emp_auth;
 
     String User_id;
@@ -62,6 +64,7 @@ public class ApproveUser extends AppCompatActivity {
         mauth = FirebaseAuth.getInstance();
         cuser = mauth.getCurrentUser();
         User_id = cuser.getUid().toString();
+        String companyId = DatabaseHandler.getInstance().getUser().getCompanyId();
 
         //print current admin uid
         textviewuid.setText(User_id);
@@ -79,14 +82,25 @@ public class ApproveUser extends AppCompatActivity {
                         {
                             for(QueryDocumentSnapshot queryDocumentSnapshot : task.getResult())
                             {
-                                empu_id = queryDocumentSnapshot.getString("StoreUID");
+                                storeId = queryDocumentSnapshot.getString("StoreUID");
                                 emp_auth =queryDocumentSnapshot.getString("UserAuth");
-                                if(!emp_auth.equals("True") && User_id.equals(empu_id))
+                                String userId = queryDocumentSnapshot.getString("userId");
+                                if(emp_auth != null && storeId != null && userId != null && emp_auth.equals("False") && storeId.equals(companyId))
                                 {
+                                    DatabaseHandler.getInstance().getCompany().addUser(userId);
                                     String cat_id = queryDocumentSnapshot.getId().toString();
-                                    Employee employeelist = new Employee(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id);
+                                    Employee employeelist = new Employee(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id, userId);
                                     empArrayList.add(employeelist);
                                     empAdapter.notifyDataSetChanged();
+                                    DatabaseHandler.getInstance().getFirebaseFirestore().collection("users").document(userId).update("companyId",storeId);
+                                }
+                                else {
+                                    if (storeId != null)
+                                        Log.e(TAG, storeId);
+                                    if (emp_auth != null)
+                                        Log.e(TAG, emp_auth);
+                                    if (userId != null)
+                                        Log.e(TAG, userId);
                                 }
                             }
                         }

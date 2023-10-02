@@ -275,8 +275,6 @@ public class DatabaseHandler {
 
 
 
-
-
     @Deprecated
     public boolean isAdmin() {
         // what is company is null OR user?

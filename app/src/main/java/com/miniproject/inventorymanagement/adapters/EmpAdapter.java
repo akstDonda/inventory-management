@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,10 +43,16 @@ public class EmpAdapter extends RecyclerView.Adapter<EmpAdapter.MyViewHolder> {
 
         Employee emp = userArrayList.get(position);
         String cat_id = userArrayList.get(position).cat_id;
+        String userId = userArrayList.get(position).userId;
          holder.UserEMail.setText(emp.UserEMail);
          holder.btn_accept.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
+                 DatabaseHandler dbHandler = DatabaseHandler.getInstance();
+                 dbHandler.getCompany().addUser(userId);
+                 Map<String, Object> hashMap = new HashMap<>();
+                 hashMap.put("companyId", dbHandler.getUser().getCompanyId());
+                 dbHandler.getFirebaseFirestore().collection("users").document(userId).set(hashMap);
                  FirebaseFirestore db = FirebaseFirestore.getInstance();
                  Map<String,Object> map = new HashMap<>();
                  map.put("UserAuth","True");

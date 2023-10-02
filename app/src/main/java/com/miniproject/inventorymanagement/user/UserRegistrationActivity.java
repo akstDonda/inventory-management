@@ -98,9 +98,9 @@ public class UserRegistrationActivity extends AppCompatActivity {
                         if (task.isSuccessful()){
                             Map<String,Object> emp = new HashMap<>();
                             emp.put("UserEMail",Useremail);
-                            emp.put("UserPassword",Userpwd);
                             emp.put("StoreUID",Usersui);
                             emp.put("UserAuth","False");
+                            emp.put("userId", Objects.requireNonNull(mAuth.getCurrentUser()).getUid());
 
                             db.collection("employeeDetails")
                                     .add(emp)
@@ -110,6 +110,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                             Toast.makeText(UserRegistrationActivity.this, "SucessFully insert Employee data", Toast.LENGTH_SHORT).show();
                                             Toast.makeText(UserRegistrationActivity.this, "Wait until your owner accept your Employee Request", Toast.LENGTH_LONG).show();
                                             Intent intent=new Intent(UserRegistrationActivity.this, UserTypeActivity.class);
+                                            mAuth.signOut();
                                             startActivity(intent);
                                         }
                                     })
@@ -117,6 +118,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                                         @Override
                                         public void onFailure(@NonNull Exception e) {
                                             Toast.makeText(UserRegistrationActivity.this, "unSucessFull", Toast.LENGTH_SHORT).show();
+                                            mAuth.signOut();
                                         }
                                     });
 
@@ -125,6 +127,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             Toast.makeText(UserRegistrationActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
+
                 });
 
 

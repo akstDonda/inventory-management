@@ -25,12 +25,13 @@ public class User {
         return 0;
     }
 
-    public Task<DocumentSnapshot> refreshFirestoreData() {
+    public Task<DocumentSnapshot> refreshFirestoreData() throws IllegalStateException{
         DocumentReference userRef = DatabaseHandler.getInstance().getUserRef();
         Task<DocumentSnapshot> task = userRef.get();
         task.addOnSuccessListener(documentSnapshot -> {
             Map<String, Object> documentData = documentSnapshot.getData();
-            assert documentData != null;
+            if (documentData == null)
+                throw new IllegalStateException("No Document Found");
             companyId = Objects.requireNonNull(documentData.get("companyId")).toString();
             if (documentData.containsKey("displayName"))
                 displayName = Objects.requireNonNull(documentData.get("displayName")).toString();

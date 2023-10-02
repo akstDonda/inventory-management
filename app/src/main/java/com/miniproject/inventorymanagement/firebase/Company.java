@@ -42,6 +42,7 @@ public class Company {
     }
 
     // Some Tag
+    @Deprecated
     public void addUser(String userId) {
         users.add(userId);
         updateSelfInFirestore();
