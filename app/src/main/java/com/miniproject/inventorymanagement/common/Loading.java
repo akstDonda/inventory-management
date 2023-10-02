@@ -40,10 +40,16 @@ public class Loading extends AppCompatActivity {
                         .addOnSuccessListener(new OnSuccessListener<List<Object>>() {
                             @Override
                             public void onSuccess(List<Object> objects) {
-                                if (dbHandler.getUser().isAuthorized() || dbHandler.getUser().isAdmin()) {
+                                if (  dbHandler.getUser().isAdmin()) {
                                     startActivity(new Intent(getApplicationContext(), Home.class));
+                                }else if(dbHandler.getUser().isAuthorized()){
+                                    Toast.makeText(Loading.this, "hello", Toast.LENGTH_SHORT).show();
+                                    startActivity(new Intent(getApplicationContext(), Dashboard.class));
+
+                                }else{
+                                    Toast.makeText(Loading.this, "!!!Invalid", Toast.LENGTH_SHORT).show();
                                 }
-                                Toast.makeText(Loading.this, "Unauthorized!", Toast.LENGTH_SHORT).show();
+                              //  Toast.makeText(Loading.this, "Unauthorized!", Toast.LENGTH_SHORT).show();
                             }
                         });
 //                if (DatabaseHandler.getInstance().getUser().isAuthorized()) {
