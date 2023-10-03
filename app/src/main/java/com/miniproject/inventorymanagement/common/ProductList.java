@@ -19,13 +19,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.ProductAdapter;
 import com.miniproject.inventorymanagement.admin.AddNewProduct;
+import com.miniproject.inventorymanagement.admin.AddNewTransaction;
 import com.miniproject.inventorymanagement.admin.DialogCrud;
+import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Product;
 
 
 public class ProductList extends AppCompatActivity implements ProductAdapter.OnItemClickListener { // Implement the OnItemClickListener interface
-    FloatingActionButton add;
+    FloatingActionButton add,addNewTransactiontButton;
     DatabaseHandler dbhandler;
     SearchView productSearch;
     FirebaseFirestore db;
@@ -38,11 +40,18 @@ public class ProductList extends AppCompatActivity implements ProductAdapter.OnI
         productSearch = findViewById(R.id.productSearchView);
 
         add = findViewById(R.id.addNewProductButton);
+        addNewTransactiontButton=findViewById(R.id.addNewTransactiontButton);
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(getApplicationContext(), AddNewProduct.class));
                 finish();
+            }
+        });
+        addNewTransactiontButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), AddNewTransaction.class));
             }
         });
 
@@ -69,6 +78,20 @@ public class ProductList extends AppCompatActivity implements ProductAdapter.OnI
                 adapter.setProductList(dbhandler.getProductsList());
             }
         });
+
+
+        //user and admin inside dashboard product add and transaction button manage
+        if (dbhandler.getUser().isAdmin()) {
+            add.setVisibility(View.VISIBLE);
+            addNewTransactiontButton.setVisibility(View.GONE);
+        } else if (dbhandler.getUser().isAuthorized()) {
+            add.setVisibility(View.GONE);
+            addNewTransactiontButton.setVisibility(View.VISIBLE);
+        } else {
+            Toast.makeText(ProductList.this, "!!!Invalid", Toast.LENGTH_SHORT).show();
+            DatabaseHandler.getInstance().getFirebaseAuth().signOut();
+        }
+
 
         productSearch.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
