@@ -101,16 +101,29 @@ public class AdminRegistrationActivity extends AppCompatActivity {
                 Toast.makeText(AdminRegistrationActivity.this, email + password, Toast.LENGTH_SHORT).show();
 
                 if (TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is Required");
+                    mEmail.setError("Email is !!!Required");
                     return;
                 }
                 if (TextUtils.isEmpty(password)){
-                    mPassword.setError("password is Required");
+                    mPassword.setError("password is !!!Required");
                     return;
                 }
                 if(password.length()<6){
-                    mPassword.setError("character More Then 6 Required");
+                    mPassword.setError("character More Then 6 !!!Required");
                     return;
+                }
+                if(TextUtils.isEmpty(companyName)){
+                    mCompanyName.setError("Company Name is !!!Required");
+                    System.out.println("!!!!!!!!!!!!!!!!!!!!!!!");
+                    return;
+
+
+                }
+                if(TextUtils.isEmpty(displayName)){
+                    displayNameEditText.setError("Display Name is !!!Required");
+                    System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+                    return;
+
                 }
                 reg_progressbar.setVisibility(View.VISIBLE);
 

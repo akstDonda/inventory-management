@@ -40,6 +40,17 @@
             app:srcCompat="@drawable/baseline_add_24"
             tools:ignore="HardcodedText" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addNewTransactiontButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="16dp"
+            android:contentDescription="add new product"
+            android:visibility="gone"
+            app:srcCompat="@drawable/baseline_add_24"
+            tools:ignore="HardcodedText" />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </RelativeLayout>

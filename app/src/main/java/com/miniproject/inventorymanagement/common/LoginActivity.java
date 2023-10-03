@@ -30,6 +30,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
+import com.miniproject.inventorymanagement.user.UserRegistrationActivity;
 
 import java.util.Map;
 import java.util.Objects;
@@ -79,7 +80,18 @@ public class LoginActivity extends AppCompatActivity {
         reggt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(LoginActivity.this,AdminRegistrationActivity.class);
+
+                Intent intent1 = getIntent();
+                String admin = intent1.getStringExtra("admin");
+                String a="admin";
+
+                Intent intent;
+                if(a.equals(admin)){
+
+                    intent = new Intent(LoginActivity.this, AdminRegistrationActivity.class);
+                }else{
+                    intent = new Intent(LoginActivity.this, UserRegistrationActivity.class);
+                }
                 startActivity(intent);
             }
         });

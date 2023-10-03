@@ -82,6 +82,7 @@ public class AddNewTransaction extends AppCompatActivity {
         Button buyButton = findViewById(R.id.buyButton);
         Button sellButton = findViewById(R.id.sellButton);
 
+
         Boolean[] isBuy = {true};
         buyButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
         sellButton.setBackgroundColor(getColor(R.color.background));
@@ -92,6 +93,7 @@ public class AddNewTransaction extends AppCompatActivity {
                 isBuy[0] = true;
                 buyButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
                 sellButton.setBackgroundColor(getColor(R.color.background));
+                Toast.makeText(AddNewTransaction.this, "Select For Buy", Toast.LENGTH_SHORT).show();
             }
         });
         sellButton.setOnClickListener(new View.OnClickListener() {
@@ -100,8 +102,19 @@ public class AddNewTransaction extends AppCompatActivity {
                 isBuy[0] = false;
                 buyButton.setBackgroundColor(getColor(R.color.background));
                 sellButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
+                Toast.makeText(AddNewTransaction.this, "Select For Sell", Toast.LENGTH_SHORT).show();
             }
         });
+
+        DatabaseHandler dbhandler=DatabaseHandler.getInstance();
+        //remove buy button add sell button
+        if (dbhandler.getUser().isAuthorized()){
+            buyButton.setVisibility(View.GONE);
+            isBuy[0] = false;
+            buyButton.setBackgroundColor(getColor(R.color.background));
+            sellButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
+
+        }
 
 
         btnhome=findViewById(R.id.backbtnhomeat);

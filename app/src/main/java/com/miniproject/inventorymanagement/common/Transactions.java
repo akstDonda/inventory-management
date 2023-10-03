@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -16,6 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.adapters.TransactionAdapter;
 import com.miniproject.inventorymanagement.admin.AddNewTransaction;
+import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
 public class Transactions extends AppCompatActivity {
@@ -50,9 +52,20 @@ public class Transactions extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Transactions.this, AddNewTransaction.class);
-                startActivity(intent);
-                finish();
+
+
+                if (dbhandler.getUser().isAdmin()) {
+                    Intent intent = new Intent(Transactions.this, AddNewTransaction.class);
+                    startActivity(intent);
+                    finish();
+                } else if (dbhandler.getUser().isAuthorized()) {
+                    Intent intent = new Intent(Transactions.this, Dashboard.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    Toast.makeText(Transactions.this, "!!!Invalid", Toast.LENGTH_SHORT).show();
+                    DatabaseHandler.getInstance().getFirebaseAuth().signOut();
+                }
             }
         });
     }

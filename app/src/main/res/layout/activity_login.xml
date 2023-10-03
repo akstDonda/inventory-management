@@ -27,7 +27,7 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/primaryTextInputLayout"
             android:id="@+id/outlinedTextField11"
-            android:hint="Email"
+            android:hint="demo@email.com"
             tools:ignore="HardcodedText">
 
             <com.google.android.material.textfield.TextInputEditText

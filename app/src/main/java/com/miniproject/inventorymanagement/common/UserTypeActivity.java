@@ -25,6 +25,7 @@ public class UserTypeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserTypeActivity.this, LoginActivity.class);
+                intent.putExtra("admin", "admin");
                 startActivity(intent);
             }
         });
@@ -32,7 +33,8 @@ public class UserTypeActivity extends AppCompatActivity {
         btnuser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(UserTypeActivity.this, UserLogin.class);
+                Intent intent = new Intent(UserTypeActivity.this, LoginActivity.class);
+                intent.putExtra("user", "user");
                 startActivity(intent);
             }
         });
