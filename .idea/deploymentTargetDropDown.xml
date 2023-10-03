@@ -6,12 +6,12 @@
         <type value="RUNNING_DEVICE_TARGET" />
         <deviceKey>
           <Key>
-            <type value="SERIAL_NUMBER" />
-            <value value="k7ydbu6p9dssmrfm" />
+            <type value="VIRTUAL_DEVICE_PATH" />
+            <value value="C:\Users\akshi\.android\avd\my_phone.avd" />
           </Key>
         </deviceKey>
       </Target>
     </runningDeviceTargetSelectedWithDropDown>
-    <timeTargetWasSelectedWithDropDown value="2023-10-03T09:41:25.425203Z" />
+    <timeTargetWasSelectedWithDropDown value="2023-10-03T10:12:15.516705800Z" />
   </component>
 </project>
