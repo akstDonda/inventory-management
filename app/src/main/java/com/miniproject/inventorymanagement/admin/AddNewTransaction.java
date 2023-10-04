@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.Timestamp;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.common.CategorySelect;
+import com.miniproject.inventorymanagement.common.Dashboard;
+import com.miniproject.inventorymanagement.common.Loading;
 import com.miniproject.inventorymanagement.common.ProductSelect;
 import com.miniproject.inventorymanagement.common.Transactions;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
@@ -40,7 +43,7 @@ public class AddNewTransaction extends AppCompatActivity {
     String transactionId;
     Integer transactionQuantity,transactionPrice;
 
-    ImageView btnhome;
+    ImageView btnhome,backbtnhomeat_user;
     Timestamp transactionDate;
     TextInputEditText textInputEditTextProductName;
     private final int PRODUCT_SELECT_REQUEST_CODE = 1;
@@ -108,16 +111,24 @@ public class AddNewTransaction extends AppCompatActivity {
 
         DatabaseHandler dbhandler=DatabaseHandler.getInstance();
         //remove buy button add sell button
-        if (dbhandler.getUser().isAuthorized()){
+
+
+        if (dbhandler.getUser().isAdmin()) {
+
+        }
+        else if (dbhandler.getUser().isAuthorized()){
             buyButton.setVisibility(View.GONE);
             isBuy[0] = false;
             buyButton.setBackgroundColor(getColor(R.color.background));
             sellButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
 
+        } else {
+
         }
 
 
         btnhome=findViewById(R.id.backbtnhomeat);
+
 
         //back home
         btnhome.setOnClickListener(new View.OnClickListener() {
@@ -129,14 +140,28 @@ public class AddNewTransaction extends AppCompatActivity {
             }
         });
 
+
+
         Button submitButton=findViewById(R.id.addTransactionButton);
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 DatabaseHandler dbhandler=DatabaseHandler.getInstance();
                 transactionId=transactionIdEditBox.getEditText().getText().toString().trim();
                 transactionQuantity=Integer.parseInt(transactionQtyEditBox.getEditText().getText().toString().trim());
                 transactionPrice=Integer.parseInt(transactionPriceEditBox.getEditText().getText().toString().trim());
+                String xyztransactionQuantity=transactionQtyEditBox.getEditText().getText().toString().trim();
+
+//                String email=mEmail.getText().toString().trim();
+
+//                if (TextUtils.isEmpty(xyztransactionQuantity)) {
+//
+//                    Toast.makeText(AddNewTransaction.this, "okkk", Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+
+
                 if (!isBuy[0]) {
                     transactionQuantity *= -1;
                 }
@@ -174,6 +199,8 @@ public class AddNewTransaction extends AppCompatActivity {
                 }
             }
         });
+
+
 
 
 
