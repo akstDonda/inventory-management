@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.media.TimedText;
+import android.opengl.Visibility;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.common.Dashboard;
+import com.miniproject.inventorymanagement.common.Loading;
 import com.miniproject.inventorymanagement.common.ProductList;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 
@@ -74,6 +78,14 @@ public class DialogCrud extends AppCompatActivity {
             }
         });
 
+        if (dbhandler.getUser().isAdmin()) {
+
+        } else if (dbhandler.getUser().isAuthorized()) {
+            product_crud_delete.setVisibility(View.GONE);
+            productUpdate.setVisibility(View.GONE);
+        } else {
+
+        }
 
 
 

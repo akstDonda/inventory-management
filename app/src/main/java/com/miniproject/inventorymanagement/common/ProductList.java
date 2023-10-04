@@ -55,6 +55,8 @@ public class ProductList extends AppCompatActivity implements ProductAdapter.OnI
             }
         });
 
+
+
         dbhandler = DatabaseHandler.getInstance();
         Task<DocumentSnapshot> task = dbhandler.refreshProducts();
 
