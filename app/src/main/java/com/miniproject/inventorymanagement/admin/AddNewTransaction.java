@@ -115,14 +115,12 @@ public class AddNewTransaction extends AppCompatActivity {
 
         if (dbhandler.getUser().isAdmin()) {
 
-        } else if (dbhandler.getUser().isAuthorized()) {
+        }
+        else if (dbhandler.getUser().isAuthorized()){
             buyButton.setVisibility(View.GONE);
-
             isBuy[0] = false;
             buyButton.setBackgroundColor(getColor(R.color.background));
             sellButton.setBackgroundColor(getColor(R.color.md_theme_light_secondaryContainer));
-
-                    //backbtnhomeat_user.setVisibility(View.VISIBLE);
 
         } else {
 
