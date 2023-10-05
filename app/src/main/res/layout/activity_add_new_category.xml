@@ -18,6 +18,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingTop="120dp"
         style="@style/formBackground">
 
 
@@ -26,26 +27,26 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/addCategoryId"
             style="@style/primaryTextInputLayout"
-            android:hint="Category Id"
-            tools:ignore="HardcodedText">
-            <com.google.android.material.textfield.TextInputEditText
-                style="@style/primaryTextInputEditText"
-                android:inputType="text"
-                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/addCategoryName"
-            style="@style/primaryTextInputLayout"
             android:hint="Category Name"
             tools:ignore="HardcodedText">
             <com.google.android.material.textfield.TextInputEditText
-                android:inputType="text"
                 style="@style/primaryTextInputEditText"
+                android:inputType="text"
                 tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
+<!--        <com.google.android.material.textfield.TextInputLayout-->
+<!--            android:id="@+id/addCategoryName"-->
+<!--            style="@style/primaryTextInputLayout"-->
+<!--            android:hint="Category Name"-->
+<!--            tools:ignore="HardcodedText">-->
+<!--            <com.google.android.material.textfield.TextInputEditText-->
+<!--                android:inputType="text"-->
+<!--                style="@style/primaryTextInputEditText"-->
+<!--                tools:ignore="TextSizeCheck,TextContrastCheck,VisualLintTextFieldSize" />-->
+
+<!--        </com.google.android.material.textfield.TextInputLayout>-->
 
 
 
@@ -55,6 +56,7 @@
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
             android:id="@+id/addCategoryButton"
             android:text="Add Category"/>
 

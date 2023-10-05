@@ -39,7 +39,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 //        holder.dateTextView.setText(transaction.getTimestamp().toString());
 //        holder.quantityTextView.setText(String.valueOf(transaction.getQuantity()));
 //        holder.priceTextView.setText(String.valueOf(transaction.getPrice()));
-            holder.categoryNameTextView.setText(String.valueOf(category.getName()));
+            holder.categoryNameTextView.setText(String.valueOf(category.getId()));
 
 
     }
@@ -63,6 +63,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
 //            quantityTextView = itemView.findViewById(R.id.quantity_textview);
 //            priceTextView = itemView.findViewById(R.id.price_textview);
             categoryNameTextView= itemView.findViewById(R.id.categoryNameTextView);
+
         }
     }
 

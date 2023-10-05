@@ -40,7 +40,7 @@ public class AddNewCategory extends AppCompatActivity {
         dbHandler=DatabaseHandler.getInstance();
 
         categoryIdText = findViewById(R.id.addCategoryId);
-        categoryNameText = findViewById(R.id.addCategoryName);
+//        categoryNameText = findViewById(R.id.addCategoryName);
         addCategoryButton = findViewById(R.id.addCategoryButton);
 
 
@@ -48,12 +48,12 @@ public class AddNewCategory extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 categoryId = categoryIdText.getEditText().getText().toString();
-                categoryName = categoryNameText.getEditText().getText().toString();
+//                categoryName = categoryNameText.getEditText().getText().toString();
 
 
                 //createAndAddCategory
                 dbHandler.createAndAddCategory(categoryId, categoryName,null);
-                Toast.makeText(AddNewCategory.this, dbHandler.getCategories().get(categoryId).getName(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(AddNewCategory.this, dbHandler.getCategories().get(categoryId).getId(), Toast.LENGTH_SHORT).show();
 
                 Intent intent = new Intent(AddNewCategory.this, Category.class);
                 startActivity(intent);
