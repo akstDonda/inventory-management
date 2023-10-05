@@ -155,6 +155,7 @@ public class DatabaseHandler {
         }
         products.remove(productId);
 
+        
         getProductsRef().set(products);
         getTransactionsRef().set(transactions);
     }

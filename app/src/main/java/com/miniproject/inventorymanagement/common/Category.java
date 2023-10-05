@@ -61,6 +61,7 @@ public class Category extends AppCompatActivity {
             }
         });
 
+
         //query
         categorySearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override

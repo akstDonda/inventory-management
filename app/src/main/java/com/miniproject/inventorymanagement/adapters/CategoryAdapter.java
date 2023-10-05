@@ -5,10 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.miniproject.inventorymanagement.R;
+import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.Category;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
 import com.miniproject.inventorymanagement.firebase.Product;
@@ -74,8 +77,12 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     public void setQuery(String query) {
         categoryList.clear();
         for (Category category : DatabaseHandler.getInstance().getCategoriesList()) {
-            if (category.getName().toLowerCase().contains(query.toLowerCase()) ) {
-                categoryList.add(category);
+            try {
+                if (category.getId().toLowerCase().contains(query.toLowerCase()) ) {
+                    categoryList.add(category);
+                }
+            }catch (Exception e){
+
             }
         }
         notifyDataSetChanged();

@@ -62,6 +62,7 @@ public class Transaction {
         this.productId = productId;
     }
 
+
     public Timestamp getTimestamp() {
         return timestamp;
     }
