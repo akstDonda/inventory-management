@@ -70,6 +70,7 @@
             android:exported="false" />
         <activity
             android:name=".admin.AddNewProduct"
+            android:windowSoftInputMode="adjustResize"
             android:exported="false"
             android:parentActivityName=".common.ProductList"
             android:theme="@style/Base.Theme.InventoryManagement_Tital" />
