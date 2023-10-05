@@ -1,5 +1,0 @@
-<!-- res/drawable/rounded_cardview_background.xml -->
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="16dp" /> <!-- Adjust the radius to control the curvature -->
-    <solid android:color="@color/md_theme_dark_secondary" /> <!-- Set the background color -->
-</shape>

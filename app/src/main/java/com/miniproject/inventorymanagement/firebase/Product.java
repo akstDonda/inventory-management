@@ -154,7 +154,6 @@ public class Product {
     public void setCategoryId(String categoryId) {
         if (categoryId == null || DatabaseHandler.getInstance().getCategories().containsKey(categoryId)) {
             this.categoryId = categoryId;
-            return;
         }
 //        throw new IllegalArgumentException("Category ID not found in categories");
     }

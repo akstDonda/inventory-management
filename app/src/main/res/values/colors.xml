@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Material Color Theme -->
-    <color name="seed">#3498db</color>
     <color name="md_theme_light_primary">#006397</color>
     <color name="md_theme_light_onPrimary">#FFFFFF</color>
     <color name="md_theme_light_primaryContainer">#CCE5FF</color>
@@ -28,10 +27,6 @@
     <color name="md_theme_light_inverseOnSurface">#D6F6FF</color>
     <color name="md_theme_light_inverseSurface">#00363F</color>
     <color name="md_theme_light_inversePrimary">#92CCFF</color>
-    <color name="md_theme_light_shadow">#000000</color>
-    <color name="md_theme_light_surfaceTint">#006397</color>
-    <color name="md_theme_light_outlineVariant">#C2C7CE</color>
-    <color name="md_theme_light_scrim">#000000</color>
     <color name="md_theme_dark_primary">#92CCFF</color>
     <color name="md_theme_dark_onPrimary">#003351</color>
     <color name="md_theme_dark_primaryContainer">#004B73</color>
@@ -58,36 +53,18 @@
     <color name="md_theme_dark_inverseOnSurface">#001F25</color>
     <color name="md_theme_dark_inverseSurface">#A6EEFF</color>
     <color name="md_theme_dark_inversePrimary">#006397</color>
-    <color name="md_theme_dark_shadow">#000000</color>
-    <color name="md_theme_dark_surfaceTint">#92CCFF</color>
-    <color name="md_theme_dark_outlineVariant">#42474E</color>
-    <color name="md_theme_dark_scrim">#000000</color>
 
     <!-- Custom Colors -->
     <color name="background">#FFFFFF</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="xyz">#FFFFFFFF</color>
-    <color name="primary_color">#B4C97B</color>
-    <color name="primary_color_light">#E2E8D2</color>
-    <color name="pink_light">#E6AFDC</color>
-    <color name="elephant_light">#746F6F</color>
-    <color name="primary_light">#3498db</color>
-    <color name="primary_dark">#2c3e50</color>
-    <color name="secondary_light">#e74c3c</color>
     <color name="red">#c0392b</color>
-    <color name="accent_light">#27ae60</color>
-    <color name="accent_dark">#219653</color>
     <color name="background_light">#f2f2f2</color>
-    <color name="background_dark">#121212</color>
 
-    <color name="dia">#E3E3E3</color>
     <color name="pri1">#FFFFFF</color>
     <color name="pri2">#3F5BA3</color>
     <color name="sec">#549143</color>
-    <color name="third">#000000</color>
     <color name="lightpri2">#C0CAE4</color>
-    <color name="menu">#6F82B5</color>
 
     // settings
     <color name="bg_color_setting">#e2eaf5</color>

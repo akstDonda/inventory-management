@@ -63,7 +63,7 @@ public class ApproveUser extends AppCompatActivity {
 
         mauth = FirebaseAuth.getInstance();
         cuser = mauth.getCurrentUser();
-        User_id = cuser.getUid().toString();
+        User_id = cuser.getUid();
         String companyId = DatabaseHandler.getInstance().getUser().getCompanyId();
 
         //print current admin uid
@@ -88,8 +88,8 @@ public class ApproveUser extends AppCompatActivity {
                                 if(emp_auth != null && storeId != null && userId != null && emp_auth.equals("False") && storeId.equals(companyId))
                                 {
                                     DatabaseHandler.getInstance().getCompany().addUser(userId);
-                                    String cat_id = queryDocumentSnapshot.getId().toString();
-                                    Employee employeelist = new Employee(queryDocumentSnapshot.getString("UserEMail").toString(),cat_id, userId);
+                                    String cat_id = queryDocumentSnapshot.getId();
+                                    Employee employeelist = new Employee(queryDocumentSnapshot.getString("UserEMail"),cat_id, userId);
                                     empArrayList.add(employeelist);
                                     empAdapter.notifyDataSetChanged();
                                     DatabaseHandler.getInstance().getFirebaseFirestore().collection("users").document(userId).update("companyId",storeId);

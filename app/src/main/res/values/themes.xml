@@ -28,13 +28,6 @@
         <item name="colorPrimaryInverse">@color/md_theme_light_inversePrimary</item>
     </style>
     <!-- Base application theme. -->
-    <style name="Base.Theme.InventoryManagement" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/black</item>
-
-<!--        <item name="android:statusBarColor">@color/black</item>-->
-
-    </style>
 
     <style name="Base.Theme.InventoryManagement_Tital" parent="Theme.AppCompat">
         <!-- Customize your light theme here. -->
@@ -47,5 +40,4 @@
         <item name="android:windowBackground">@color/white</item>
     </style>
 
-    <style name="Theme.InventoryManagement" parent="Base.Theme.InventoryManagement" />
 </resources>

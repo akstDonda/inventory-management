@@ -21,7 +21,7 @@ import java.util.Map;
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHolder> {
 
     private List<Product> productList;
-    private Integer lowStockLimit;
+    private final Integer lowStockLimit;
     private Boolean variableLowStock;
     private List<String> categoryList;
 
@@ -67,8 +67,8 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView productNameEditText;
-        private TextView productDescriptionEditText;
+        private final TextView productNameEditText;
+        private final TextView productDescriptionEditText;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

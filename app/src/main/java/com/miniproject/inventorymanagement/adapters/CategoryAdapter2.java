@@ -25,7 +25,7 @@ public class CategoryAdapter2 extends CategoryAdapter {
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textView;
+        private final TextView textView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -2,9 +2,6 @@ package com.miniproject.inventorymanagement.common;
 
 import static androidx.constraintlayout.helper.widget.MotionEffect.TAG;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -17,6 +14,9 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -28,19 +28,18 @@ import com.google.firebase.firestore.WriteBatch;
 import com.miniproject.inventorymanagement.R;
 import com.miniproject.inventorymanagement.admin.Home;
 import com.miniproject.inventorymanagement.firebase.DatabaseHandler;
-import com.miniproject.inventorymanagement.firebase.User;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class AdminRegistrationActivity extends AppCompatActivity {
-    EditText mCompanyName, mEmail, mPassword, displayNameEditText;
-    TextInputLayout email, passwdd, commpy, displayNameTextInput;
-    Button rbtn;
-    TextView login_btn,lggt;
-    ProgressBar reg_progressbar;
+    EditText emailEditText, passwordEditText, companyEditText, displayNameEditText;
+    TextInputLayout emailTextView, passwordTextView, companyTextInput, displayNameTextInput;
+    Button registrationButton;
+    TextView goToLoginButton;
+    ProgressBar registrationProgressBar;
     FirebaseAuth mAuth;
-    ImageButton backreg;
+    ImageButton backToUserTypeButton;
     DatabaseHandler dbHandler;
 
     @Override
@@ -50,87 +49,85 @@ public class AdminRegistrationActivity extends AppCompatActivity {
 
         dbHandler = DatabaseHandler.getInstance();
 
-        commpy = findViewById(R.id.edt_company_admin_reg);
-        email = findViewById(R.id.edt_email_admin_reg);
-        passwdd = findViewById(R.id.edt_password_admin_reg);
+        companyTextInput = findViewById(R.id.edt_company_admin_reg);
+        emailTextView = findViewById(R.id.edt_email_admin_reg);
+        passwordTextView = findViewById(R.id.edt_password_admin_reg);
         displayNameTextInput = findViewById(R.id.display_name);
-        lggt=findViewById(R.id.openlog);
+        goToLoginButton = findViewById(R.id.openlog);
 
-        mCompanyName = commpy.getEditText();
-        mEmail = email.getEditText();
-        mPassword = passwdd.getEditText();
+        companyEditText = companyTextInput.getEditText();
+        emailEditText = emailTextView.getEditText();
+        passwordEditText = passwordTextView.getEditText();
         displayNameEditText = displayNameTextInput.getEditText();
 
-        rbtn = findViewById(R.id.btn_admin_signin);
-        reg_progressbar = findViewById(R.id.rProgressBar);
+        registrationButton = findViewById(R.id.btn_admin_signin);
+        registrationProgressBar = findViewById(R.id.rProgressBar);
         mAuth = FirebaseAuth.getInstance();
-        backreg = findViewById(R.id.reg_back_btn);
+        backToUserTypeButton = findViewById(R.id.reg_back_btn);
 
         //back button
-        backreg.setOnClickListener(new View.OnClickListener() {
+        backToUserTypeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AdminRegistrationActivity.this,UserTypeActivity.class);
+                Intent intent = new Intent(AdminRegistrationActivity.this, UserTypeActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
+                finish();
             }
         });
 
         //back to loginpage
-        lggt.setOnClickListener(new View.OnClickListener() {
+        goToLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(AdminRegistrationActivity.this,LoginActivity.class);
+                Intent intent = new Intent(AdminRegistrationActivity.this, LoginActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(intent);
+                finish();
             }
         });
 
         //user is already create so throw direct mainActivity
-        if(mAuth.getCurrentUser() != null){
+        if (mAuth.getCurrentUser() != null) {
             startActivity(new Intent(getApplicationContext(), Loading.class));
             finish();
         }
-        rbtn.setOnClickListener(new View.OnClickListener() {
+        registrationButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email=mEmail.getText().toString().trim();
-                String password=mPassword.getText().toString().trim();
-                String companyName = mCompanyName.getText().toString().trim();
+                String email = emailEditText.getText().toString().trim();
+                String password = passwordEditText.getText().toString().trim();
+                String companyName = companyEditText.getText().toString().trim();
                 String displayName = displayNameEditText.getText().toString().trim();
                 Toast.makeText(AdminRegistrationActivity.this, email + password, Toast.LENGTH_SHORT).show();
 
-                if (TextUtils.isEmpty(email)){
-                    mEmail.setError("Email is !!!Required");
+                if (TextUtils.isEmpty(email)) {
+                    emailEditText.setError("Email can't be empty!");
                     return;
                 }
-                if (TextUtils.isEmpty(password)){
-                    mPassword.setError("password is !!!Required");
+                if (TextUtils.isEmpty(password)) {
+                    passwordEditText.setError("Password can't be empty!");
+                    return;
+                } else if (password.length() < 8) {
+                    passwordEditText.setError("Password of minimum 8 characters is required!");
                     return;
                 }
-                if(password.length()<6){
-                    mPassword.setError("character More Then 6 !!!Required");
-                    return;
-                }
-                if(TextUtils.isEmpty(companyName)){
-                    mCompanyName.setError("Company Name is !!!Required");
+                if (TextUtils.isEmpty(companyName)) {
+                    companyEditText.setError("Company name is required too.");
                     System.out.println("!!!!!!!!!!!!!!!!!!!!!!!");
                     return;
-
-
                 }
-                if(TextUtils.isEmpty(displayName)){
-                    displayNameEditText.setError("Display Name is !!!Required");
+                if (TextUtils.isEmpty(displayName)) {
+                    displayNameEditText.setError("Display Name is required.");
                     System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
                     return;
-
                 }
-                reg_progressbar.setVisibility(View.VISIBLE);
+                registrationProgressBar.setVisibility(View.VISIBLE);
 
-                mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(AdminRegistrationActivity.this, "SucessFully Create User", Toast.LENGTH_SHORT).show();
                             String uid = Objects.requireNonNull(dbHandler.getFirebaseAuth().getCurrentUser()).getUid();
                             Task<Void> task1 = dbHandler.createDocuments(uid);
@@ -143,7 +140,7 @@ public class AdminRegistrationActivity extends AppCompatActivity {
 //                                    dbHandler.getFirebaseFirestore().collection("companies").document(uid).update("users", new ArrayList<>());
 //                                    dbHandler.getFirebaseFirestore().collection("companies").document(uid).update("name", companyName);
                                     DocumentReference userRef = dbHandler.getFirebaseFirestore().collection("users").document(uid);
-                                    DocumentReference  companyRef = dbHandler.getFirebaseFirestore().collection("companies").document(uid);
+                                    DocumentReference companyRef = dbHandler.getFirebaseFirestore().collection("companies").document(uid);
                                     WriteBatch batch = dbHandler.getFirebaseFirestore().batch();
                                     batch.update(userRef, "companyId", uid);
                                     batch.update(userRef, "displayName", displayName);
@@ -165,9 +162,9 @@ public class AdminRegistrationActivity extends AppCompatActivity {
 //                            dbHandler.createDocuments(dbHandler.getFirebaseAuth().getCurrentUser().getUid());
 //                            Log.d(TAG, dbHandler.getUser().getCompanyId());
 //                            Log.d(TAG, "Updated User (local): " + dbHandler.getUser().getName() + "(" + dbHandler.getUser().getId() + ")");
-                        }else{
-                            Toast.makeText(AdminRegistrationActivity.this, "Error !!!"+ Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
-                            reg_progressbar.setVisibility(View.GONE);
+                        } else {
+                            Toast.makeText(AdminRegistrationActivity.this, "Error !!!" + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
+                            registrationProgressBar.setVisibility(View.GONE);
                         }
                     }
                 });
