@@ -1,40 +1,40 @@
 package com.miniproject.inventorymanagement.common;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.miniproject.inventorymanagement.R;
-import com.miniproject.inventorymanagement.user.UserLogin;
 
 public class UserTypeActivity extends AppCompatActivity {
-    FloatingActionButton btnadmin,btnuser;
+    FloatingActionButton adminLoginButton, userLoginButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_type);
-        btnadmin=findViewById(R.id.floating_action_button_admin);
-        btnuser=findViewById(R.id.floating_action_button_user);
+        setContentView(R.layout.activity_common_usertype);
+        adminLoginButton = findViewById(R.id.floating_action_button_admin);
+        userLoginButton = findViewById(R.id.floating_action_button_user);
 
         this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        btnadmin.setOnClickListener(new View.OnClickListener() {
+        adminLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserTypeActivity.this, LoginActivity.class);
-                intent.putExtra("admin", "admin");
+                intent.putExtra("isAdmin", true);
                 startActivity(intent);
             }
         });
 
-        btnuser.setOnClickListener(new View.OnClickListener() {
+        userLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(UserTypeActivity.this, LoginActivity.class);
-                intent.putExtra("user", "user");
+                intent.putExtra("isAdmin", false);
                 startActivity(intent);
             }
         });
