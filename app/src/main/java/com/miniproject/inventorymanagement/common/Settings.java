@@ -5,7 +5,9 @@ import static android.app.PendingIntent.getActivity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -100,7 +102,18 @@ public class Settings extends AppCompatActivity {
 
         logutButton.setOnClickListener(view -> {
             FirebaseAuth.getInstance().signOut();
+            clearAllAppData();
+
             startActivity(new Intent(Settings.this, UserTypeActivity.class));
         });
+    }
+
+    private void clearAllAppData() {
+        // Clear shared preferences
+        SharedPreferences preferences = getSharedPreferences("your_preference_name", Context.MODE_PRIVATE);
+        preferences.edit().clear().apply();
+
+        // Clear other cached data or storage mechanisms if applicable
+        // Example: Clear cached files, reset variables, etc.
     }
 }

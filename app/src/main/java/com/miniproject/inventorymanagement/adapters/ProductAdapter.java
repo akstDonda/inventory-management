@@ -99,6 +99,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         productList.clear();
         for (Product product : DatabaseHandler.getInstance().getProductsList()) {
             if (product.getName().toLowerCase().contains(query.toLowerCase()) ||
+                    product.getId().toLowerCase().contains(query.toLowerCase())||
                     product.getDescription().toLowerCase().contains(query.toLowerCase())) {
                 productList.add(product);
             }

@@ -29,6 +29,8 @@ public class CategorySelect extends AppCompatActivity {
         final String[] categories = new String[cat.size()];
         for (int i = 0; i < cat.size(); i++) {
             categories[i] = cat.get(i).getId();
+
+            //categories[i] = cat.get(i).getName();
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, categories);
