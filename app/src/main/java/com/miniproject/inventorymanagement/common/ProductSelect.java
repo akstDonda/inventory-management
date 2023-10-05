@@ -28,7 +28,7 @@ public class ProductSelect extends AppCompatActivity {
         final List<Product> cat = DatabaseHandler.getInstance().getProductsList();
         final String[] products = new String[cat.size()];
         for (int i = 0; i < cat.size(); i++) {
-            products[i] = cat.get(i).getName();
+            products[i] = cat.get(i).getId();
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, products);
