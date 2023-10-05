@@ -43,11 +43,21 @@ public class Loading extends AppCompatActivity {
                 // Get the current value of the animation
                 float animatedValue = (float) animation.getAnimatedValue();
 
+                // Calculate the number of dots to display based on updateCount
+                int numberOfDots = (updateCount % 60) / 20;
+
+                // Create a loading text with the calculated number of dots
+                StringBuilder loadingText = new StringBuilder("Loading.");
+                for (int i = 0; i < numberOfDots; i++) {
+                    loadingText.append(".");
+                }
+
                 // Update the loading text
-                loadingTextView.setText("Loading." + ".".repeat((int) ((updateCount % 60) / 20)));
+                loadingTextView.setText(loadingText.toString());
                 updateCount++;
             }
         });
+
         valueAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
